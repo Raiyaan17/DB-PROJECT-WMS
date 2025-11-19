@@ -1,9 +1,6 @@
 CREATE DATABASE WheresMyScheduleDB;
 GO
----
-USE WheresMyScheduleDB;
-GO
----
+
 CREATE SCHEMA Std;
 GO
 CREATE SCHEMA Inst;
@@ -12,7 +9,6 @@ CREATE SCHEMA Dept;
 GO
 CREATE SCHEMA Course;
 GO
----
 
 -- STATIC Tables --
 -- Dept.Department : stores names and ids of university departments (Computer Science, CS)
@@ -174,26 +170,4 @@ CREATE TABLE Dept.DegreeElectiveCourse (
     CONSTRAINT fk_dec_course
         FOREIGN KEY (CourseCode) REFERENCES Course.Course(CourseCode)
 );
-
-
-
--- Rules for student course enrollment:
---  1. enroll in min 12 and max 20 CHs 
-
-
--- DROPPING for testing
--- Drop child tables first
-DROP TABLE Course.CoursePrerequisite;
-DROP TABLE Dept.DegreeCoreCourse;
-DROP TABLE Dept.DegreeElectiveCourse;
-DROP TABLE Inst.TeachingAssignment;
-DROP TABLE Std.Enrollment;
-DROP TABLE Std.StudentIdSequence;
-DROP TABLE Inst.InstructorIdSequence;
-
--- Then main entity tables
-DROP TABLE Std.Student;
-DROP TABLE Inst.Instructor;
-DROP TABLE Course.Course;
-DROP TABLE Dept.Department;
-
+ 
