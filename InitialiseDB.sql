@@ -30,12 +30,16 @@ CREATE TABLE School (
 -- DYNAMIC Tables --
 -- Course.Course : stores course information (eg: code, title, credits)
 -- Std.Student : stores student information
--- Std.StudentIdSequence : helper table for auto-incrementing student IDs
 -- Inst.Instructor : stores instructor information
+
+-- Std.StudentIdSequence : helper table for auto-incrementing student IDs
 -- Inst.InstructorIdSequence : helper table for auto-incrementing instructor IDs
+
 -- Std.Enrollment : maps students to the courses they are enrolled in
 -- Inst.TeachingAssignment : maps instructors to the courses they are teaching
+
 -- Course.CoursePrerequisite : maps courses to their prerequisites
+
 -- Dept.Courses : maps courses to their respective departments
 -- Dept.DegreeCoreCourse : maps departments to their core courses
 -- Dept.DegreeElectiveCourse : maps departments to their elective courses
