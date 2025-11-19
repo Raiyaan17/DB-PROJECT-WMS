@@ -4,7 +4,7 @@ CREATE TABLE Department (
 );
 -- COURSES
 CREATE TABLE Course (
-    CourseCode   VARCHAR(15) NOT NULL PRIMARY KEY,      -- e.g. 'CS100'
+    CourseCode   VARCHAR(10) NOT NULL PRIMARY KEY,      -- e.g. 'CS100'
     Department   VARCHAR(30) NOT NULL,
     title        VARCHAR(100) NOT NULL,
     credits      TINYINT     NOT NULL,
@@ -97,8 +97,8 @@ CREATE TABLE TeachingAssignment (
 -- COURSE PREREQUISITES (Course <-> Course)
 -- prevent students from enrolling in a course if they haven't completed its pre-req course --
 CREATE TABLE CoursePrerequisite (
-    CourseCode       VARCHAR(15) NOT NULL,
-    PrerequisiteCode VARCHAR(15) NOT NULL,
+    CourseCode       VARCHAR(10) NOT NULL,
+    PrerequisiteCode VARCHAR(10) NOT NULL,
     CONSTRAINT pk_cp PRIMARY KEY (CourseCode, PrerequisiteCode), -- Composite key
     CONSTRAINT fk_cp_course
         FOREIGN KEY (CourseCode)       REFERENCES Course(CourseCode),
@@ -110,7 +110,7 @@ CREATE TABLE CoursePrerequisite (
 -- DEGREE CORE COURSES (Department <-> Course)
 CREATE TABLE DegreeCoreCourse (
     Department VARCHAR(30) NOT NULL,
-    CourseCode VARCHAR(15) NOT NULL,
+    CourseCode VARCHAR(10) NOT NULL,
     CONSTRAINT pk_dcc PRIMARY KEY (Department, CourseCode), -- Composite key
     CONSTRAINT fk_dcc_degree
         FOREIGN KEY (Department) REFERENCES Department(DepartmentID),
@@ -121,7 +121,7 @@ CREATE TABLE DegreeCoreCourse (
 -- DEGREE ELECTIVE COURSES (Department <-> Course)
 CREATE TABLE DegreeElectiveCourse (
     Department VARCHAR(30) NOT NULL,
-    CourseCode VARCHAR(15) NOT NULL,
+    CourseCode VARCHAR(10) NOT NULL,
     CONSTRAINT pk_dec PRIMARY KEY (Department, CourseCode), -- Composite key
     CONSTRAINT fk_dec_degree
         FOREIGN KEY (Department) REFERENCES Department(DepartmentID),
