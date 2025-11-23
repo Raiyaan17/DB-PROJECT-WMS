@@ -138,11 +138,11 @@ CREATE TABLE Std.Enrollment (
 
 -- TEACHING ASSIGNMENTS (Instructor <-> Course)
 CREATE TABLE Inst.TeachingAssignment (
-    InstructorID VARCHAR(30) NOT NULL,
     CourseCode   VARCHAR(10) NOT NULL,
+    InstructorID VARCHAR(30) NOT NULL,
 
     CONSTRAINT pk_teachingassignment
-        PRIMARY KEY (InstructorID, CourseCode),
+        PRIMARY KEY (CourseCode, InstructorID),
 
     CONSTRAINT fk_ta_instructor
         FOREIGN KEY (InstructorID) REFERENCES Inst.Instructor(InstructorID),
