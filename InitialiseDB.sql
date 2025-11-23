@@ -1,8 +1,12 @@
+IF DB_ID('WheresMyScheduleDB') IS NULL
+BEGIN
+    CREATE DATABASE WheresMyScheduleDB; --create database if it doesnt exist already
+END
+GO
+
 USE WheresMyScheduleDB;
 GO
 
-CREATE DATABASE WheresMyScheduleDB;
-GO
 
 CREATE SCHEMA Std;
 GO
