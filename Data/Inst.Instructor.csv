@@ -1,0 +1,216 @@
+InstructorID,FiName,LName,Email,DepartmentID
+ACF1,Syed Zain,ul Abidin,syedzain.ulabidin@lums.edu.pk,ACF
+ACF2,Ayesha,Bhatti,ayesha.bhatti@lums.edu.pk,ACF
+ACF3,Abdul,Rauf,abdul.rauf@lums.edu.pk,ACF
+ACF4,Samia Ahmed,Ali,samiaahmed.ali@lums.edu.pk,ACF
+ACF5,Nafeh,Akbar,nafeh.akbar@lums.edu.pk,ACF
+ACF6,Saira,Rizwan,saira.rizwan@lums.edu.pk,ACF
+ACF7,Ali,Qamar,ali.qamar@lums.edu.pk,ACF
+ACF8,Omair,Haroon,omair.haroon@lums.edu.pk,ACF
+ACF9,Syed Mubashir,Ali,syedmubashir.ali@lums.edu.pk,ACF
+MGMT1,Humbal,Tariq,humbal.tariq@lums.edu.pk,MGMT
+MGMT2,Maheen,Aamir Syed,maheen.aamirsyed@lums.edu.pk,MGMT
+MGMT3,Zaid,Saeed Khan,zaid.saeedkhan@lums.edu.pk,MGMT
+MGMT4,Raja Rub,Nawaz,rajarub.nawaz@lums.edu.pk,MGMT
+MGMT5,Sheikh Attique Ur,Rehman,sheikhattiqueur.rehman@lums.edu.pk,MGMT
+MGMT6,Kamran,Rashid,kamran.rashid@lums.edu.pk,MGMT
+MGMT7,Samnan,Ali,samnan.ali@lums.edu.pk,MGMT
+MGMT8,Raja Usman,Khalid,rajausman.khalid@lums.edu.pk,MGMT
+ACF10,Salman,Khan,salman.khan@lums.edu.pk,ACF
+ACF11,Fazal Jawad,Seyyed,fazaljawad.seyyed@lums.edu.pk,ACF
+ACF12,Ayesha,Ahmad,ayesha.ahmad@lums.edu.pk,ACF
+ACF13,Syed Hashim,Mahmood Ali,syedhashim.mahmoodali@lums.edu.pk,ACF
+ACF14,Nauman Afzal,Cheema,naumanafzal.cheema@lums.edu.pk,ACF
+ACF15,Muhammad Ali,Syed,muhammadali.syed@lums.edu.pk,ACF
+ACF16,Syed,Aun Raza Rizvi,syed.aunrazarizvi@lums.edu.pk,ACF
+ACF17,Talha,Farrukh,talha.farrukh@lums.edu.pk,ACF
+ACF18,Saad,Azmat,saad.azmat@lums.edu.pk,ACF
+ACF19,Ferhana,Ahmed,ferhana.ahmed@lums.edu.pk,ACF
+ACF20,Syed Kumail Abbas,Rizvi,syedkumailabbas.rizvi@lums.edu.pk,ACF
+MGMT9,Mohsin,Bashir,mohsin.bashir@lums.edu.pk,MGMT
+MGMT10,Mehr,Farhan Cheema,mehr.farhancheema@lums.edu.pk,MGMT
+MGMT11,Razi Allah,Lone,raziallah.lone@lums.edu.pk,MGMT
+MGMT12,Muhammad,Ajmal,muhammad.ajmal@lums.edu.pk,MGMT
+MGMT13,Muhammad Shabbir,Ahsen,muhammadshabbir.ahsen@lums.edu.pk,MGMT
+MGMT14,Ali,Sultan,ali.sultan@lums.edu.pk,MGMT
+MGMT15,Ghazal Mir,Zulfiqar,ghazalmir.zulfiqar@lums.edu.pk,MGMT
+MGMT16,Muhammad,Ahsan Rana,muhammad.ahsanrana@lums.edu.pk,MGMT
+MGMT17,Salma,Zaman,salma.zaman@lums.edu.pk,MGMT
+MGMT18,Komal,Zain,komal.zain@lums.edu.pk,MGMT
+MGMT19,Aaminah Zaman,Malik,aaminahzaman.malik@lums.edu.pk,MGMT
+MGMT20,Saima Mujtaba,Rana,saimamujtaba.rana@lums.edu.pk,MGMT
+MGMT21,Muhammad,Asim,muhammad.asim@lums.edu.pk,MGMT
+MGMT22,Aleena,Iqtidar,aleena.iqtidar@lums.edu.pk,MGMT
+MGMT23,Moeen,Naseer Butt,moeen.naseerbutt@lums.edu.pk,MGMT
+MGMT24,Faiza,Ali,faiza.ali@lums.edu.pk,MGMT
+ANTHROSOCIO1,Sadaf,Ahmad,sadaf.ahmad@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO2,Samira,Musleh,samira.musleh@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO3,Ghazal,Asif,ghazal.asif@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO4,Rabia,Kamal,rabia.kamal@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO5,Ameem,Lutfi,ameem.lutfi@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO6,Maria,Amir,maria.amir@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO7,Mohammad,Waseem,mohammad.waseem@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO8,Dominic William,Esler,dominicwilliam.esler@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO9,Aftab,Nasir,aftab.nasir@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO10,Tania,Saeed,tania.saeed@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO11,Sana,Khosa,sana.khosa@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO12,Ilyas Ahmad,Chattha,ilyasahmad.chattha@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO13,Sameera,Abbas,sameera.abbas@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO14,Umair,Javed,umair.javed@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO15,Nida Yasmeen,Kirmani,nidayasmeen.kirmani@lums.edu.pk,ANTHROSOCIO
+ANTHROSOCIO16,Basit Bilal,Koshul,basitbilal.koshul@lums.edu.pk,ANTHROSOCIO
+BIO1,Muhammad,Tariq,muhammad.tariq@lums.edu.pk,BIO
+BIO2,Khurram,Bashir,khurram.bashir@lums.edu.pk,BIO
+BIO3,Safee,Ullah Chaudhary,safee.ullahchaudhary@lums.edu.pk,BIO
+BIO4,Muhammad,Shoaib,muhammad.shoaib@lums.edu.pk,BIO
+BIO5,Shaper,Mirza,shaper.mirza@lums.edu.pk,BIO
+BIO6,Faiz Ul Hassan,Nasim,faizulhassan.nasim@lums.edu.pk,BIO
+BIO7,Laraib Iqbal,Malik,laraibiqbal.malik@lums.edu.pk,BIO
+CHEM1,Shahana,Khurshid,shahana.khurshid@lums.edu.pk,CHEM
+CHEM2,Qandeel,Almas,qandeel.almas@lums.edu.pk,CHEM
+CHEM3,Tauqeer,Abbas,tauqeer.abbas@lums.edu.pk,CHEM
+CHEM4,Shahid,Usman Bin,shahid.usmanbin@lums.edu.pk,CHEM
+CHEM5,Faheem,Hassan Akhtar,faheem.hassanakhtar@lums.edu.pk,CHEM
+CHEM6,Ali,Rauf,ali.rauf@lums.edu.pk,CHEM
+CHEM7,Qasim,Imtiaz,qasim.imtiaz@lums.edu.pk,CHEM
+CHEM8,Hafiz,Muhammad Afzal,hafiz.muhammadafzal@lums.edu.pk,CHEM
+CHEM9,Habib-ur-,Rehman,habibur.rehman@lums.edu.pk,CHEM
+CHEM10,Ghayoor Abbas,Chotana,ghayoorabbas.chotana@lums.edu.pk,CHEM
+CHEM11,Irshad,Hussain,irshad.hussain@lums.edu.pk,CHEM
+CHEM12,Rahman Shah,Zaib Saleem,rahmanshah.zaibsaleem@lums.edu.pk,CHEM
+CHEM13,Falak,Sher,falak.sher@lums.edu.pk,CHEM
+CLCA1,Maryam,Wasif Khan,maryam.wasifkhan@lums.edu.pk,CLCA
+CLCA2,Fatima,Fayyaz,fatima.fayyaz@lums.edu.pk,CLCA
+CLCA3,Ahtisham,Ali,ahtisham.ali@lums.edu.pk,CLCA
+CLCA4,Zebunnisa,Hamid,zebunnisa.hamid@lums.edu.pk,CLCA
+CLCA5,Raja Mohammad,Tabish Habib,rajamohammad.tabishhabib@lums.edu.pk,CLCA
+CLCA6,Shahid,Rasheed,shahid.rasheed@lums.edu.pk,CLCA
+CLCA7,Mahnoor,Azeem,mahnoor.azeem@lums.edu.pk,CLCA
+CLCA8,Muhammad Tayyab,Younas,muhammadtayyab.younas@lums.edu.pk,CLCA
+CLCA9,Bilal,Tanweer,bilal.tanweer@lums.edu.pk,CLCA
+CLCA10,Nasir,Abbas,nasir.abbas@lums.edu.pk,CLCA
+CLCA11,Amalie Goul,Dueholm,amaliegoul.dueholm@lums.edu.pk,CLCA
+CLCA12,Asif,Iftikhar,asif.iftikhar@lums.edu.pk,CLCA
+CS1,Safa,Salam,safa.salam@lums.edu.pk,CS
+CS2,Haleema,jamil,haleema.jamil@lums.edu.pk,CS
+CS3,Muhammad,Khaquan,muhammad.khaquan@lums.edu.pk,CS
+CS4,Malik,Jahan Khan,malik.jahankhan@lums.edu.pk,CS
+CS5,Muhammad Jahangir,Ikram,muhammadjahangir.ikram@lums.edu.pk,CS
+CS6,Aamina Jamal,Khan,aaminajamal.khan@lums.edu.pk,CS
+CS7,Agha Ali,Raza,aghaali.raza@lums.edu.pk,CS
+CS8,Mobin,Javed,mobin.javed@lums.edu.pk,CS
+CS9,Ali,Khawaja,ali.khawaja@lums.edu.pk,CS
+CS10,Abdul Ali,Bangash,abdulali.bangash@lums.edu.pk,CS
+CS11,Abdul,Rafay,abdul.rafay@lums.edu.pk,CS
+CS12,Zartash,Afzal Uzmi,zartash.afzaluzmi@lums.edu.pk,CS
+CS13,Shahid,Masud,shahid.masud@lums.edu.pk,CS
+CS14,Nadeem Ahmad,Khan,nadeemahmad.khan@lums.edu.pk,CS
+CS15,Murtaza,Taj,murtaza.taj@lums.edu.pk,CS
+CS16,Hassan,Mohy-ud-Din,hassan.mohyuddin@lums.edu.pk,CS
+CS17,Asim,Karim,asim.karim@lums.edu.pk,CS
+CS18,Imdad,ullah khan,imdad.ullahkhan@lums.edu.pk,CS
+CS19,Muhammad Ali,Siddiqi,muhammadali.siddiqi@lums.edu.pk,CS
+CS20,Abubakr,Muhammad,abubakr.muhammad@lums.edu.pk,CS
+CS21,Ihsan Ayyub,Qazi,ihsanayyub.qazi@lums.edu.pk,CS
+CS22,Muhammad,Tahir,muhammad.tahir@lums.edu.pk,CS
+CS23,Hassan,Jaleel,hassan.jaleel@lums.edu.pk,CS
+CS24,Maryam Abdul,Ghafoor,maryamabdul.ghafoor@lums.edu.pk,CS
+CS25,Muhammad Fareed,Zaffar,muhammadfareed.zaffar@lums.edu.pk,CS
+ECON1,Nadia,Mukhtar Sayed,nadia.mukhtarsayed@lums.edu.pk,ECON
+ECON2,Rida,Hameed,rida.hameed@lums.edu.pk,ECON
+ECON3,Khadija,Aftab,khadija.aftab@lums.edu.pk,ECON
+ECON4,Fahd,Ali,fahd.ali@lums.edu.pk,ECON
+ECON5,Syed,Muhammad Hasan,syed.muhammadhasan@lums.edu.pk,ECON
+ECON6,Daniyal,Khan,daniyal.khan@lums.edu.pk,ECON
+ECON7,Amin,Hussain,amin.hussain@lums.edu.pk,ECON
+ECON8,Eeman Shahzad Shahzad,Qureshi,eemanshahzadshahzad.qureshi@lums.edu.pk,ECON
+ECON9,Lyyla,Khalid,lyyla.khalid@lums.edu.pk,ECON
+ECON10,Sheraz Latif,Malik,sherazlatif.malik@lums.edu.pk,ECON
+ECON11,Mushtaq Ahmad,Khan,mushtaqahmad.khan@lums.edu.pk,ECON
+ECON12,Malik,Fakhar Ahmed,malik.fakharahmed@lums.edu.pk,ECON
+ECON13,Farah,Said,farah.said@lums.edu.pk,ECON
+ECON14,Rabia,Khan,rabia.khan@lums.edu.pk,ECON
+ECON15,Hana,Zahir,hana.zahir@lums.edu.pk,ECON
+ECON16,Abid Aman,Burki,abidaman.burki@lums.edu.pk,ECON
+ECON17,Jasir,Shahbaz,jasir.shahbaz@lums.edu.pk,ECON
+ECON18,Hadia,Majid,hadia.majid@lums.edu.pk,ECON
+ECON19,Syed Zahid,Ali,syedzahid.ali@lums.edu.pk,ECON
+ECON20,Ahmed M.,Khalid,ahmedm.khalid@lums.edu.pk,ECON
+ECON21,Adeel,Tariq,adeel.tariq@lums.edu.pk,ECON
+ECON22,Sher Afghan,Asad,sherafghan.asad@lums.edu.pk,ECON
+ECON23,Ayesha,Ali,ayesha.ali@lums.edu.pk,ECON
+ECON24,Khalid,Mir,khalid.mir@lums.edu.pk,ECON
+ECON25,Osama,Khan,osama.khan@lums.edu.pk,ECON
+EE1,Momina,Khan,momina.khan@lums.edu.pk,EE
+EE2,Nauman Ahmad,Zaffar,naumanahmad.zaffar@lums.edu.pk,EE
+EE3,Hafsa,Qamar,hafsa.qamar@lums.edu.pk,EE
+EE4,Muhammad Imran,Cheema,muhammadimran.cheema@lums.edu.pk,EE
+EE5,Ijaz Haider,Naqvi,ijazhaider.naqvi@lums.edu.pk,EE
+EE6,Syed Fasih,Ali Gardazi,syedfasih.aligardazi@lums.edu.pk,EE
+EE7,Raheel,Zafar,raheel.zafar@lums.edu.pk,EE
+EE8,Mian Muhammad,Awais,mianmuhammad.awais@lums.edu.pk,EE
+EE9,Nauman Zafar,Butt,naumanzafar.butt@lums.edu.pk,EE
+EE10,Naveed,Arshad,naveed.arshad@lums.edu.pk,EE
+EE11,Hassan Abbas,Khan,hassanabbas.khan@lums.edu.pk,EE
+EE12,Naveed Ul,Hassan,naveedul.hassan@lums.edu.pk,EE
+EE13,Basit,Shafiq,basit.shafiq@lums.edu.pk,EE
+HIST1,Muhammad,Ali Raza,muhammad.aliraza@lums.edu.pk,HIST
+HIST2,Navid,Zarrinnal,navid.zarrinnal@lums.edu.pk,HIST
+HIST3,Saman,Tariq Malik,saman.tariqmalik@lums.edu.pk,HIST
+HIST4,Hassan Haider,Karrar,hassanhaider.karrar@lums.edu.pk,HIST
+HIST5,Baqar Hassan,Syed,baqarhassan.syed@lums.edu.pk,HIST
+LAW1,Muhammad Umar,Ali,muhammadumar.ali@lums.edu.pk,LAW
+LAW2,Marva,Khan,marva.khan@lums.edu.pk,LAW
+LAW3,Sheharyar Sikander,Hamid,sheharyarsikander.hamid@lums.edu.pk,LAW
+LAW4,Syeda Zehra,Zaidi,syedazehra.zaidi@lums.edu.pk,LAW
+LAW5,Angbeen Atif,Mirza,angbeenatif.mirza@lums.edu.pk,LAW
+LAW6,Sarah,Humayun,sarah.humayun@lums.edu.pk,LAW
+LAW7,Maria,Farooq,maria.farooq@lums.edu.pk,LAW
+LAW8,Jazib,Zahir,jazib.zahir@lums.edu.pk,LAW
+LAW9,Raza,Saeed,raza.saeed@lums.edu.pk,LAW
+LAW10,Aisha,Ahmad,aisha.ahmad@lums.edu.pk,LAW
+LAW11,Maria,Farrukh Irfan Khan,maria.farrukhirfankhan@lums.edu.pk,LAW
+LAW12,Faiza,,faiza@lums.edu.pk,LAW
+LAW13,Ali,Awais,ali.awais@lums.edu.pk,LAW
+LAW14,Ayesha,Alam Malik,ayesha.alammalik@lums.edu.pk,LAW
+LAW15,Muhammad,Azeem,muhammad.azeem@lums.edu.pk,LAW
+LAW16,Haider Rasul,Mirza,haiderrasul.mirza@lums.edu.pk,LAW
+LAW17,Maira,Mumtaz,maira.mumtaz@lums.edu.pk,LAW
+LAW18,Asad,Farooq,asad.farooq@lums.edu.pk,LAW
+LAW19,Sadaf,Aziz,sadaf.aziz@lums.edu.pk,LAW
+MATH1,Mughees,Ghayas,mughees.ghayas@lums.edu.pk,MATH
+MATH2,Muhammad Javaid,Qayoom,muhammadjavaid.qayoom@lums.edu.pk,MATH
+MATH3,Shehryar,Sikander,shehryar.sikander@lums.edu.pk,MATH
+MATH4,Sonia,Naseer,sonia.naseer@lums.edu.pk,MATH
+MATH5,Shaheen,Nazir,shaheen.nazir@lums.edu.pk,MATH
+MATH6,Azhar,Farooq,azhar.farooq@lums.edu.pk,MATH
+MATH7,Haniya,Azam,haniya.azam@lums.edu.pk,MATH
+MATH8,Sultan,Sial,sultan.sial@lums.edu.pk,MATH
+MATH9,Omar Khawar,Malik,omarkhawar.malik@lums.edu.pk,MATH
+MATH10,Waqas,Ali Azhar,waqas.aliazhar@lums.edu.pk,MATH
+MATH11,Reza,Abdolmaleki,reza.abdolmaleki@lums.edu.pk,MATH
+ACF21,Bushra,Naqvi,bushra.naqvi@lums.edu.pk,ACF
+MGMT25,Sajid,Siddique,sajid.siddique@lums.edu.pk,MGMT
+MGMT26,Ghulam Ali,Arain,ghulamali.arain@lums.edu.pk,MGMT
+MGMT27,Gulalai,Khan,gulalai.khan@lums.edu.pk,MGMT
+MGMT28,Suleman,Ghani,suleman.ghani@lums.edu.pk,MGMT
+MGMT29,Adnan,Zahid,adnan.zahid@lums.edu.pk,MGMT
+MGMT30,Ghazal,Mir Zulfiqar,ghazal.mirzulfiqar@lums.edu.pk,MGMT
+MGMT31,Ayesha,Masood,ayesha.masood@lums.edu.pk,MGMT
+MGMT32,Jawad,Sarwar Naqvi Syed,jawad.sarwarnaqvisyed@lums.edu.pk,MGMT
+MGMT33,Muhammad,Abdur Rahman Malik,muhammad.abdurrahmanmalik@lums.edu.pk,MGMT
+PHYS1,Syed Moeez,Hassan,syedmoeez.hassan@lums.edu.pk,PHYS
+PHYS2,Rizwan,Khalid,rizwan.khalid@lums.edu.pk,PHYS
+PHYS3,Adam,Zaman Chaudhry,adam.zamanchaudhry@lums.edu.pk,PHYS
+PHYS4,Tajdar,Mufti,tajdar.mufti@lums.edu.pk,PHYS
+PHYS5,Muhammad Sabieh,Anwar,muhammadsabieh.anwar@lums.edu.pk,PHYS
+PHYS6,Muhammad,Faryad,muhammad.faryad@lums.edu.pk,PHYS
+POLSCI1,Asma ul-Husna,Faiz,asmaulhusna.faiz@lums.edu.pk,POLSCI
+POLSCI2,Rida,Ashfaq,rida.ashfaq@lums.edu.pk,POLSCI
+POLSCI3,Adeel,Hamza,adeel.hamza@lums.edu.pk,POLSCI
+POLSCI4,Mohammad,Hamza Iftikhar,mohammad.hamzaiftikhar@lums.edu.pk,POLSCI
+POLSCI5,Aimen,Majeedullah,aimen.majeedullah@lums.edu.pk,POLSCI
+POLSCI6,Ali Usman,Qasmi,aliusman.qasmi@lums.edu.pk,POLSCI
+POLSCI7,Younis,Sarwer,younis.sarwer@lums.edu.pk,POLSCI
+POLSCI8,Hafiz Muhammad,Salman Rafi,hafizmuhammad.salmanrafi@lums.edu.pk,POLSCI
+POLSCI9,Shahid,Malik,shahid.malik@lums.edu.pk,POLSCI
