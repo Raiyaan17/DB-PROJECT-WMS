@@ -1,6 +1,9 @@
 CREATE DATABASE WheresMyScheduleDB;
 GO
 
+USE WheresMyScheduleDB;
+GO
+
 CREATE SCHEMA Std;
 GO
 CREATE SCHEMA Inst;
@@ -19,29 +22,30 @@ GO
 
 -- DEPARTMENT
 CREATE TABLE Dept.Department (
-    DepartmentID VARCHAR(30) NOT NULL PRIMARY KEY,
+    DepartmentID   VARCHAR(30) NOT NULL PRIMARY KEY,
     DepartmentName VARCHAR(50) NOT NULL
 );
 
 -- SCHOOL
 CREATE TABLE School.School (
-    SchoolID VARCHAR(30) NOT NULL PRIMARY KEY,
+    SchoolID   VARCHAR(30)  NOT NULL PRIMARY KEY,
     SchoolName VARCHAR(300) NOT NULL
 );
 
 -- SCHOOL-DEPARTMENT MAPPING
 CREATE TABLE School.Department (
-    SchoolID VARCHAR(30) NOT NULL,
+    SchoolID     VARCHAR(30) NOT NULL,
     DepartmentID VARCHAR(30) NOT NULL,
     CONSTRAINT pk_schooldepartment PRIMARY KEY (SchoolID, DepartmentID),
-    CONSTRAINT fk_sd_school FOREIGN KEY (SchoolID) REFERENCES School.School(SchoolID),
-    CONSTRAINT fk_sd_department FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID)
+    CONSTRAINT fk_sd_school
+        FOREIGN KEY (SchoolID)     REFERENCES School.School(SchoolID),
+    CONSTRAINT fk_sd_department
+        FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID)
 );
-
 
 -- DYNAMIC Tables --
 -- Course.Course : stores course information (eg: code, title, credits)
--- Std.Student : stores student information
+-- Std.Student   : stores student information
 -- Inst.Instructor : stores instructor information
 
 -- Std.StudentIdSequence : helper table for auto-incrementing student IDs
@@ -58,40 +62,40 @@ CREATE TABLE School.Department (
 
 -- COURSES
 CREATE TABLE Course.Course (
-    CourseCode   VARCHAR(10) NOT NULL PRIMARY KEY,      -- e.g. 'CS100'
-    CourseTitle        VARCHAR(100) NOT NULL,
-    TotalCredits      TINYINT     NOT NULL,
-    Capacity          SMALLINT NOT NULL
+    CourseCode   VARCHAR(10)  NOT NULL PRIMARY KEY,  -- e.g. 'CS100'
+    CourseTitle  VARCHAR(100) NOT NULL,
+    TotalCredits TINYINT      NOT NULL,
+    Capacity     SMALLINT     NOT NULL
 );
 
 -- STUDENTS
 CREATE TABLE Std.Student (
-    StudentID             VARCHAR(30)  NOT NULL PRIMARY KEY,     -- e.g. ''
-    FName                 VARCHAR(50)  NOT NULL,
-    LName                 VARCHAR(50)  NOT NULL,
-    Email                 VARCHAR(100) NOT NULL UNIQUE,
-    SchoolID              VARCHAR(30)  NOT NULL,
-    DepartmentID          VARCHAR(30)  NOT NULL,
-    GraduationYear        SMALLINT  NOT NULL,
+    StudentID           VARCHAR(30)  NOT NULL PRIMARY KEY,     -- e.g. ''
+    FName               VARCHAR(50)  NOT NULL,
+    LName               VARCHAR(50)  NOT NULL,
+    Email               VARCHAR(100) NOT NULL UNIQUE,
+    SchoolID            VARCHAR(30)  NOT NULL,
+    DepartmentID        VARCHAR(30)  NOT NULL,
+    GraduationYear      SMALLINT     NOT NULL,
     CurrentAcademicYear VARCHAR(10)  NULL,                     -- FRESHMAN/SOPH/JUNIOR/SENIOR
     CONSTRAINT fk_student_school
-        FOREIGN KEY (SchoolID) REFERENCES School.School(SchoolID),
+        FOREIGN KEY (SchoolID)     REFERENCES School.School(SchoolID),
     CONSTRAINT fk_student_department
         FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID),
     CONSTRAINT chk_student_acad_year
         CHECK (
-            current_academic_year IN ('FRESHMAN','SOPHOMORE','JUNIOR','SENIOR', 'ALUMNI')
-            OR current_academic_year IS NULL
+            CurrentAcademicYear IN ('FRESHMAN','SOPHOMORE','JUNIOR','SENIOR', 'ALUMNI')
+            OR CurrentAcademicYear IS NULL
         )
 );
 
 -- StudentID helper table
 -- StudentID = year_joined + DepartmentID + last_number;
--- e.g. '2023CS1', '2023CS2', '2024MGS1', '2021ACF13' 
+-- e.g. '2023CS1', '2023CS2', '2024MGS1', '2021ACF13'
 CREATE TABLE Std.StudentIdSequence (
-    YearJoined SMALLINT    NOT NULL,
+    YearJoined   SMALLINT    NOT NULL,
     DepartmentID VARCHAR(30) NOT NULL,
-    LastNumber INT         NOT NULL,
+    LastNumber   INT         NOT NULL,
     CONSTRAINT pk_StudentIdSequence
         PRIMARY KEY (YearJoined, DepartmentID),
     CONSTRAINT fk_sis_department
@@ -100,11 +104,11 @@ CREATE TABLE Std.StudentIdSequence (
 
 -- INSTRUCTORS
 CREATE TABLE Inst.Instructor (
-    InstructorID VARCHAR(30) NOT NULL PRIMARY KEY, -- eg. CS1, MGS10
-    FName        VARCHAR(50) NOT NULL,
-    LName        VARCHAR(50) NOT NULL,
-    Email        VARCHAR(100) NOT NULL UNIQUE,     -- eg. fname.lname.InstructorID@lums.edu.pk
-    DepartmentID   VARCHAR(30) NOT NULL,
+    InstructorID VARCHAR(30)  NOT NULL PRIMARY KEY, -- eg. CS1, MGS10
+    FName        VARCHAR(50)  NOT NULL,
+    LName        VARCHAR(50)  NOT NULL,
+    Email        VARCHAR(100) NOT NULL UNIQUE,      -- eg. fname.lname.InstructorID@lums.edu.pk
+    DepartmentID VARCHAR(30)  NOT NULL,
     CONSTRAINT fk_instructor_dept
         FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID)
 );
@@ -112,7 +116,7 @@ CREATE TABLE Inst.Instructor (
 -- InstructorID helper table
 CREATE TABLE Inst.InstructorIdSequence (
     DepartmentID VARCHAR(30) NOT NULL PRIMARY KEY,
-    LastNumber INT         NOT NULL,
+    LastNumber   INT         NOT NULL,
     CONSTRAINT fk_iis_department
         FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID)
 );
@@ -120,9 +124,9 @@ CREATE TABLE Inst.InstructorIdSequence (
 -- ENROLLMENTS (Student <-> Course)
 -- this will also keep track of each students' course histories --
 CREATE TABLE Std.Enrollment (
-    StudentID   VARCHAR(30) NOT NULL,
-    CourseCode  VARCHAR(10) NOT NULL,
-    Completed   BIT NOT NULL DEFAULT 0,
+    StudentID  VARCHAR(30) NOT NULL,
+    CourseCode VARCHAR(10) NOT NULL,
+    Completed  BIT         NOT NULL DEFAULT 0,
 
     CONSTRAINT pk_enrollment
         PRIMARY KEY (StudentID, CourseCode),
@@ -159,33 +163,33 @@ CREATE TABLE Course.CoursePrerequisite (
         FOREIGN KEY (PrerequisiteCode) REFERENCES Course.Course(CourseCode)
 );
 
+-- COURSE <-> DEPARTMENT
 CREATE TABLE Dept.Courses (
-    CourseCode VARCHAR(10) NOT NULL PRIMARY KEY,
+    CourseCode   VARCHAR(10) NOT NULL PRIMARY KEY,
     DepartmentID VARCHAR(30) NOT NULL,
 
     CONSTRAINT fk_c_dept
         FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID)
-)
+);
 
 -- DEGREE CORE COURSES (Department <-> Course)
 CREATE TABLE Dept.DegreeCoreCourse (
     DepartmentID VARCHAR(30) NOT NULL,
-    CourseCode VARCHAR(10) NOT NULL,
+    CourseCode   VARCHAR(10) NOT NULL,
     CONSTRAINT pk_dcc PRIMARY KEY (DepartmentID, CourseCode), -- Composite key
     CONSTRAINT fk_dcc_degree
         FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID),
     CONSTRAINT fk_dcc_course
-        FOREIGN KEY (CourseCode) REFERENCES Course.Course(CourseCode)
+        FOREIGN KEY (CourseCode)   REFERENCES Course.Course(CourseCode)
 );
 
 -- DEGREE ELECTIVE COURSES (Department <-> Course)
 CREATE TABLE Dept.DegreeElectiveCourse (
     DepartmentID VARCHAR(30) NOT NULL,
-    CourseCode VARCHAR(10) NOT NULL,
+    CourseCode   VARCHAR(10) NOT NULL,
     CONSTRAINT pk_dec PRIMARY KEY (DepartmentID, CourseCode), -- Composite key
     CONSTRAINT fk_dec_degree
         FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID),
     CONSTRAINT fk_dec_course
-        FOREIGN KEY (CourseCode) REFERENCES Course.Course(CourseCode)
+        FOREIGN KEY (CourseCode)   REFERENCES Course.Course(CourseCode)
 );
- 
