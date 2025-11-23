@@ -1,3 +1,6 @@
+USE WheresMyScheduleDB;
+GO
+
 CREATE DATABASE WheresMyScheduleDB;
 GO
 
@@ -14,7 +17,7 @@ GO
 
 -- STATIC Tables --
 -- Dept.Department : stores names and ids of university departments (Computer Science, CS)
--- School.School : stores names and ids of schools (eg: Suleman Dawood School of Business, SDSB)
+-- School.School : stores names andids of schools (eg: Suleman Dawood School of Business, SDSB)
 -- School.Department : maps schools to departments
 
 -- DEPARTMENT
@@ -80,14 +83,14 @@ CREATE TABLE Std.Student (
         FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID),
     CONSTRAINT chk_student_acad_year
         CHECK (
-            current_academic_year IN ('FRESHMAN','SOPHOMORE','JUNIOR','SENIOR', 'ALUMNI')
-            OR current_academic_year IS NULL
+            CurrentAcademicYear IN ('FRESHMAN','SOPHOMORE','JUNIOR','SENIOR', 'ALUMNI')
+            OR CurrentAcademicYear IS NULL
         )
 );
 
 -- StudentID helper table
 -- StudentID = year_joined + DepartmentID + last_number;
--- e.g. '2023CS1', '2023CS2', '2024MGS1', '2021ACF13' 
+-- e.g. '2023CS1', '2023CS2', '2024MGS1', '2021ACF13'
 CREATE TABLE Std.StudentIdSequence (
     YearJoined SMALLINT    NOT NULL,
     DepartmentID VARCHAR(30) NOT NULL,
@@ -188,4 +191,3 @@ CREATE TABLE Dept.DegreeElectiveCourse (
     CONSTRAINT fk_dec_course
         FOREIGN KEY (CourseCode) REFERENCES Course.Course(CourseCode)
 );
- 
