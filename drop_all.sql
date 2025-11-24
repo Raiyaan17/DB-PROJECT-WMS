@@ -19,6 +19,9 @@ DROP TABLE IF EXISTS Dept.Department;
 DROP TABLE IF EXISTS School.School;
 GO
 
+
+DROP PROCEDURE IF EXISTS dbo.SetupStudentTablePartitioning;
+
 -- Drop the schemas
 DROP SCHEMA IF EXISTS Std;
 DROP SCHEMA IF EXISTS Inst;
