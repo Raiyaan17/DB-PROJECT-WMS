@@ -1,5 +1,12 @@
-CREATE DATABASE WheresMyScheduleDB;
+IF DB_ID('WheresMyScheduleDB') IS NULL
+BEGIN
+    CREATE DATABASE WheresMyScheduleDB; --create database if it doesnt exist already
+END
 GO
+
+USE WheresMyScheduleDB;
+GO
+
 
 CREATE SCHEMA Std;
 GO
@@ -14,7 +21,7 @@ GO
 
 -- STATIC Tables --
 -- Dept.Department : stores names and ids of university departments (Computer Science, CS)
--- School.School : stores names and ids of schools (eg: Suleman Dawood School of Business, SDSB)
+-- School.School : stores names andids of schools (eg: Suleman Dawood School of Business, SDSB)
 -- School.Department : maps schools to departments
 
 -- DEPARTMENT
@@ -80,14 +87,14 @@ CREATE TABLE Std.Student (
         FOREIGN KEY (DepartmentID) REFERENCES Dept.Department(DepartmentID),
     CONSTRAINT chk_student_acad_year
         CHECK (
-            current_academic_year IN ('FRESHMAN','SOPHOMORE','JUNIOR','SENIOR', 'ALUMNI')
-            OR current_academic_year IS NULL
+            CurrentAcademicYear IN ('FRESHMAN','SOPHOMORE','JUNIOR','SENIOR', 'ALUMNI')
+            OR CurrentAcademicYear IS NULL
         )
 );
 
 -- StudentID helper table
 -- StudentID = year_joined + DepartmentID + last_number;
--- e.g. '2023CS1', '2023CS2', '2024MGS1', '2021ACF13' 
+-- e.g. '2023CS1', '2023CS2', '2024MGS1', '2021ACF13'
 CREATE TABLE Std.StudentIdSequence (
     YearJoined SMALLINT    NOT NULL,
     DepartmentID VARCHAR(30) NOT NULL,
@@ -135,11 +142,11 @@ CREATE TABLE Std.Enrollment (
 
 -- TEACHING ASSIGNMENTS (Instructor <-> Course)
 CREATE TABLE Inst.TeachingAssignment (
-    InstructorID VARCHAR(30) NOT NULL,
     CourseCode   VARCHAR(10) NOT NULL,
+    InstructorID VARCHAR(30) NOT NULL,
 
     CONSTRAINT pk_teachingassignment
-        PRIMARY KEY (InstructorID, CourseCode),
+        PRIMARY KEY (CourseCode, InstructorID),
 
     CONSTRAINT fk_ta_instructor
         FOREIGN KEY (InstructorID) REFERENCES Inst.Instructor(InstructorID),
@@ -188,4 +195,31 @@ CREATE TABLE Dept.DegreeElectiveCourse (
     CONSTRAINT fk_dec_course
         FOREIGN KEY (CourseCode) REFERENCES Course.Course(CourseCode)
 );
- 
+
+-- Additional initialization previously defined in extra_init.sql
+
+-- Add scheduling + seat tracking + soft delete fields to Course
+ALTER TABLE Course.Course
+ADD 
+    Venue VARCHAR(50) NULL,
+    DayOfWeek VARCHAR(10) NULL,
+    StartTime TIME NULL,
+    EndTime TIME NULL,
+    RemainingSeats INT NOT NULL DEFAULT 0,
+    IsActive BIT NOT NULL DEFAULT 1;
+
+-- Add forced enrollment + timestamp fields
+ALTER TABLE Std.Enrollment
+ADD 
+    IsForced BIT NOT NULL DEFAULT 0,
+    EnrollmentDate DATETIME NOT NULL DEFAULT GETDATE();
+
+-- Adding Audit table needed for force enrollment 
+CREATE TABLE Std.AuditLog (
+    AuditID INT IDENTITY(1,1) PRIMARY KEY,
+    AdminID VARCHAR(30) NOT NULL,
+    StudentID VARCHAR(30) NOT NULL,
+    CourseCode VARCHAR(10) NOT NULL,
+    Timestamp DATETIME NOT NULL DEFAULT GETDATE(),
+    ActionDescription VARCHAR(200) NOT NULL
+);
