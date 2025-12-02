@@ -19,7 +19,7 @@ public partial class WheresMyScheduleDbContext : DbContext
 
     public virtual DbSet<Course> Courses { get; set; }
 
-    public virtual DbSet<Course1> Courses1 { get; set; }
+    public virtual DbSet<DepartmentCourse> DepartmentCourses { get; set; }
 
     public virtual DbSet<CourseCart> CourseCarts { get; set; }
 
@@ -104,7 +104,7 @@ public partial class WheresMyScheduleDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasMany(d => d.CourseCodes).WithMany(p => p.PrerequisiteCodes)
+            entity.HasMany(d => d.IsPrerequisiteFor).WithMany(p => p.Prerequisites)
                 .UsingEntity<Dictionary<string, object>>(
                     "CoursePrerequisite",
                     r => r.HasOne<Course>().WithMany()
@@ -127,7 +127,7 @@ public partial class WheresMyScheduleDbContext : DbContext
                             .IsUnicode(false);
                     });
 
-            entity.HasMany(d => d.Instructors).WithMany(p => p.CourseCodes)
+            entity.HasMany(d => d.Instructors).WithMany(p => p.TaughtCourses)
                 .UsingEntity<Dictionary<string, object>>(
                     "TeachingAssignment",
                     r => r.HasOne<Instructor>().WithMany()
@@ -151,31 +151,10 @@ public partial class WheresMyScheduleDbContext : DbContext
                             .HasColumnName("InstructorID");
                     });
 
-            entity.HasMany(d => d.PrerequisiteCodes).WithMany(p => p.CourseCodes)
-                .UsingEntity<Dictionary<string, object>>(
-                    "CoursePrerequisite",
-                    r => r.HasOne<Course>().WithMany()
-                        .HasForeignKey("PrerequisiteCode")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("fk_cp_prereq"),
-                    l => l.HasOne<Course>().WithMany()
-                        .HasForeignKey("CourseCode")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("fk_cp_course"),
-                    j =>
-                    {
-                        j.HasKey("CourseCode", "PrerequisiteCode").HasName("pk_cp");
-                        j.ToTable("CoursePrerequisite", "Course");
-                        j.IndexerProperty<string>("CourseCode")
-                            .HasMaxLength(10)
-                            .IsUnicode(false);
-                        j.IndexerProperty<string>("PrerequisiteCode")
-                            .HasMaxLength(10)
-                            .IsUnicode(false);
-                    });
+
         });
 
-        modelBuilder.Entity<Course1>(entity =>
+        modelBuilder.Entity<DepartmentCourse>(entity =>
         {
             entity.HasKey(e => e.CourseCode).HasName("PK__Courses__FC00E00111F08F3C");
 
@@ -189,7 +168,7 @@ public partial class WheresMyScheduleDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("DepartmentID");
 
-            entity.HasOne(d => d.Department).WithMany(p => p.Course1s)
+            entity.HasOne(d => d.Department).WithMany(p => p.DepartmentCourses)
                 .HasForeignKey(d => d.DepartmentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_c_dept");
@@ -232,7 +211,7 @@ public partial class WheresMyScheduleDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasMany(d => d.CourseCodes).WithMany(p => p.Departments)
+            entity.HasMany(d => d.CoreCourses).WithMany(p => p.CoreForDepartments)
                 .UsingEntity<Dictionary<string, object>>(
                     "DegreeCoreCourse",
                     r => r.HasOne<Course>().WithMany()
@@ -256,7 +235,7 @@ public partial class WheresMyScheduleDbContext : DbContext
                             .IsUnicode(false);
                     });
 
-            entity.HasMany(d => d.CourseCodesNavigation).WithMany(p => p.DepartmentsNavigation)
+            entity.HasMany(d => d.ElectiveCourses).WithMany(p => p.ElectiveForDepartments)
                 .UsingEntity<Dictionary<string, object>>(
                     "DegreeElectiveCourse",
                     r => r.HasOne<Course>().WithMany()
