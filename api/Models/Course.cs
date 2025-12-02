@@ -33,13 +33,13 @@ public partial class Course
 
     public virtual ICollection<Waitlist> Waitlists { get; set; } = new List<Waitlist>();
 
-    public virtual ICollection<Course> CourseCodes { get; set; } = new List<Course>();
+    public virtual ICollection<Course> IsPrerequisiteFor { get; set; } = new List<Course>();
 
-    public virtual ICollection<Department> Departments { get; set; } = new List<Department>();
+    public virtual ICollection<Department> CoreForDepartments { get; set; } = new List<Department>();
 
-    public virtual ICollection<Department> DepartmentsNavigation { get; set; } = new List<Department>();
+    public virtual ICollection<Department> ElectiveForDepartments { get; set; } = new List<Department>();
 
     public virtual ICollection<Instructor> Instructors { get; set; } = new List<Instructor>();
 
-    public virtual ICollection<Course> PrerequisiteCodes { get; set; } = new List<Course>();
+    public virtual ICollection<Course> Prerequisites { get; set; } = new List<Course>();
 }

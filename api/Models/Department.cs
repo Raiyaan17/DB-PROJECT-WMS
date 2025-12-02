@@ -9,7 +9,7 @@ public partial class Department
 
     public string DepartmentName { get; set; } = null!;
 
-    public virtual ICollection<Course1> Course1s { get; set; } = new List<Course1>();
+    public virtual ICollection<DepartmentCourse> DepartmentCourses { get; set; } = new List<DepartmentCourse>();
 
     public virtual InstructorIdSequence? InstructorIdSequence { get; set; }
 
@@ -19,9 +19,9 @@ public partial class Department
 
     public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 
-    public virtual ICollection<Course> CourseCodes { get; set; } = new List<Course>();
+    public virtual ICollection<Course> CoreCourses { get; set; } = new List<Course>();
 
-    public virtual ICollection<Course> CourseCodesNavigation { get; set; } = new List<Course>();
+    public virtual ICollection<Course> ElectiveCourses { get; set; } = new List<Course>();
 
     public virtual ICollection<School> Schools { get; set; } = new List<School>();
 }
