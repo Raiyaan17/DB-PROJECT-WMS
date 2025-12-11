@@ -1,332 +1,332 @@
-CourseCode,CourseTitle,TotalCredits,Capacity
-ACCT100,Principles of Financial Accounting,3,41
-ACCT130,Principles of Management Accounting,3,43
-ACCT202,Theory and Concepts of Accounting - Islamic Perspective,3,43
-ACCT220,Corporate Financial Reporting I,3,39
-ACCT370,Applied Taxation,3,34
-ACCT411,Applied Financial Analysis,3,37
-ACCT482,"Governance, Risk and Compliance",3,29
-ACCTD110,Accounting - I,3,43
-ACF2101,Introduction to Finance and Accounting,2,38
-ACF5101,Financial Management and Accounting,3,43
-ANTH100,Introduction to Cultural Anthropology,4,45
-ANTH2302,Anthropology of Moral Economies,4,65
-ANTH242,Anthropology of Law,4,43
-ANTH250,Gender and Power,4,37
-ANTH276,Anthropology of Social Media,4,43
-ANTH287,The Indian Ocean,4,52
-ANTH320,Qualitative Research Methods,4,44
-ANTH355,"Folklore Futures: Negotiating, Reclaiming, and Reimagining Indigeneity through Storytelling",4,40
-ANTH443,Anthropology of State,4,32
-ANTH483,Caste in South Asia and Beyond,4,44
-BIO101,Introductory Biology,3,34
-BIO216,Molecular Biology,3,45
-BIO221,Genetics,4,54
-BIO300,Methods in Cell and Molecular Biology,4,31
-BIO313,Cell Biology,3,44
-BIO331,Computational Biology II,3,32
-BIO401,Seminars in Biology,1,41
-BIO403,"Critical thinking, Scientific Writing and Ethics",3,40
-BIO500,Advanced Methods in Biology,3,44
-BIO503,"Critical Thinking, Scientific Writing and Ethics",3,43
-BIO516,Advanced Molecular and Cell Biology,3,44
-BIO523,RNA Biology,3,57
-BIO531,Computational Biology,3,36
-BIO541,Epidemiology and Methods in Clinical Research,3,43
-CHEM101,Principles of Chemistry,3,41
-CHEM210,Physical Chemistry,3,36
-CHEM221,Molecular Symmetry I,3,44
-CHEM231,Fundamentals of Organic Chemistry,3,38
-CHEM260,Principles of Chemical Engineering,3,31
-CHEM262,Particle Science and Engineering,3,42
-CHEM280,Math Methods in Chemical Engineering I,3,29
-CHEM300A,Chemical Engineering Lab II,1,36
-CHEM314,Quantum Chemistry,3,44
-CHEM320,Separation Processes,3,43
-CHEM330,Math Methods in Chemical Engineering II,3,68
-CHEM332,Chemistry of the Organic Functional Groups,3,42
-CHEM342,Analytical Chemistry I,3,37
-CHEM352,Heat and Mass Transfer,3,44
-CHEM373,Advanced Fluid Dynamics,3,39
-CHEM401A,Chemical Engineering Lab - V,1,40
-CHEM401B,Chemical Engineering Lab - VI,1,40
-CHEM422,Chemical Process Safety,3,27
-CHEM430,Organic Chemistry Lab II,2,38
-CHEM440,Chemical Process Design I,3,38
-CHEM511,Advanced Physical Chemistry I,3,38
-CHEM513,Electrochemical Energy Storage and Conversion,3,46
-CHEM516,Characterization Techniques for Materials,3,41
-CHEM521,Advanced Inorganic Chemistry I,3,35
-CHEM531,Advanced Organic Chemistry I,3,36
-CHEM711,Selected Topics in Physical Chemistry,3,47
-CHEM721,Selected Topics in Inorganic Chemistry,3,33
-CHEM731,Selected Topics in Organic Chemistry,3,32
-CLCA1000,Engaging with Texts and Contexts,4,42
-CLCA2116,Shahnameh: The Story of Our World,4,40
-CLCA2129,An Introduction to the Urdu Ghazal: Mir and Ghalib,4,32
-CLCA2212,"Cinemas of Asia, Africa, and Latin America",4,41
-CLCA2222,The Critical Lens: The Art of Filmmaking,4,43
-CLCA2422,Introduction to Sanskrit,4,37
-CLCA2523,Introduction to Illustrative Storytelling,4,40
-CLCA2524,"Storytelling in Motion: Design, Movement, and Meaning",4,45
-CLCA3113,Kafka,4,31
-CLCA3123,Aag ka Darya: A Close Reading,4,49
-CLCA3216,"Digital Spaces and Global Screen Texts: Meanings, Politics, and Practices of Engagement",4,43
-CLCA3242,The Art of Film Criticism,4,30
-CLCA4122,Islamicate Poetry in South Asia,4,45
-CS100,Computational Problem Solving,3,32
-CS200,Introduction to Programming,4,42
-CS202,Data Structures,3,36
-CS210,Discrete Mathematics,4,42
-CS225,Fundamentals of Computer Systems,4,38
-CS310,Algorithms,3,37
-CS330,Computational Biology II,3,34
-CS331,Foundations of AI and Machine Learning,3,38
-CS334,Principles and Techniques of Data Science,3,75
-CS340,Databases,3,41
-CS365,AI-Driven Software Engineering,3,43
-CS370,Operating Systems,3,35
-CS3812,Introduction to Blockchain: Technology and Applications,3,45
-CS425,Digital System Design,3,33
-CS425L,Digital System Design Lab,1,40
-CS4302,Digital Image Processing and Machine Vision,3,40
-CS436,Computer Vision Fundamentals,3,43
-CS437,Deep Learning,3,32
-CS452,Computer Graphics,3,30
-CS4602,Coding for Careers,3,46
-CS501,Applied Probability,3,45
-CS5102,Algorithms,3,39
-CS5310,Computer Vision Fundamentals,3,43
-CS5316,NLP Theory and Applications,3,32
-CS5317,Deep Learning,3,40
-CS535,Foundations of AI and Machine Learning,3,45
-CS553,Computer Graphics,3,42
-CS5604,AI-Driven Software Engineering,3,44
-CS5803,Applied Cryptography,3,41
-CS5812,Introduction to Blockchain: Technology and Applications,3,37
-CS593,Mobile Robotics,3,43
-CS622,Computer Architecture,3,41
-CS6303,"Topics in Large Language Models: Systems, Applications and Impacts",3,37
-CS6304,Advanced Topics in Machine Learning,3,43
-CS6314,Dynamic Programming and Reinforcement Learning,3,43
-CS653,Digital Image Processing and Machine Vision,3,28
-CS667,Coding for Careers,3,42
-CS682,Topics in Computer and Network Security,3,44
-DISC112,Computer and Problem Solving,4,46
-DISC203,Probability and Statistics,3,43
-DISC212,Introduction to Management Science,3,40
-DISC320,Qualitative and Quantitative Methods in Business,3,33
-DISC321,Decision Analysis,4,40
-DISC322,Optimization Methods in Management Science,3,42
-DISC323,Decision Behaviour,3,37
-DISC331,Project Management,3,44
-DISC333,Supply Chain and Logistics Management,3,38
-DISC335,Transportation and Logistics Management,3,42
-DISC420,Business Analytics,3,41
-ECON100,Principles of Economics,4,30
-ECON111,Principles of Microeconomics,4,41
-ECON121,Principles of Macroeconomics,4,34
-ECON203,Reading Marx with Dickens,4,70
-ECON211,Intermediate Microeconomics,4,45
-ECON221,Intermediate Macroeconomics,4,37
-ECON230,Statistics and Data Analysis,4,45
-ECON2301,Data Analytics Lab I,2,41
-ECON233,Introduction to Game Theory,4,37
-ECON240,Development Economics,4,40
-ECON261,Principles of Finance,4,33
-ECON262,Mathematical Applications in Economics,4,43
-ECON311,Industrial Organisation,4,40
-ECON323,Economic History of South Asia,4,45
-ECON330,Econometrics,4,40
-ECON3301,Data Analytics Lab II,2,42
-ECON3402,Gender Economics,4,37
-ECON343,Agriculture and Food Policy,4,44
-ECON406,Economics of Education,3,39
-ECON4102,Gender and the Labor Market,4,42
-ECON427,Computational Macroeconomics,4,31
-ECON428,East Asian Economies,4,40
-ECON438,Econometrics II,4,45
-ECON4410,Issues in Economic Policy,4,44
-ECON4414,Topics in Energy Economics,4,44
-ECON449,Philosophy and Economics,4,36
-ECON4602,Public Finance,4,41
-ECON511,Microeconomic Analysis,4,43
-ECON531,Econometrics and Research Methodology I,4,37
-ECON536,Topics in Mathematical Method for Economists,4,42
-EE201,Introduction to Programming,4,37
-EE202,Data Structures,3,43
-EE203,Engineering Models,3,43
-EE240,Circuits I,3,40
-EE315,Foundations of AI and Machine Learning,3,44
-EE324,Microcontroller and Interfacing,2,83
-EE324L,Microcontroller and Interfacing Lab,1,40
-EE330,Electromagnetic Fields and Waves,3,44
-EE340,Devices and Electronics,3,45
-EE340L,Devices and Electronics Lab,1,34
-EE380,Communication Systems,3,31
-EE380L,Communication Systems Lab,1,44
-EE3812,Introduction to Blockchain: Technology and Applications,3,35
-EE402,Principles and Techniques of Data Science,3,41
-EE414,Deep Learning,3,40
-EE417,Digital Image Processing and Machine Vision,3,42
-EE421,Digital System Design,3,40
-EE421L,Digital System Design Lab,1,43
-EE453,Power Systems Protection and Stability,3,43
-EE5102,Advanced Topics in Machine Learning,3,43
-EE513,Computer Vision Fundamentals,3,36
-EE514,Foundations of AI and Machine Learning,3,37
-EE515,Applied Probability,3,42
-EE517,Deep Learning,3,44
-EE520,Computer Architecture,3,38
-EE5202,VLSI Design for Artificial Intelligence,3,42
-EE5203,Physics-informed machine learning,3,40
-EE5204,Applied Cryptography,3,43
-EE5502,Local Solutions for Energy Access,3,40
-EE555,Renewable Energy Systems,3,43
-EE559,Power Systems Protection and Stability,3,44
-EE565,Mobile Robotics,3,32
-EE569,Dynamic Programming and Reinforcement Learning,3,42
-EE576,Smart Grid: Technology and Applications,3,42
-EE5812,Introduction to Blockchain: Technology and Applications,3,45
-EE585,Communication Systems,3,44
-FINN100,Principles of Finance,3,41
-FINN200,Intermediate Finance,3,41
-FINN222,Introduction to Mathematics of Finance,3,35
-FINN243,Fintech Revolution: Market Disruption and Emerging Opportunities,3,44
-FINN372,Actuarial Sciences and Insurance,3,33
-FINN373,Fundamentals of Actuarial Mathematics I,3,45
-FINN400,Applied Corporate Finance,3,37
-FINN403,Financial Modelling,3,40
-FINN441,Islamic Banking and Finance,3,27
-FINN453,Financial Derivatives,3,42
-FINN454,Portfolio Management,3,40
-FINN8001,Seminar in Islamic and Corporate Finance,3,40
-FINN8401,Seminar in Financial Intermediation and Regualatory Framework,3,42
-FINND120,Public Finance and Fiscal Policy,3,42
-HIST124,The World Since 1453,4,41
-HIST253,Empire and its Critics: A Global History,4,43
-HIST262,Sports and Society,4,43
-HIST292,Introduction to Sanskrit,4,37
-HIST3222,Words and their Worlds: A Conceptual History of Colonial India,4,45
-HIST324,China from Deng to Xi,4,39
-HIST3304,Post-classical Islamic Philosophy and Theology,4,42
-HIST4202,Caste in South Asia and Beyond,4,34
-HIST437,Subaltern Studies: On History and Historiography,4,45
-LAW102,Introduction to Pakistan Legal System,4,40
-LAW220,Contracts,4,43
-LAW222,Torts,4,31
-LAW240,Criminal Law,4,44
-LAW242,Anthropology of Law,4,32
-LAW280,Legal Practice I: Legal Writing and Research Methods,4,44
-LAW315,Advanced Law and Violence in South Asia,4,40
-LAW3207,Contractual Interpretation: Disputes over the meaning of words,4,32
-LAW3223,AI and the Future of Work and Education,3,43
-LAW352,Public International Law,4,44
-LAW353,Human Rights,4,33
-LAW394,Competition Law and Antitrust,4,39
-LAW427,"Crime, Law and Finance: Wonders of White Color Crime in Pakistan!",4,41
-LAW4313,Public Private Partnerships,4,43
-LAW4503,War Law,4,44
-LAW4505,Business and Human Rights: A Critical Legal Perspective from the South,4,41
-LAW471,Civil Procedure,4,43
-LAW472,Criminal Procedure,4,45
-LAW4812,Legal Practice II: Legal Instruments,4,43
-LAW4906,LUMS Law Clinic,4,47
-LAW4907,The Jurisprudence of Water,4,35
-LAW4922,Human Rights Clinic I,4,41
-LAWD130,General Laws,2,36
-MATH100,Pre-Calculus,3,40
-MATH101,Calculus I,3,44
-MATH102,Calculus II,3,43
-MATH120,Linear Algebra with Differential Equations,3,36
-MATH204,Introduction to Formal Mathematics,3,40
-MATH210,Introduction to Differential Equations,3,40
-MATH222,Linear Algebra II,3,36
-MATH230,Probability,3,43
-MATH231,Statistics,3,41
-MATH232,Introduction to Game Theory,4,41
-MATH300,Complex Variables,3,39
-MATH309,Introduction to Analysis II,3,35
-MATH341,Operations Research I,3,41
-MATH4012,Complex Analysis,3,39
-MATH4102,Qualitative Differential Equation,3,42
-MATH439,Applied Probability,3,40
-MATH503,Advanced Complex Analysis,3,36
-MATH510,Advanced Qualitative Differential Equation,3,44
-MATH521,Advanced Algebra,3,42
-MATH547,Operational Research I,3,43
-MGMT142,Principles of Management,3,44
-MGMT212,Business Communication,3,36
-MGMT242,Business Ethics and Corporate Social Responsibility,3,44
-MGMT244,Reforming The Public Sector,3,45
-MGMT247,Public Financial Management,3,42
-MGMT252,Logic and Critical Thinking,3,44
-MGMT260,Business Law,3,44
-MGMT2601,Introduction to Management,2,41
-MGMT261,Introduction to Policy Analysis,3,44
-MGMT263,Contemporary Social Policy Issues in Pakistan,3,46
-MGMT264,Competition Law and Antitrust,4,32
-MGMT265,Public Private Partnerships,4,93
-MGMT266,Contractual Interpretation: Disputes over the meaning of words,4,35
-MGMT348,Internet Governance and Technology Policy,3,44
-MGMT365,Urban Planning and Management,3,36
-MGMT373,Personal Effectiveness,3,34
-MGMT386,"Business, Government, and Society",3,40
-MGMT387,Managing Diverse People and Organizations,3,42
-MGMT400,Strategic Business Management,3,42
-MGMT8102,Seminar in Strategic Management,3,45
-MGMT8402,Foundation of Management Research,3,36
-MGMT8403,Applications of Psychology in Management,3,44
-MGMTD140,"Public Management, Leadership and Change Management",2,44
-MKTG201,Principles of Marketing,3,39
-MKTG302,Digital Marketing,3,45
-MKTG324,Integrated Marketing Communications,3,44
-MKTG332,Consumer Behaviour,3,38
-MKTG343,Marketing Models,3,40
-MKTG344,Data Driven Marketing,3,40
-MKTG345,Data Analytics for New Product Development,3,44
-MKTG392,Brand Management,3,43
-ORSC201,Organizational Behaviour,3,41
-ORSC341,Human Resource Management,3,48
-ORSC5301,Organizations and Leadership,2,44
-ORSC8402,Seminar in Human Resource Management,3,45
-PHY101,Mechanics,4,42
-PHY204,Electricity and Magnetism,3,41
-PHY212,Quantum Mechanics I,3,36
-PHY223,Mathematical Methods in Physics and Engineering I,3,43
-PHY300,Experimental Physics Lab II,3,37
-PHY301,Classical Mechanics,3,44
-PHY305,Electromagnetic Fields and Waves,3,43
-PHY313,Statistical Mechanics,3,44
-PHY335,Molecular Symmetry I,3,34
-PHY404,Relativistic Electrodynamics,3,44
-PHY500,Graduate Physics Lab,3,31
-PHY501,Electrodynamics,3,41
-PHY510,Advanced Statistical Mechanics,3,27
-PHY5104,Quantum Machine Learning,3,44
-PHY603,Machine Learning for Physics,3,38
-POL100,Introduction to Political Science,4,43
-POL203,Introduction to Political Theory,4,44
-POL220,American Government and Politics,4,38
-POL229,Politics of Armed Groups,4,44
-POL266,Women and Political Theory,4,33
-POL268,Master Narratives: Minding Gender and Media Gaps,4,40
-POL269,Feminist Politics: Theory and Practice,4,43
-POL3012,Nations and Nationalism: From Theory to Practice,4,37
-POL3112,The Regional Histories of Pakistan,4,43
-POL315,The Politics of Civil War,4,44
-POL320,Comparative Politics,4,43
-POL3202,Qualitative Research Methods in Political Science,4,42
-POL3302,Theories of IR,4,45
-POL374,Critical Issues in Pakistan's Foreign Policy,4,44
-POL463,Anthropology of State,4,40
-POL464,Political Sociology,4,44
-SOC100,Introduction to Sociology,4,41
-SOC223,Sociology of Education,4,33
-SOC226,Disasters and Society,4,36
-SOC246,Sports and Society,4,45
-SOC265,Introduction to Gender and Sexuality Studies,4,43
-SOC310,Classical Sociological Theory,4,25
-SOC364,Masculinities,4,40
-SOC373,Indigenous Knowledge(s) Through a Sociological Lens,4,42
-SOC410,Max Weber,4,45
+Course Code,Course Title,Total Credits,Capacity,Days Of Week,Start Time,End Time
+ACCT100,Principles of Financial Accounting,3,41,MW,11:00,12:15
+ACCT130,Principles of Management Accounting,3,43,MW,8:00,9:15
+ACCT202,Theory and Concepts of Accounting - Islamic Perspective,3,43,MW,9:30,10:45
+ACCT220,Corporate Financial Reporting I,3,39,MW,9:30,10:45
+ACCT370,Applied Taxation,3,34,TR,8:00,9:15
+ACCT411,Applied Financial Analysis,3,37,MW,14:00,15:15
+ACCT482,"Governance, Risk and Compliance",3,29,MW,17:00,18:15
+ACCTD110,Accounting - I,3,43,RF,10:00,12:00
+ACF2101,Introduction to Finance and Accounting,2,38,RFSU,14:00,16:10
+ACF5101,Financial Management and Accounting,3,43,SU,16:15,18:15
+ANTH100,Introduction to Cultural Anthropology,4,45,MW,14:00,15:50
+ANTH2302,Anthropology of Moral Economies,4,65,TR,8:00,9:50
+ANTH242,Anthropology of Law,4,43,MW,14:00,15:50
+ANTH250,Gender and Power,4,37,TR,14:00,15:50
+ANTH276,Anthropology of Social Media,4,43,TR,14:00,15:50
+ANTH287,The Indian Ocean,4,52,TR,14:00,15:50
+ANTH320,Qualitative Research Methods,4,44,MW,8:00,9:50
+ANTH355,"Folklore Futures: Negotiating, Reclaiming, and Reimagining Indigeneity through Storytelling",4,40,MW,10:00,11:50
+ANTH443,Anthropology of State,4,32,MW,14:00,15:50
+ANTH483,Caste in South Asia and Beyond,4,44,MW,14:00,15:15
+BIO101,Introductory Biology,3,34,MW,14:00,15:15
+BIO216,Molecular Biology,3,45,TR,15:00,16:15
+BIO221,Genetics,4,54,MW,10:30,12:20
+BIO300,Methods in Cell and Molecular Biology,4,31,MWF,9:00,9:50
+BIO313,Cell Biology,3,44,TR,10:00,11:15
+BIO331,Computational Biology II,3,32,T,17:30,18:20
+BIO401,Seminars in Biology,1,41,T,17:30,18:20
+BIO403,"Critical thinking, Scientific Writing and Ethics",3,40,MW,15:30,16:45
+BIO500,Advanced Methods in Biology,3,44,MWF,9:00,9:50
+BIO503,"Critical Thinking, Scientific Writing and Ethics",3,43,MW,15:30,16:45
+BIO516,Advanced Molecular and Cell Biology,3,44,TR,15:30,16:45
+BIO523,RNA Biology,3,57,MW,14:00,15:15
+BIO531,Computational Biology,3,36,TR,9:30,10:45
+BIO541,Epidemiology and Methods in Clinical Research,3,43,TR,13:00,14:15
+CHEM101,Principles of Chemistry,3,41,MW,8:00,9:15
+CHEM210,Physical Chemistry,3,36,MW,9:00,10:15
+CHEM221,Molecular Symmetry I,3,44,MW,17:00,18:15
+CHEM231,Fundamentals of Organic Chemistry,3,38,TR,12:30,13:45
+CHEM260,Principles of Chemical Engineering,3,31,TR,10:00,11:15
+CHEM262,Particle Science and Engineering,3,42,TR,9:00,10:15
+CHEM280,Math Methods in Chemical Engineering I,3,29,MW,14:00,15:15
+CHEM300A,Chemical Engineering Lab II,1,36,W,13:30,16:20
+CHEM314,Quantum Chemistry,3,44,MW,15:00,16:15
+CHEM320,Separation Processes,3,43,TR,16:30,17:45
+CHEM330,Math Methods in Chemical Engineering II,3,68,MW,16:30,17:45
+CHEM332,Chemistry of the Organic Functional Groups,3,42,F,17:30,18:20
+CHEM342,Analytical Chemistry I,3,37,MW,9:30,10:45
+CHEM352,Heat and Mass Transfer,3,44,TR,13:30,14:45
+CHEM373,Advanced Fluid Dynamics,3,39,TR,11:00,12:15
+CHEM401A,Chemical Engineering Lab - V,1,40,M,10:30,13:20
+CHEM401B,Chemical Engineering Lab - VI,1,40,W,14:30,17:20
+CHEM422,Chemical Process Safety,3,27,MW,8:00,9:15
+CHEM430,Organic Chemistry Lab II,2,38,F,14:00,16:50
+CHEM440,Chemical Process Design I,3,38,W,12:30,13:20
+CHEM511,Advanced Physical Chemistry I,3,38,MW,15:00,16:15
+CHEM513,Electrochemical Energy Storage and Conversion,3,46,MW,13:00,14:15
+CHEM516,Characterization Techniques for Materials,3,41,MW,9:30,10:45
+CHEM521,Advanced Inorganic Chemistry I,3,35,TR,15:30,16:45
+CHEM531,Advanced Organic Chemistry I,3,36,TR,9:00,10:15
+CHEM711,Selected Topics in Physical Chemistry,3,47,MW,15:00,16:15
+CHEM721,Selected Topics in Inorganic Chemistry,3,33,TR,15:30,16:45
+CHEM731,Selected Topics in Organic Chemistry,3,32,TR,17:00,18:15
+CLCA1000,Engaging with Texts and Contexts,4,42,TR,12:00,13:50
+CLCA2116,Shahnameh: The Story of Our World,4,40,MW,16:00,17:50
+CLCA2129,An Introduction to the Urdu Ghazal: Mir and Ghalib,4,32,TR,16:00,17:50
+CLCA2212,"Cinemas of Asia, Africa, and Latin America",4,41,TR,14:00,15:50
+CLCA2222,The Critical Lens: The Art of Filmmaking,4,43,MW,14:00,15:50
+CLCA2422,Introduction to Sanskrit,4,37,MW,16:00,17:50
+CLCA2523,Introduction to Illustrative Storytelling,4,40,TR,12:00,13:50
+CLCA2524,"Storytelling in Motion: Design, Movement, and Meaning",4,45,TR,16:00,17:50
+CLCA3113,Kafka,4,31,TR,14:00,15:50
+CLCA3123,Aag ka Darya: A Close Reading,4,49,MW,12:00,13:50
+CLCA3216,"Digital Spaces and Global Screen Texts: Meanings, Politics, and Practices of Engagement",4,43,TR,9:30,10:20
+CLCA3242,The Art of Film Criticism,4,30,TR,10:00,11:50
+CLCA4122,Islamicate Poetry in South Asia,4,45,TR,12:00,13:50
+CS100,Computational Problem Solving,3,32,MW,16:00,16:50
+CS200,Introduction to Programming,4,42,TR,8:00,9:15
+CS202,Data Structures,3,36,TR,8:00,9:50
+CS210,Discrete Mathematics,4,42,TR,8:00,9:50
+CS225,Fundamentals of Computer Systems,4,38,TR,17:00,18:15
+CS310,Algorithms,3,37,TR,15:30,16:45
+CS330,Computational Biology II,3,34,TR,11:30,12:45
+CS331,Foundations of AI and Machine Learning,3,38,MW,17:00,18:15
+CS334,Principles and Techniques of Data Science,3,75,TR,12:30,13:45
+CS340,Databases,3,41,TR,9:30,10:45
+CS365,AI-Driven Software Engineering,3,43,MW,17:00,18:15
+CS370,Operating Systems,3,35,MW,17:00,18:15
+CS3812,Introduction to Blockchain: Technology and Applications,3,45,MW,9:30,10:45
+CS425,Digital System Design,3,33,TR,15:00,16:15
+CS425L,Digital System Design Lab,1,40,F,14:00,16:50
+CS4302,Digital Image Processing and Machine Vision,3,40,MW,13:00,14:15
+CS436,Computer Vision Fundamentals,3,43,MW,17:00,18:15
+CS437,Deep Learning,3,32,TR,11:00,12:15
+CS452,Computer Graphics,3,30,F,9:30,12:20
+CS4602,Coding for Careers,3,46,TR,9:30,10:45
+CS501,Applied Probability,3,45,MW,14:00,15:15
+CS5102,Algorithms,3,39,TR,15:30,16:45
+CS5310,Computer Vision Fundamentals,3,43,MW,17:00,18:15
+CS5316,NLP Theory and Applications,3,32,MW,14:00,15:15
+CS5317,Deep Learning,3,40,TR,11:00,12:15
+CS535,Foundations of AI and Machine Learning,3,45,MW,9:30,10:45
+CS553,Computer Graphics,3,42,MW,9:00,10:15
+CS5604,AI-Driven Software Engineering,3,44,TR,15:30,16:45
+CS5803,Applied Cryptography,3,41,MW,11:00,12:15
+CS5812,Introduction to Blockchain: Technology and Applications,3,37,MW,9:30,10:45
+CS593,Mobile Robotics,3,43,MW,11:00,12:15
+CS622,Computer Architecture,3,41,MW,15:00,16:15
+CS6303,"Topics in Large Language Models: Systems, Applications and Impacts",3,37,TR,14:00,15:15
+CS6304,Advanced Topics in Machine Learning,3,43,TR,11:00,12:15
+CS6314,Dynamic Programming and Reinforcement Learning,3,43,MW,9:30,10:45
+CS653,Digital Image Processing and Machine Vision,3,28,MW,13:00,14:15
+CS667,Coding for Careers,3,42,F,9:30,12:20
+CS682,Topics in Computer and Network Security,3,44,F,9:00,11:50
+DISC112,Computer and Problem Solving,4,46,MW,8:00,9:15
+DISC203,Probability and Statistics,3,43,TR,11:00,12:15
+DISC212,Introduction to Management Science,3,40,MW,11:00,12:15
+DISC320,Qualitative and Quantitative Methods in Business,3,33,TR,17:00,18:15
+DISC321,Decision Analysis,4,40,MW,9:00,10:50
+DISC322,Optimization Methods in Management Science,3,42,TR,14:00,15:15
+DISC323,Decision Behaviour,3,37,MW,14:00,15:15
+DISC331,Project Management,3,44,TR,12:30,13:45
+DISC333,Supply Chain and Logistics Management,3,38,TR,15:30,16:45
+DISC335,Transportation and Logistics Management,3,42,MW,14:00,15:15
+DISC420,Business Analytics,3,41,MW,11:00,12:15
+ECON100,Principles of Economics,4,30,TR,14:00,15:50
+ECON111,Principles of Microeconomics,4,41,MW,9:30,10:45
+ECON121,Principles of Macroeconomics,4,34,MW,9:00,10:15
+ECON203,Reading Marx with Dickens,4,70,TR,10:00,11:50
+ECON211,Intermediate Microeconomics,4,45,TR,9:30,10:45
+ECON221,Intermediate Macroeconomics,4,37,MW,8:00,9:50
+ECON230,Statistics and Data Analysis,4,45,TR,15:30,17:20
+ECON2301,Data Analytics Lab I,2,41,F,14:00,15:50
+ECON233,Introduction to Game Theory,4,37,MW,16:30,18:20
+ECON240,Development Economics,4,40,MW,15:00,16:50
+ECON261,Principles of Finance,4,33,TR,10:00,11:50
+ECON262,Mathematical Applications in Economics,4,43,F,11:00,12:50
+ECON311,Industrial Organisation,4,40,TR,10:00,11:50
+ECON323,Economic History of South Asia,4,45,TR,16:00,17:50
+ECON330,Econometrics,4,40,TR,14:00,15:50
+ECON3301,Data Analytics Lab II,2,42,F,14:00,15:50
+ECON3402,Gender Economics,4,37,TR,12:00,13:50
+ECON343,Agriculture and Food Policy,4,44,TR,14:00,15:50
+ECON406,Economics of Education,3,39,TR,11:30,12:45
+ECON4102,Gender and the Labor Market,4,42,MW,12:00,13:50
+ECON427,Computational Macroeconomics,4,31,MW,12:00,13:50
+ECON428,East Asian Economies,4,40,MW,10:00,11:50
+ECON438,Econometrics II,4,45,MW,12:00,13:50
+ECON4410,Issues in Economic Policy,4,44,TR,14:00,15:50
+ECON4414,Topics in Energy Economics,4,44,MW,9:00,10:50
+ECON449,Philosophy and Economics,4,36,TR,8:00,9:50
+ECON4602,Public Finance,4,41,TR,12:00,13:50
+ECON511,Microeconomic Analysis,4,43,MW,10:00,11:50
+ECON531,Econometrics and Research Methodology I,4,37,TR,10:00,11:50
+ECON536,Topics in Mathematical Method for Economists,4,42,TR,15:00,16:50
+EE201,Introduction to Programming,4,37,MW,11:00,12:15
+EE202,Data Structures,3,43,TR,8:00,9:15
+EE203,Engineering Models,3,43,TR,15:30,16:45
+EE240,Circuits I,3,40,TR,12:30,13:45
+EE315,Foundations of AI and Machine Learning,3,44,MW,9:30,10:45
+EE324,Microcontroller and Interfacing,2,83,TR,17:00,17:50
+EE324L,Microcontroller and Interfacing Lab,1,40,W,11:00,13:50
+EE330,Electromagnetic Fields and Waves,3,44,MW,9:00,10:15
+EE340,Devices and Electronics,3,45,TR,9:30,10:45
+EE340L,Devices and Electronics Lab,1,34,F,10:00,12:50
+EE380,Communication Systems,3,31,F,10:00,12:50
+EE380L,Communication Systems Lab,1,44,F,10:00,12:50
+EE3812,Introduction to Blockchain: Technology and Applications,3,35,MW,9:30,10:45
+EE402,Principles and Techniques of Data Science,3,41,MW,11:00,12:15
+EE414,Deep Learning,3,40,TR,11:00,12:15
+EE417,Digital Image Processing and Machine Vision,3,42,MW,13:00,14:15
+EE421,Digital System Design,3,40,TR,15:00,16:15
+EE421L,Digital System Design Lab,1,43,F,14:00,16:50
+EE453,Power Systems Protection and Stability,3,43,MW,15:00,16:15
+EE5102,Advanced Topics in Machine Learning,3,43,TR,11:00,12:15
+EE513,Computer Vision Fundamentals,3,36,MW,17:00,18:15
+EE514,Foundations of AI and Machine Learning,3,37,MW,9:30,10:45
+EE515,Applied Probability,3,42,TR,9:30,10:45
+EE517,Deep Learning,3,44,TR,11:00,12:15
+EE520,Computer Architecture,3,38,MW,15:00,16:15
+EE5202,VLSI Design for Artificial Intelligence,3,42,MW,15:00,16:15
+EE5203,Physics-informed machine learning,3,40,MW,9:30,10:45
+EE5204,Applied Cryptography,3,43,MW,11:00,12:15
+EE5502,Local Solutions for Energy Access,3,40,MW,12:30,13:45
+EE555,Renewable Energy Systems,3,43,TR,15:00,16:15
+EE559,Power Systems Protection and Stability,3,44,MW,15:00,16:15
+EE565,Mobile Robotics,3,32,MW,11:00,12:15
+EE569,Dynamic Programming and Reinforcement Learning,3,42,MW,9:30,10:45
+EE576,Smart Grid: Technology and Applications,3,42,W,8:00,8:50
+EE5812,Introduction to Blockchain: Technology and Applications,3,45,MW,9:30,10:45
+EE585,Communication Systems,3,44,MW,15:30,16:45
+FINN100,Principles of Finance,3,41,MW,11:00,12:15
+FINN200,Intermediate Finance,3,41,MW,11:00,12:15
+FINN222,Introduction to Mathematics of Finance,3,35,MW,12:30,13:45
+FINN243,Fintech Revolution: Market Disruption and Emerging Opportunities,3,44,MW,17:00,18:15
+FINN372,Actuarial Sciences and Insurance,3,33,MW,12:30,13:45
+FINN373,Fundamentals of Actuarial Mathematics I,3,45,TR,11:00,12:15
+FINN400,Applied Corporate Finance,3,37,TR,9:30,10:45
+FINN403,Financial Modelling,3,40,TR,11:00,12:15
+FINN441,Islamic Banking and Finance,3,27,MW,15:30,16:45
+FINN453,Financial Derivatives,3,42,MW,14:00,15:15
+FINN454,Portfolio Management,3,40,TR,11:00,12:15
+FINN8001,Seminar in Islamic and Corporate Finance,3,40,M,15:00,18:00
+FINN8401,Seminar in Financial Intermediation and Regualatory Framework,3,42,R,10:00,13:00
+FINND120,Public Finance and Fiscal Policy,3,42,MW,10:00,12:00
+HIST124,The World Since 1453,4,41,TR,14:00,15:50
+HIST253,Empire and its Critics: A Global History,4,43,MW,16:00,17:50
+HIST262,Sports and Society,4,43,MW,12:00,13:50
+HIST292,Introduction to Sanskrit,4,37,MW,16:00,17:50
+HIST3222,Words and their Worlds: A Conceptual History of Colonial India,4,45,TR,10:00,11:50
+HIST324,China from Deng to Xi,4,39,MW,14:00,15:50
+HIST3304,Post-classical Islamic Philosophy and Theology,4,42,TR,10:00,11:50
+HIST4202,Caste in South Asia and Beyond,4,34,TR,10:00,11:50
+HIST437,Subaltern Studies: On History and Historiography,4,45,TR,12:00,13:50
+LAW102,Introduction to Pakistan Legal System,4,40,TR,16:30,18:20
+LAW220,Contracts,4,43,TR,12:00,13:50
+LAW222,Torts,4,31,MW,8:00,9:50
+LAW240,Criminal Law,4,44,MW,12:00,13:50
+LAW242,Anthropology of Law,4,32,MW,14:00,15:50
+LAW280,Legal Practice I: Legal Writing and Research Methods,4,44,WF,10:00,11:50
+LAW315,Advanced Law and Violence in South Asia,4,40,MW,14:00,15:50
+LAW3207,Contractual Interpretation: Disputes over the meaning of words,4,32,TR,14:00,15:50
+LAW3223,AI and the Future of Work and Education,3,43,TR,9:00,10:15
+LAW352,Public International Law,4,44,TR,14:00,15:50
+LAW353,Human Rights,4,33,MW,14:00,15:50
+LAW394,Competition Law and Antitrust,4,39,TR,10:00,11:50
+LAW427,"Crime, Law and Finance: Wonders of White Color Crime in Pakistan!",4,41,TR,13:00,14:50
+LAW4313,Public Private Partnerships,4,43,TR,16:00,17:50
+LAW4503,War Law,4,44,TR,16:00,17:50
+LAW4505,Business and Human Rights: A Critical Legal Perspective from the South,4,41,MW,10:00,11:50
+LAW471,Civil Procedure,4,43,MW,16:00,17:50
+LAW472,Criminal Procedure,4,45,MW,16:00,17:50
+LAW4812,Legal Practice II: Legal Instruments,4,43,TR,8:00,8:50
+LAW4906,LUMS Law Clinic,4,47,MW,12:00,13:50
+LAW4907,The Jurisprudence of Water,4,35,F,14:00,17:50
+LAW4922,Human Rights Clinic I,4,41,F,14:00,17:50
+LAWD130,General Laws,2,36,TBA,14:00,16:00
+MATH100,Pre-Calculus,3,40,MW,11:00,12:15
+MATH101,Calculus I,3,44,MW,14:00,14:50
+MATH102,Calculus II,3,43,TR,14:00,14:50
+MATH120,Linear Algebra with Differential Equations,3,36,TR,15:00,15:50
+MATH204,Introduction to Formal Mathematics,3,40,TR,12:30,13:45
+MATH210,Introduction to Differential Equations,3,40,MW,17:00,18:15
+MATH222,Linear Algebra II,3,36,MW,17:00,18:15
+MATH230,Probability,3,43,MW,10:30,11:45
+MATH231,Statistics,3,41,MW,12:30,13:45
+MATH232,Introduction to Game Theory,4,41,MW,16:30,18:20
+MATH300,Complex Variables,3,39,TR,10:30,11:45
+MATH309,Introduction to Analysis II,3,35,TR,8:00,9:15
+MATH341,Operations Research I,3,41,MW,8:00,9:15
+MATH4012,Complex Analysis,3,39,MW,8:00,9:15
+MATH4102,Qualitative Differential Equation,3,42,TR,12:30,13:45
+MATH439,Applied Probability,3,40,TR,9:30,10:45
+MATH503,Advanced Complex Analysis,3,36,MW,8:00,9:15
+MATH510,Advanced Qualitative Differential Equation,3,44,TR,12:30,13:45
+MATH521,Advanced Algebra,3,42,TR,16:00,17:15
+MATH547,Operational Research I,3,43,MW,8:00,9:15
+MGMT142,Principles of Management,3,44,MW,11:00,12:15
+MGMT212,Business Communication,3,36,TR,11:00,12:15
+MGMT242,Business Ethics and Corporate Social Responsibility,3,44,MW,11:00,12:15
+MGMT244,Reforming The Public Sector,3,45,TR,17:00,18:15
+MGMT247,Public Financial Management,3,42,TR,14:00,15:15
+MGMT252,Logic and Critical Thinking,3,44,MW,15:30,16:45
+MGMT260,Business Law,3,44,MW,8:00,9:15
+MGMT2601,Introduction to Management,2,41,RFSU,11:00,13:10
+MGMT261,Introduction to Policy Analysis,3,44,MW,9:30,10:45
+MGMT263,Contemporary Social Policy Issues in Pakistan,3,46,TR,12:30,13:45
+MGMT264,Competition Law and Antitrust,4,32,TR,10:00,11:50
+MGMT265,Public Private Partnerships,4,93,TR,16:00,17:50
+MGMT266,Contractual Interpretation: Disputes over the meaning of words,4,35,TR,14:00,15:50
+MGMT348,Internet Governance and Technology Policy,3,44,MW,17:00,18:15
+MGMT365,Urban Planning and Management,3,36,TR,15:30,16:45
+MGMT373,Personal Effectiveness,3,34,MW,15:30,16:45
+MGMT386,"Business, Government, and Society",3,40,MW,12:30,13:45
+MGMT387,Managing Diverse People and Organizations,3,42,TR,14:00,15:15
+MGMT400,Strategic Business Management,3,42,TR,14:00,15:15
+MGMT8102,Seminar in Strategic Management,3,45,W,9:00,12:00
+MGMT8402,Foundation of Management Research,3,36,F,9:00,12:00
+MGMT8403,Applications of Psychology in Management,3,44,R,9:00,12:00
+MGMTD140,"Public Management, Leadership and Change Management",2,44,TR,14:00,16:00
+MKTG201,Principles of Marketing,3,39,MW,14:00,15:15
+MKTG302,Digital Marketing,3,45,TR,12:30,13:45
+MKTG324,Integrated Marketing Communications,3,44,TR,11:00,12:15
+MKTG332,Consumer Behaviour,3,38,TR,14:00,15:15
+MKTG343,Marketing Models,3,40,MW,14:00,15:15
+MKTG344,Data Driven Marketing,3,40,TR,17:00,18:15
+MKTG345,Data Analytics for New Product Development,3,44,SU,10:45,12:45
+MKTG392,Brand Management,3,43,MW,14:00,15:15
+ORSC201,Organizational Behaviour,3,41,TR,11:00,12:15
+ORSC341,Human Resource Management,3,48,MW,11:00,12:15
+ORSC5301,Organizations and Leadership,2,44,SU,10:45,12:45
+ORSC8402,Seminar in Human Resource Management,3,45,M,12:00,15:00
+PHY101,Mechanics,4,42,TR,10:30,11:45
+PHY204,Electricity and Magnetism,3,41,TR,8:00,9:15
+PHY212,Quantum Mechanics I,3,36,TR,9:30,10:45
+PHY223,Mathematical Methods in Physics and Engineering I,3,43,MW,17:00,18:15
+PHY300,Experimental Physics Lab II,3,37,TR,17:00,18:15
+PHY301,Classical Mechanics,3,44,TR,17:00,18:15
+PHY305,Electromagnetic Fields and Waves,3,43,F,14:00,16:50
+PHY313,Statistical Mechanics,3,44,MW,11:00,12:15
+PHY335,Molecular Symmetry I,3,34,MW,17:00,18:15
+PHY404,Relativistic Electrodynamics,3,44,MW,14:00,15:15
+PHY500,Graduate Physics Lab,3,31,T,8:00,16:50
+PHY501,Electrodynamics,3,41,MW,15:30,16:45
+PHY510,Advanced Statistical Mechanics,3,27,MW,11:00,12:15
+PHY5104,Quantum Machine Learning,3,44,MW,15:30,16:45
+PHY603,Machine Learning for Physics,3,38,MW,9:30,10:45
+POL100,Introduction to Political Science,4,43,TR,10:00,11:50
+POL203,Introduction to Political Theory,4,44,TR,16:00,17:50
+POL220,American Government and Politics,4,38,TR,14:00,15:50
+POL229,Politics of Armed Groups,4,44,TR,14:00,15:50
+POL266,Women and Political Theory,4,33,MW,16:00,17:50
+POL268,Master Narratives: Minding Gender and Media Gaps,4,40,MW,16:00,17:50
+POL269,Feminist Politics: Theory and Practice,4,43,TR,12:00,13:50
+POL3012,Nations and Nationalism: From Theory to Practice,4,37,MW,10:00,11:50
+POL3112,The Regional Histories of Pakistan,4,43,MW,16:00,17:50
+POL315,The Politics of Civil War,4,44,TR,8:00,9:50
+POL320,Comparative Politics,4,43,MW,14:00,15:50
+POL3202,Qualitative Research Methods in Political Science,4,42,TR,16:00,17:50
+POL3302,Theories of IR,4,45,TR,10:00,11:50
+POL374,Critical Issues in Pakistan's Foreign Policy,4,44,TR,10:00,11:50
+POL463,Anthropology of State,4,40,MW,14:00,15:50
+POL464,Political Sociology,4,44,MW,10:00,11:50
+SOC100,Introduction to Sociology,4,41,MW,10:00,11:50
+SOC223,Sociology of Education,4,33,TR,12:00,13:50
+SOC226,Disasters and Society,4,36,MW,16:00,17:50
+SOC246,Sports and Society,4,45,TR,12:00,13:50
+SOC265,Introduction to Gender and Sexuality Studies,4,43,TR,10:00,11:50
+SOC310,Classical Sociological Theory,4,25,MW,14:00,15:50
+SOC364,Masculinities,4,40,TR,16:30,18:20
+SOC373,Indigenous Knowledge(s) Through a Sociological Lens,4,42,F,8:00,9:50
+SOC410,Max Weber,4,45,MW,12:00,13:50

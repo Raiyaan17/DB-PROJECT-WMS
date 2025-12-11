@@ -1,11 +1,3 @@
-USE WheresMyScheduleDB;
-GO
-
-----------------------------------------------------------
--- STORED PROCEDURE 1: Standard Student Enrollment
--- Executes all normal checks: no of seats / duplicate enrollment
--- Inserts enrollment + reduces RemainingSeats
------------------------------------------------------------
 CREATE OR ALTER PROCEDURE Std.sp_EnrollStudent
     @StudentID VARCHAR(30),
     @CourseCode VARCHAR(10)
@@ -46,10 +38,6 @@ BEGIN
 
         INSERT INTO Std.Enrollment (StudentID, CourseCode, Completed, IsForced)
         VALUES (@StudentID, @CourseCode, 0, 0);
-
-        UPDATE Course.Course
-        SET RemainingSeats = RemainingSeats - 1
-        WHERE CourseCode = @CourseCode;
 
         COMMIT TRAN;
         PRINT 'Enrollment successful.';

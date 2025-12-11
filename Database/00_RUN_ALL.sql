@@ -48,6 +48,8 @@ GO
 PRINT 'Step 4: Creating Functions...';
 :r ./functions/Course.fn_GetRemainingSeats.sql
 :r ./functions/Course.fn_CheckPrerequisiteStatus.sql
+:r ./functions/Course.fn_GetCartTimeConflicts.sql
+:r ./functions/Course.fn_CheckEnrollmentTimeConflict.sql
 GO
 
 PRINT 'Step 5: Creating Views...';
@@ -63,11 +65,16 @@ PRINT 'Step 6: Creating Stored Procedures...';
 :r ./procedures/Course.usp_GetAllPrerequisites.sql
 :r ./procedures/Std.sp_EnrollStudent.sql
 :r ./procedures/Std.sp_ForceEnroll.sql
+:r ./procedures/Std.sp_EnrollFromCart.sql
+:r ./procedures/Course.usp_AddToWaitlist.sql
+:r ./procedures/Std.sp_DropCourse.sql
+:r ./procedures/Course.usp_AutoEnrollFromWaitlist.sql
 GO
 
 PRINT 'Step 7: Creating Triggers...';
 :r ./triggers/trg_CheckCreditLimit.sql
 :r ./triggers/trg_PreventAlumniEnrollment.sql
+:r ./triggers/trg_UpdateCourseCounts.sql
 GO
 
 PRINT 'Step 8: Bulk Inserting Data...';

@@ -11,7 +11,7 @@ CREATE TABLE Course.Course (
     StartTime         TIME         NULL,
     EndTime           TIME         NULL,
     EnrolledCount     INT          NOT NULL DEFAULT 0,
-    RemainingSeats    INT          NOT NULL DEFAULT -1, -- calculate on adding 
+    RemainingSeats    AS (Capacity - EnrolledCount),
     IsActive          BIT          NOT NULL DEFAULT 1
 );
 GO

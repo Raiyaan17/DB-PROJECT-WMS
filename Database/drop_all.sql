@@ -12,9 +12,14 @@ PRINT '--- Dropping Triggers ---';
 -- but we drop them explicitly here for a complete script.
 DROP TRIGGER IF EXISTS trg_CheckCreditLimit;
 DROP TRIGGER IF EXISTS trg_PreventAlumniEnrollment;
+DROP TRIGGER IF EXISTS Std.trg_UpdateCourseCounts;
 GO
 
 PRINT '--- Dropping Views ---';
+-- Drop temporary views from data loading
+DROP VIEW IF EXISTS Course.vCourse_Import;
+DROP VIEW IF EXISTS Std.vStudent_Import;
+-- Drop regular views
 DROP VIEW IF EXISTS Course.vw_AvailableCourses;
 DROP VIEW IF EXISTS Std.vw_StudentSchedule;
 DROP VIEW IF EXISTS School.vw_AdminDashboardStats;
@@ -27,11 +32,17 @@ PRINT '--- Dropping Stored Procedures ---';
 DROP PROCEDURE IF EXISTS Std.sp_EnrollStudent;
 DROP PROCEDURE IF EXISTS Std.sp_ForceEnroll;
 DROP PROCEDURE IF EXISTS Course.usp_GetAllPrerequisites;
+DROP PROCEDURE IF EXISTS Std.sp_EnrollFromCart;
+DROP PROCEDURE IF EXISTS Course.usp_AddToWaitlist;
+DROP PROCEDURE IF EXISTS Std.sp_DropCourse;
+DROP PROCEDURE IF EXISTS Course.usp_AutoEnrollFromWaitlist;
 GO
 
 PRINT '--- Dropping Functions ---';
 DROP FUNCTION IF EXISTS Course.fn_GetRemainingSeats;
 DROP FUNCTION IF EXISTS Course.fn_CheckPrerequisiteStatus;
+DROP FUNCTION IF EXISTS Course.fn_GetCartTimeConflicts;
+DROP FUNCTION IF EXISTS Course.fn_CheckEnrollmentTimeConflict;
 GO
 
 PRINT '--- Dropping Tables ---';

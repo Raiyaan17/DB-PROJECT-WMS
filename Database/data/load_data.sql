@@ -74,7 +74,10 @@ SELECT
     CourseCode, 
     CourseTitle, 
     TotalCredits, 
-    Capacity
+    Capacity,
+    DayOfWeek,
+    StartTime,
+    EndTime
 FROM Course.Course;
 GO
 

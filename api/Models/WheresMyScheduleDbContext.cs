@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
@@ -50,6 +50,12 @@ public partial class WheresMyScheduleDbContext : DbContext
     public virtual DbSet<VwStudentTranscript> VwStudentTranscripts { get; set; }
 
     public virtual DbSet<Waitlist> Waitlists { get; set; }
+
+    // DbSet for the CourseConflictResult TVF output
+    public virtual DbSet<CourseConflictResult> CourseConflictResults { get; set; }
+
+    // DbSet for the EnrollmentFailureResult SP output
+    public virtual DbSet<EnrollmentFailureResult> EnrollmentFailureResults { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -582,10 +588,16 @@ public partial class WheresMyScheduleDbContext : DbContext
 
             entity.HasOne(d => d.Student).WithMany(p => p.Waitlists)
                 .HasForeignKey(d => new { d.GraduationYear, d.StudentId })
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_waitlist_student");
         });
 
         OnModelCreatingPartial(modelBuilder);
+        // Configure CourseConflictResult as keyless for mapping TVF results
+        modelBuilder.Entity<CourseConflictResult>().HasNoKey();
+
+        // Configure EnrollmentFailureResult as keyless for mapping SP results
+        modelBuilder.Entity<EnrollmentFailureResult>().HasNoKey();
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

@@ -1,6 +1,7 @@
 using DotNetEnv;
-using Microsoft.EntityFrameworkCore; // <--- Add this namespace
-using api.Models; // <--- Ensure your models are visible
+using Microsoft.EntityFrameworkCore;
+using api.Models;
+using api.BusinessLogic; // Added for BusinessLogic namespace
 
 Env.Load(); // Loads the .env file into Environment variables
 
@@ -19,6 +20,34 @@ builder.Services.AddDbContext<WheresMyScheduleDbContext>(options =>
     // Read the connection string from the Environment Variable you set
     var connectionString = Environment.GetEnvironmentVariable("DB_CONN_STRING");
     options.UseSqlServer(connectionString);
+});
+
+// Register BLL Mode Manager as a singleton
+builder.Services.AddSingleton<BllModeManager>();
+
+// Register concrete BLL implementations as scoped services
+builder.Services.AddScoped<CourseLinqBll>();
+builder.Services.AddScoped<CourseSpBll>();
+builder.Services.AddScoped<StudentLinqBll>();
+builder.Services.AddScoped<StudentSpBll>();
+
+// Register BLL Factory as a scoped service
+builder.Services.AddScoped<BllFactory>();
+
+// Register ICourseBll dynamically based on current BLL mode
+builder.Services.AddScoped<ICourseBll>(serviceProvider =>
+{
+    var bllModeManager = serviceProvider.GetRequiredService<BllModeManager>();
+    var bllFactory = serviceProvider.GetRequiredService<BllFactory>();
+    return bllFactory.CreateCourseBll(bllModeManager.CurrentBllMode);
+});
+
+// Register IStudentBll dynamically based on current BLL mode
+builder.Services.AddScoped<IStudentBll>(serviceProvider =>
+{
+    var bllModeManager = serviceProvider.GetRequiredService<BllModeManager>();
+    var bllFactory = serviceProvider.GetRequiredService<BllFactory>();
+    return bllFactory.CreateStudentBll(bllModeManager.CurrentBllMode);
 });
 
 var app = builder.Build();

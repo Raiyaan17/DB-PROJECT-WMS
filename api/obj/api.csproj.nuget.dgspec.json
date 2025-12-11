@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/raiyaanhamid/Desktop/Projects/WMS/api/api.csproj": {}
+    "/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/api.csproj": {}
   },
   "projects": {
-    "/Users/raiyaanhamid/Desktop/Projects/WMS/api/api.csproj": {
+    "/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/raiyaanhamid/Desktop/Projects/WMS/api/api.csproj",
+        "projectUniqueName": "/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/api.csproj",
         "projectName": "api",
-        "projectPath": "/Users/raiyaanhamid/Desktop/Projects/WMS/api/api.csproj",
+        "projectPath": "/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/api.csproj",
         "packagesPath": "/Users/raiyaanhamid/.nuget/packages/",
-        "outputPath": "/Users/raiyaanhamid/Desktop/Projects/WMS/api/obj/",
+        "outputPath": "/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/raiyaanhamid/.nuget/NuGet/NuGet.Config"

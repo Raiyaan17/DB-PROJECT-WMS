@@ -1,12 +1,3 @@
-USE WheresMyScheduleDB;
-GO
-
------------------------------------------------------------
--- STORED PROCEDURE 2: Admin Forced Enrollment
--- Bypasses all constraints
--- Inserts enrollment (if not already)
--- Logs action into Std.AuditLog
------------------------------------------------------------
 CREATE OR ALTER PROCEDURE Std.sp_ForceEnroll
     @AdminID VARCHAR(30),
     @StudentID VARCHAR(30),
@@ -45,12 +36,9 @@ BEGIN
         END
 
         -- Track seat usage even for forced enrollments (may go negative)
-        IF @AlreadyEnrolled = 0
-        BEGIN
-            UPDATE Course.Course
-            SET RemainingSeats = RemainingSeats - 1
-            WHERE CourseCode = @CourseCode;
-        END
+        -- RemainingSeats is now a computed column and is updated automatically
+        -- by the trigger on Std.Enrollment updating EnrolledCount.
+        -- So, no direct update to RemainingSeats is needed here.
 
         INSERT INTO Std.AuditLog (AdminID, StudentID, CourseCode, ActionDescription)
         VALUES (@AdminID, @StudentID, @CourseCode, 'Forced enrollment override');
