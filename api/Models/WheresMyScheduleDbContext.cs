@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using DotNetEnv;
 
 namespace api.Models;
 
@@ -8,11 +9,15 @@ public partial class WheresMyScheduleDbContext : DbContext
 {
     public WheresMyScheduleDbContext()
     {
+        // Load .env file when the context is created
+        Env.Load();
     }
 
     public WheresMyScheduleDbContext(DbContextOptions<WheresMyScheduleDbContext> options)
         : base(options)
     {
+        // Load .env file when the context is created
+        Env.Load();
     }
 
     public virtual DbSet<AuditLog> AuditLogs { get; set; }
@@ -58,8 +63,7 @@ public partial class WheresMyScheduleDbContext : DbContext
     public virtual DbSet<EnrollmentFailureResult> EnrollmentFailureResults { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=WheresMyScheduleDB;User Id=sa;Password=Raiyaan123!@#;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer(Env.GetString("DB_CONN_STRING"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
