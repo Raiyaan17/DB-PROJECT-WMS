@@ -92,12 +92,59 @@ namespace api.Controllers
         }
 
         [HttpGet("{studentId}/schedule")]
-        public async Task<ActionResult<IEnumerable<VwStudentSchedule>>> GetSchedule(string studentId)
+        public async Task<ActionResult<Dictionary<string, List<VwStudentSchedule>>>> GetSchedule(string studentId)
         {
             try
             {
-                var schedule = await _studentBll.GetScheduleAsync(studentId);
-                return Ok(schedule);
+                var scheduleList = await _studentBll.GetScheduleAsync(studentId);
+                var calendar = new Dictionary<string, List<VwStudentSchedule>>();
+
+                var dayMap = new Dictionary<char, string>
+                {
+                    { 'M', "Monday" },
+                    { 'T', "Tuesday" },
+                    { 'W', "Wednesday" },
+                    { 'R', "Thursday" },
+                    { 'F', "Friday" },
+                    { 'S', "Saturday" },
+                };
+
+                foreach (var course in scheduleList)
+                {
+                    if (string.IsNullOrWhiteSpace(course.DayOfWeek) || course.DayOfWeek.ToUpper() == "TBA")
+                    {
+                        continue; // Skip courses with no specified days
+                    }
+
+                    var days = new List<string>();
+                    var dayString = course.DayOfWeek.ToUpper();
+
+                    // Handle multi-character codes first
+                    if (dayString.Contains("SU"))
+                    {
+                        days.Add("Sunday");
+                        dayString = dayString.Replace("SU", "");
+                    }
+
+                    foreach (char dayChar in dayString)
+                    {
+                        if (dayMap.TryGetValue(dayChar, out var dayName))
+                        {
+                            days.Add(dayName);
+                        }
+                    }
+
+                    foreach (var day in days)
+                    {
+                        if (!calendar.ContainsKey(day))
+                        {
+                            calendar[day] = new List<VwStudentSchedule>();
+                        }
+                        calendar[day].Add(course);
+                    }
+                }
+
+                return Ok(calendar);
             }
             catch (Exception ex)
             {
