@@ -341,3 +341,8 @@
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/api.csproj.Up2Date
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/api.genruntimeconfig.cache
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/ref/api.dll
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/api.staticwebassets.runtime.json
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/6ht5axebrf-{0}-v01mfk2egd-v01mfk2egd.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/login.html
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/login.html.gz

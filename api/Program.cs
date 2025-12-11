@@ -1,7 +1,10 @@
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using api.Models;
-using api.BusinessLogic; // Added for BusinessLogic namespace
+using api.BusinessLogic;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 Env.Load(); // Loads the .env file into Environment variables
 
@@ -14,10 +17,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // REGISTER DATABASE CONTEXT HERE
-// This tells ASP.NET: "When someone asks for WheresMyScheduleDbContext, make one using this SQL connection."
 builder.Services.AddDbContext<WheresMyScheduleDbContext>(options =>
 {
-    // Read the connection string from the Environment Variable you set
     var connectionString = Environment.GetEnvironmentVariable("DB_CONN_STRING");
     options.UseSqlServer(connectionString);
 });
@@ -50,6 +51,33 @@ builder.Services.AddScoped<IStudentBll>(serviceProvider =>
     return bllFactory.CreateStudentBll(bllModeManager.CurrentBllMode);
 });
 
+// Register AuthService
+builder.Services.AddScoped<AuthService>();
+
+// Configure JWT Authentication
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"]
+    };
+});
+
 var app = builder.Build();
 
 // --- 2. MIDDLEWARE ---
@@ -62,9 +90,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapControllers(); // Enable controllers
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
-// Test Endpoint
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
 app.MapGet("/test-db", async (WheresMyScheduleDbContext context) =>
 {
     try

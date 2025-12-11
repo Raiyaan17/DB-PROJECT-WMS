@@ -26,6 +26,7 @@ GO
 PRINT 'Step 3: Creating Tables...';
 -- Core tables
 :r ./tables/School.School.sql
+:r ./tables/School.Admin.sql
 :r ./tables/Dept.Department.sql
 :r ./tables/Course.Course.sql
 -- Dependent tables

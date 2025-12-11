@@ -40,6 +40,8 @@ public partial class WheresMyScheduleDbContext : DbContext
 
     public virtual DbSet<Student> Students { get; set; }
 
+    public virtual DbSet<Admin> Admins { get; set; }
+
     public virtual DbSet<StudentIdSequence> StudentIdSequences { get; set; }
 
     public virtual DbSet<VDepartmentStudentCount> VDepartmentStudentCounts { get; set; }
@@ -67,6 +69,24 @@ public partial class WheresMyScheduleDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Admin>(entity =>
+        {
+            entity.HasKey(e => e.AdminId).HasName("PK_Admin");
+
+            entity.ToTable("Admin", "School");
+
+            entity.Property(e => e.AdminId)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("AdminID");
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<AuditLog>(entity =>
         {
             entity.HasKey(e => e.AuditId).HasName("PK__AuditLog__A17F23B830222700");

@@ -146,32 +146,9 @@ WITH (
 GO
 
 
--- Verification Section -- 
--- SELECT * FROM Dept.Department;
--- GO
 
--- SELECT * FROM School.School;
--- GO
+-- Insert Default Admin
+INSERT INTO School.Admin (AdminID, Username, Email)
+VALUES ('ADM001', 'admin', 'admin@school.edu');
+GO
 
--- SELECT *
--- FROM Std.Student
--- WHERE GraduationYear > 1995 and SchoolID = 'SDSB';
--- GO
-
--- SELECT * FROM School.Department;
--- GO
-
--- SELECT * FROM Course.Course;
--- GO
-
--- SELECT * FROM Course.CoursePrerequisite;
--- GO
-
--- SELECT * FROM Dept.Courses;
--- GO
-
--- SELECT * FROM Inst.Instructor;
--- GO
-
--- SELECT * FROM Inst.TeachingAssignment;
--- GO

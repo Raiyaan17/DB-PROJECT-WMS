@@ -70,6 +70,7 @@ DROP TABLE IF EXISTS Std.Student;
 DROP TABLE IF EXISTS Inst.Instructor;
 DROP TABLE IF EXISTS Course.Course;
 DROP TABLE IF EXISTS Dept.Department;
+DROP TABLE IF EXISTS School.Admin;
 DROP TABLE IF EXISTS School.School;
 GO
 

@@ -1,0 +1,9 @@
+CREATE TABLE [School].[Admin] (
+    [AdminID] VARCHAR(30) NOT NULL,
+    [Username] VARCHAR(50) NOT NULL,
+    [Email] VARCHAR(100) NOT NULL,
+    CONSTRAINT [PK_Admin] PRIMARY KEY CLUSTERED ([AdminID] ASC),
+    CONSTRAINT [UQ_Admin_Username] UNIQUE NONCLUSTERED ([Username] ASC),
+    CONSTRAINT [UQ_Admin_Email] UNIQUE NONCLUSTERED ([Email] ASC)
+);
+GO
