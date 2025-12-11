@@ -13,5 +13,28 @@ SELECT * FROM Course.Waitlist;
 -- print enrolled
 SELECT * FROM Std.Enrollment;
 
-SELECT CourseCode, Capacity, EnrolledCount, RemainingSeats FROM Course.Course WHERE 
-     CourseCode IN ('ACCT100', 'BIO101', 'CHEM101', 'CLCA1000', 'CS100');
+-- departments
+SELECT * FROM Dept.Department;
+
+-- professors
+SELECT * FROM Inst.Instructor;
+
+-- how many instructors in each department, count using department id 
+SELECT COUNT(*) AS TotalInstructors FROM Inst.Instructor;
+
+SELECT
+    d.DepartmentName,
+    COUNT(i.InstructorID) AS NumberOfInstructors
+FROM
+    Inst.Instructor i
+JOIN
+    Dept.Department d ON i.DepartmentID = d.DepartmentID
+GROUP BY
+    d.DepartmentName
+ORDER BY
+    NumberOfInstructors DESC;  
+
+
+
+
+
