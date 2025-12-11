@@ -1,6 +1,3 @@
-USE WheresMyScheduleDB;
-GO
-
 CREATE OR ALTER FUNCTION Course.fn_GetCartTimeConflicts
 (
     @studentId NVARCHAR(450)
@@ -31,3 +28,4 @@ RETURN
         AND c1.DayOfWeek = c2.DayOfWeek -- Same day of the week
         AND c1.StartTime < c2.EndTime AND c2.StartTime < c1.EndTime -- Check for time overlap
 );
+GO

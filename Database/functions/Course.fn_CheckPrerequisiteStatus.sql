@@ -1,6 +1,3 @@
-USE WheresMyScheduleDB;
-GO
-
 CREATE OR ALTER FUNCTION Course.fn_CheckPrerequisiteStatus 
 (
     @StudentID VARCHAR(30), 

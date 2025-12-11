@@ -486,8 +486,9 @@ public partial class WheresMyScheduleDbContext : DbContext
         modelBuilder.Entity<VwAvailableCourse>(entity =>
         {
             entity
-                .HasNoKey()
-                .ToView("vw_AvailableCourses", "Course");
+                .HasKey(e => e.CourseCode);
+
+            entity.ToView("vw_AvailableCourses", "Course");
 
             entity.Property(e => e.CourseCode)
                 .HasMaxLength(10)
@@ -602,6 +603,12 @@ public partial class WheresMyScheduleDbContext : DbContext
 
         // Configure EnrollmentFailureResult as keyless for mapping SP results
         modelBuilder.Entity<EnrollmentFailureResult>().HasNoKey();
+
+        // Configure CourseDetailSpResult as keyless for mapping SP results
+        modelBuilder.Entity<api.Models.DTOs.CourseDetailSpResult>().HasNoKey();
+
+        // Configure ValidationErrorMessage as keyless for mapping SP results
+        modelBuilder.Entity<api.Models.DTOs.ValidationErrorMessage>().HasNoKey();
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

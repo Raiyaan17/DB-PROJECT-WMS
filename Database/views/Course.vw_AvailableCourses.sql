@@ -14,6 +14,8 @@ SELECT
     c.DayOfWeek,
     c.StartTime,
     c.EndTime,
+    c.EnrolledCount,
+    c.Capacity,
     c.RemainingSeats,
     d.DepartmentName
 FROM Course.Course c

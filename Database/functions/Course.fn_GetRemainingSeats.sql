@@ -1,6 +1,3 @@
-USE WheresMyScheduleDB;
-GO
-
 CREATE OR ALTER FUNCTION Course.fn_GetRemainingSeats (@CourseCode VARCHAR(10))
 RETURNS INT
 AS

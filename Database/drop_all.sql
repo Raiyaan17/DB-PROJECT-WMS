@@ -36,6 +36,13 @@ DROP PROCEDURE IF EXISTS Std.sp_EnrollFromCart;
 DROP PROCEDURE IF EXISTS Course.usp_AddToWaitlist;
 DROP PROCEDURE IF EXISTS Std.sp_DropCourse;
 DROP PROCEDURE IF EXISTS Course.usp_AutoEnrollFromWaitlist;
+-- Stored procedures for SProc BLL
+DROP PROCEDURE IF EXISTS Std.sp_AddToCart;
+DROP PROCEDURE IF EXISTS Std.sp_RemoveFromCart;
+DROP PROCEDURE IF EXISTS Std.sp_ValidateCart;
+DROP PROCEDURE IF EXISTS Std.sp_GetSchedule;
+DROP PROCEDURE IF EXISTS Course.sp_GetAvailableCourses;
+DROP PROCEDURE IF EXISTS Course.sp_GetCourseDetails;
 GO
 
 PRINT '--- Dropping Functions ---';

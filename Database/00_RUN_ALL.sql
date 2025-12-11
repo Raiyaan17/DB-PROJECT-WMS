@@ -46,6 +46,7 @@ PRINT 'Step 3: Creating Tables...';
 GO
 
 PRINT 'Step 4: Creating Functions...';
+GO
 :r ./functions/Course.fn_GetRemainingSeats.sql
 :r ./functions/Course.fn_CheckPrerequisiteStatus.sql
 :r ./functions/Course.fn_GetCartTimeConflicts.sql
@@ -53,6 +54,7 @@ PRINT 'Step 4: Creating Functions...';
 GO
 
 PRINT 'Step 5: Creating Views...';
+GO
 :r ./views/Analytics.v_DepartmentStudentCounts.sql
 :r ./views/Course.vw_AvailableCourses.sql
 :r ./views/Course.vw_FullPrerequisiteList.sql
@@ -62,6 +64,7 @@ PRINT 'Step 5: Creating Views...';
 GO
 
 PRINT 'Step 6: Creating Stored Procedures...';
+GO
 :r ./procedures/Course.usp_GetAllPrerequisites.sql
 :r ./procedures/Std.sp_EnrollStudent.sql
 :r ./procedures/Std.sp_ForceEnroll.sql
@@ -69,9 +72,17 @@ PRINT 'Step 6: Creating Stored Procedures...';
 :r ./procedures/Course.usp_AddToWaitlist.sql
 :r ./procedures/Std.sp_DropCourse.sql
 :r ./procedures/Course.usp_AutoEnrollFromWaitlist.sql
+-- Stored procedures for SProc BLL
+:r ./procedures/Std.sp_AddToCart.sql
+:r ./procedures/Std.sp_RemoveFromCart.sql
+:r ./procedures/Std.sp_ValidateCart.sql
+:r ./procedures/Std.sp_GetSchedule.sql
+:r ./procedures/Course.sp_GetAvailableCourses.sql
+:r ./procedures/Course.sp_GetCourseDetails.sql
 GO
 
 PRINT 'Step 7: Creating Triggers...';
+GO
 :r ./triggers/trg_CheckCreditLimit.sql
 :r ./triggers/trg_PreventAlumniEnrollment.sql
 :r ./triggers/trg_UpdateCourseCounts.sql

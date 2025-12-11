@@ -19,6 +19,10 @@ public partial class VwAvailableCourse
 
     public TimeOnly? EndTime { get; set; }
 
+    public int EnrolledCount { get; set; }
+
+    public short Capacity { get; set; }
+
     public int RemainingSeats { get; set; }
 
     public string DepartmentName { get; set; } = null!;

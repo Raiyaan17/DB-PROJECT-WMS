@@ -15,6 +15,8 @@ namespace api.Models.DTOs
         public System.TimeOnly? StartTime { get; set; }
         public System.TimeOnly? EndTime { get; set; }
         public bool IsActive { get; set; }
+        public string BllMode { get; set; } = "Unknown";
+        public string DataSource { get; set; } = "Unknown";
         public List<PrerequisiteDto> Prerequisites { get; set; } = new List<PrerequisiteDto>();
     }
 }

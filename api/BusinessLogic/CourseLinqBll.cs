@@ -52,6 +52,8 @@ namespace api.BusinessLogic
                 StartTime = course.StartTime,
                 EndTime = course.EndTime,
                 IsActive = course.IsActive,
+                BllMode = BllMode.Linq.ToString(), // Set BLL mode
+                DataSource = "Computed from LINQ query",   // Set data source
                 Prerequisites = course.Prerequisites.Select(p => new PrerequisiteDto
                 {
                     CourseCode = p.CourseCode,
