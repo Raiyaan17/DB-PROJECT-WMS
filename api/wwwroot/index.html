@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | WheresMySchedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo-area">
+                <h2>WMS</h2>
+                <span>Student Portal</span>
+            </div>
+
+            <div class="user-profile">
+                <div class="avatar-circle">S</div>
+                <div class="user-info">
+                    <p id="student-name">Student Name</p>
+                    <small id="student-id">ID: 00000000</small>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li class="active" data-view="dashboard">
+                    <span class="icon">🏠</span> Dashboard
+                </li>
+                <li data-view="courses">
+                    <span class="icon">📚</span> Search Courses
+                </li>
+                <li data-view="cart">
+                    <span class="icon">🛒</span> My Cart
+                </li>
+                <li data-view="schedule">
+                    <span class="icon">📅</span> My Schedule
+                </li>
+                <li data-view="my-courses">
+                    <span class="icon">🎓</span> Enrolled Courses
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="bll-toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="bll-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="bll-label">LINQ Mode</span>
+                </div>
+                <button id="logout-btn" class="btn-logout">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Views will be injected here -->
+
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view-section active">
+                <header class="view-header">
+                    <h1>Welcome back!</h1>
+                    <p class="date-display">Today is <span id="current-date">...</span></p>
+                </header>
+
+                <div class="dashboard-grid">
+                    <div class="card stat-card">
+                        <h3>Enrolled Courses</h3>
+                        <p class="stat-number" id="dash-enrolled-count">-</p>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Cart Items</h3>
+                        <p class="stat-number" id="dash-cart-count">-</p>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Total Credits</h3>
+                        <p class="stat-number" id="dash-credits-count">-</p>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>School</h3>
+                        <p class="stat-number" id="dash-school-name" style="font-size: 1.2rem; line-height: 1.2;">-</p>
+                    </div>
+                    <div class="card chart-card" style="grid-column: 1 / -1;">
+                        <h3>Course Distribution</h3>
+                        <div style="height: 300px; width: 100%; display: flex; justify-content: center;">
+                            <canvas id="enrollmentChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Courses View -->
+            <section id="view-courses" class="view-section">
+                <header class="view-header">
+                    <h1>Search Courses</h1>
+                </header>
+                <div class="filter-bar">
+                    <input type="text" id="course-search" placeholder="Search by code or title..." class="search-input">
+                    <select id="dept-filter" class="dept-select">
+                        <option value="">All Departments</option>
+                        <!-- Populated by JS -->
+                    </select>
+                    <button id="search-btn" class="btn-primary">Search</button>
+                </div>
+                <div id="course-list" class="course-grid">
+                    <!-- Course Cards -->
+                </div>
+            </section>
+
+            <!-- Cart View -->
+            <section id="view-cart" class="view-section">
+                <header class="view-header">
+                    <h1>My Cart</h1>
+                    <div class="header-actions">
+                        <button id="validate-cart-btn" class="btn-secondary">Validate Cart</button>
+                        <button id="enroll-cart-btn" class="btn-primary">Enroll All</button>
+                    </div>
+                </header>
+                <div id="cart-messages" class="message-area"></div>
+                <div id="cart-list" class="list-container">
+                    <!-- Cart Items -->
+                </div>
+            </section>
+
+            <!-- Schedule View -->
+            <section id="view-schedule" class="view-section">
+                <header class="view-header">
+                    <h1>My Schedule</h1>
+                </header>
+                <div class="schedule-container">
+                    <!-- Calendar Grid -->
+                    <div id="schedule-grid" class="calendar-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Courses View -->
+            <section id="view-my-courses" class="view-section">
+                <header class="view-header">
+                    <h1>Enrolled Courses</h1>
+                </header>
+                <div id="enrolled-list" class="list-container">
+                    <!-- Enrolled Items -->
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
