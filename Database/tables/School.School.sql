@@ -1,0 +1,9 @@
+USE WheresMyScheduleDB;
+GO
+
+-- SCHOOL
+CREATE TABLE School.School (
+    SchoolID VARCHAR(30) NOT NULL PRIMARY KEY,
+    SchoolName VARCHAR(300) NOT NULL
+);
+GO
