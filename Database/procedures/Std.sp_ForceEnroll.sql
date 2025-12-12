@@ -1,6 +1,8 @@
+USE WheresMyScheduleDB;
+GO
+
 CREATE OR ALTER PROCEDURE Std.sp_ForceEnroll
-    @AdminID VARCHAR(30),
-    @StudentID VARCHAR(30),
+    @StudentID  VARCHAR(30),
     @CourseCode VARCHAR(10)
 AS
 BEGIN
@@ -9,42 +11,44 @@ BEGIN
     BEGIN TRY
         BEGIN TRAN;
 
-        -- Ensure the course exists (even if it is inactive or full)
+        DECLARE @GraduationYear SMALLINT;
+
+        SELECT @GraduationYear = GraduationYear
+        FROM Std.Student WITH (UPDLOCK, HOLDLOCK)
+        WHERE StudentID = @StudentID;
+
+        IF @GraduationYear IS NULL
+            RAISERROR('Student does not exist.', 16, 1);
+
         IF NOT EXISTS (
-            SELECT 1
-            FROM Course.Course WITH (UPDLOCK, HOLDLOCK)
+            SELECT 1 FROM Course.Course WITH (UPDLOCK, HOLDLOCK)
             WHERE CourseCode = @CourseCode
         )
-        BEGIN
-            RAISERROR ('Course does not exist.', 16, 1);
-        END
+            RAISERROR('Course does not exist.', 16, 1);
 
-        DECLARE @AlreadyEnrolled BIT = 0;
-
-        IF EXISTS (
-            SELECT 1 
-            FROM Std.Enrollment WITH (UPDLOCK, HOLDLOCK)
+        IF NOT EXISTS (
+            SELECT 1 FROM Course.Waitlist WITH (UPDLOCK, HOLDLOCK)
             WHERE StudentID = @StudentID AND CourseCode = @CourseCode
         )
-        BEGIN
-            SET @AlreadyEnrolled = 1;
-        END
-        ELSE
-        BEGIN
-            INSERT INTO Std.Enrollment (StudentID, CourseCode, Completed, IsForced)
-            VALUES (@StudentID, @CourseCode, 0, 1);
-        END
+            RAISERROR('Student is not on the waitlist for this course.', 16, 1);
 
-        -- Track seat usage even for forced enrollments (may go negative)
-        -- RemainingSeats is now a computed column and is updated automatically
-        -- by the trigger on Std.Enrollment updating EnrolledCount.
-        -- So, no direct update to RemainingSeats is needed here.
+        IF EXISTS (
+            SELECT 1 FROM Std.Enrollment WITH (UPDLOCK, HOLDLOCK)
+            WHERE StudentID = @StudentID AND CourseCode = @CourseCode
+        )
+            RAISERROR('Student already enrolled in this course.', 16, 1);
+
+        INSERT INTO Std.Enrollment (StudentID, GraduationYear, CourseCode, Completed, IsForced)
+        VALUES (@StudentID, @GraduationYear, @CourseCode, 0, 1);
+
+        DELETE FROM Course.Waitlist
+        WHERE StudentID = @StudentID AND CourseCode = @CourseCode;
 
         INSERT INTO Std.AuditLog (AdminID, StudentID, CourseCode, ActionDescription)
-        VALUES (@AdminID, @StudentID, @CourseCode, 'Forced enrollment override');
+        VALUES (NULL, @StudentID, @CourseCode, 'Forced enrollment from waitlist');
 
         COMMIT TRAN;
-        PRINT 'Force enrollment completed.';
+        PRINT 'Force enrollment from waitlist completed.';
     END TRY
     BEGIN CATCH
         IF @@TRANCOUNT > 0

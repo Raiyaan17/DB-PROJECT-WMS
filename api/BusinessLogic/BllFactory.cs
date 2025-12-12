@@ -31,6 +31,16 @@ namespace api.BusinessLogic
                 _ => throw new ArgumentException($"Unknown BLL mode: {mode}")
             };
         }
+
+        public IAdminBll CreateAdminBll(BllMode mode)
+        {
+            return mode switch
+            {
+                BllMode.Linq => _serviceProvider.GetRequiredService<AdminLinqBll>(),
+                BllMode.Sproc => _serviceProvider.GetRequiredService<AdminSpBll>(),
+                _ => throw new ArgumentException($"Unknown BLL mode: {mode}")
+            };
+        }
     }
 
     public enum BllMode

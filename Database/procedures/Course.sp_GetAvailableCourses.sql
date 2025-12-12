@@ -11,6 +11,7 @@ BEGIN
         CourseCode,
         CourseTitle,
         TotalCredits,
+        DepartmentID,
         DepartmentName,
         EnrolledCount,
         Capacity,
@@ -22,6 +23,6 @@ BEGIN
         InstructorName
     FROM Course.vw_AvailableCourses
     WHERE 
-        (@departmentCode IS NULL OR DepartmentName = @departmentCode);
+        (@departmentCode IS NULL OR DepartmentID = @departmentCode);
 END
 GO

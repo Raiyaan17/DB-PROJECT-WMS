@@ -519,6 +519,10 @@ public partial class WheresMyScheduleDbContext : DbContext
             entity.Property(e => e.DayOfWeek)
                 .HasMaxLength(10)
                 .IsUnicode(false);
+            entity.Property(e => e.DepartmentId)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("DepartmentID");
             entity.Property(e => e.DepartmentName)
                 .HasMaxLength(50)
                 .IsUnicode(false);

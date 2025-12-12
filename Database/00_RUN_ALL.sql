@@ -67,8 +67,15 @@ GO
 PRINT 'Step 6: Creating Stored Procedures...';
 GO
 :r ./procedures/Course.usp_GetAllPrerequisites.sql
+:r ./procedures/Std.sp_AddStudent.sql
+:r ./procedures/Inst.sp_AddInstructor.sql
+:r ./procedures/Course.sp_AddCourse.sql
 :r ./procedures/Std.sp_EnrollStudent.sql
 :r ./procedures/Std.sp_ForceEnroll.sql
+:r ./procedures/Course.sp_AdminWaitlistStudent.sql
+:r ./procedures/Course.sp_UpdateCapacity.sql
+:r ./procedures/Course.sp_SetCourseStatus.sql
+:r ./procedures/Std.sp_SetEnrollmentCompletion.sql
 :r ./procedures/Std.sp_EnrollFromCart.sql
 :r ./procedures/Course.usp_AddToWaitlist.sql
 :r ./procedures/Std.sp_DropCourse.sql
