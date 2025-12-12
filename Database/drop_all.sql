@@ -47,6 +47,13 @@ DROP PROCEDURE IF EXISTS Std.sp_GetCart;
 DROP PROCEDURE IF EXISTS Std.sp_GetStudent;
 DROP PROCEDURE IF EXISTS Course.sp_GetDepartments;
 DROP PROCEDURE IF EXISTS Course.sp_SearchCourses;
+DROP PROCEDURE IF EXISTS Course.sp_AddCourse;
+DROP PROCEDURE IF EXISTS Inst.sp_AddInstructor;
+DROP PROCEDURE IF EXISTS Std.sp_AddStudent;
+DROP PROCEDURE IF EXISTS Course.sp_AdminWaitlistStudent;
+DROP PROCEDURE IF EXISTS Course.sp_SetCourseStatus;
+DROP PROCEDURE IF EXISTS Std.sp_SetEnrollmentCompletion;
+DROP PROCEDURE IF EXISTS Course.sp_UpdateCapacity;
 GO
 
 PRINT '--- Dropping Functions ---';

@@ -17,6 +17,7 @@ SELECT
     c.EnrolledCount,
     c.Capacity,
     c.RemainingSeats,
+    d.DepartmentID,
     d.DepartmentName,
     STRING_AGG(i.FName + ' ' + i.LName, ', ') AS InstructorName
 FROM Course.Course c
@@ -36,5 +37,6 @@ GROUP BY
     c.EnrolledCount,
     c.Capacity,
     c.RemainingSeats,
+    d.DepartmentID,
     d.DepartmentName;
 GO
