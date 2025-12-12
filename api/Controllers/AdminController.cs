@@ -2,11 +2,13 @@ using api.BusinessLogic;
 using api.Models;
 using api.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : ControllerBase
     {
         private readonly IAdminBll _adminBll;
@@ -121,6 +123,90 @@ namespace api.Controllers
             {
                 await _adminBll.UpdateEnrollmentCompletionAsync(request);
                 return Ok("Enrollment completion updated.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("students/{studentId}")]
+        public async Task<IActionResult> DeleteStudent(string studentId)
+        {
+            try
+            {
+                await _adminBll.DeleteStudentAsync(studentId);
+                return Ok("Student deleted.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("instructors/{instructorId}")]
+        public async Task<IActionResult> DeleteInstructor(string instructorId)
+        {
+            try
+            {
+                await _adminBll.DeleteInstructorAsync(instructorId);
+                return Ok("Instructor deleted.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("courses/{courseCode}")]
+        public async Task<IActionResult> DeleteCourse(string courseCode)
+        {
+            try
+            {
+                await _adminBll.DeleteCourseAsync(courseCode);
+                return Ok("Course deleted.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("students/{studentId}")]
+        public async Task<IActionResult> UpdateStudent(string studentId, UpdateStudentRequest request)
+        {
+            try
+            {
+                await _adminBll.UpdateStudentAsync(studentId, request);
+                return Ok("Student updated.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("instructors/{instructorId}")]
+        public async Task<IActionResult> UpdateInstructor(string instructorId, UpdateInstructorRequest request)
+        {
+            try
+            {
+                await _adminBll.UpdateInstructorAsync(instructorId, request);
+                return Ok("Instructor updated.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("courses/{courseCode}")]
+        public async Task<IActionResult> UpdateCourse(string courseCode, UpdateCourseRequest request)
+        {
+            try
+            {
+                await _adminBll.UpdateCourseAsync(courseCode, request);
+                return Ok("Course updated.");
             }
             catch (Exception ex)
             {

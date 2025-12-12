@@ -70,6 +70,94 @@ namespace api.BusinessLogic
                 request.StudentId, request.CourseCode, request.Completed);
         }
 
+        public async Task DeleteStudentAsync(string studentId)
+        {
+            // Inline SQL for Delete
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM Students WHERE StudentId = {0}", studentId);
+        }
+
+        public async Task DeleteInstructorAsync(string instructorId)
+        {
+            // Inline SQL for Delete
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM Instructors WHERE InstructorId = {0}", instructorId);
+        }
+
+        public async Task DeleteCourseAsync(string courseCode)
+        {
+            // Inline SQL for Delete
+            // Note: This might fail if there are FK constraints not handled by CASCADE DELETE in DB. 
+            // But relying on DB configuration is standard for raw SQL.
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM Courses WHERE CourseCode = {0}", courseCode);
+        }
+
+        public async Task UpdateStudentAsync(string studentId, UpdateStudentRequest request)
+        {
+            // Fallback to EF Core for complex dynamic updates
+             var student = await _context.Students.FindAsync(studentId);
+            if (student == null) throw new InvalidOperationException("Student not found.");
+
+            if (request.FName != null) student.Fname = request.FName;
+            if (request.LName != null) student.Lname = request.LName;
+            if (request.Email != null) student.Email = request.Email;
+            if (request.SchoolId != null) student.SchoolId = request.SchoolId;
+            if (request.DepartmentId != null) student.DepartmentId = request.DepartmentId;
+            if (request.GraduationYear.HasValue) student.GraduationYear = request.GraduationYear.Value;
+            if (request.CurrentAcademicYear != null) student.CurrentAcademicYear = request.CurrentAcademicYear;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateInstructorAsync(string instructorId, UpdateInstructorRequest request)
+        {
+             // Fallback to EF Core
+            var instructor = await _context.Instructors.FindAsync(instructorId);
+            if (instructor == null) throw new InvalidOperationException("Instructor not found.");
+
+            if (request.FName != null) instructor.Fname = request.FName;
+            if (request.LName != null) instructor.Lname = request.LName;
+            if (request.Email != null) instructor.Email = request.Email;
+            if (request.DepartmentId != null) instructor.DepartmentId = request.DepartmentId;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateCourseAsync(string courseCode, UpdateCourseRequest request)
+        {
+             // Fallback to EF Core
+            var course = await _context.Courses.Include(c => c.Instructors).FirstOrDefaultAsync(c => c.CourseCode == courseCode);
+            if (course == null) throw new InvalidOperationException("Course not found.");
+
+            if (request.CourseTitle != null) course.CourseTitle = request.CourseTitle;
+            if (request.TotalCredits.HasValue) course.TotalCredits = request.TotalCredits.Value;
+            if (request.Capacity.HasValue) course.Capacity = request.Capacity.Value;
+            if (request.Venue != null) course.Venue = request.Venue;
+            if (request.DayOfWeek != null) course.DayOfWeek = request.DayOfWeek;
+            if (request.StartTime.HasValue) course.StartTime = request.StartTime.Value;
+            if (request.EndTime.HasValue) course.EndTime = request.EndTime.Value;
+            if (request.IsActive.HasValue) course.IsActive = request.IsActive.Value;
+            
+            if (request.DepartmentId != null)
+            {
+                 var deptCourse = await _context.DepartmentCourses.FirstOrDefaultAsync(dc => dc.CourseCode == courseCode);
+                 if (deptCourse != null)
+                 {
+                     deptCourse.DepartmentId = request.DepartmentId;
+                 }
+            }
+
+            if (request.InstructorId != null)
+            {
+                course.Instructors.Clear();
+                var instructor = await _context.Instructors.FindAsync(request.InstructorId);
+                if (instructor != null)
+                {
+                    course.Instructors.Add(instructor);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync()
         {
             var students = await _context.Students.AsNoTracking().ToListAsync();

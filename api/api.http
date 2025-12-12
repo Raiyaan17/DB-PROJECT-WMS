@@ -1,6 +1,69 @@
 @api_HostAddress = http://localhost:5266
 
-GET {{api_HostAddress}}/weatherforecast/
-Accept: application/json
+# Login as Admin to get Token
+# Expected password: Admin123!@#
+POST {{api_HostAddress}}/api/Auth/login/admin
+Content-Type: application/json
+
+{
+  "idOrUsername": "admin",
+  "password": "Admin123!@#"
+}
+
+###
+
+@authToken = <replace_with_token_from_login_response>
+
+# Delete Student
+DELETE {{api_HostAddress}}/api/Admin/students/S12345
+Authorization: Bearer {{authToken}}
+
+###
+
+# Delete Instructor
+DELETE {{api_HostAddress}}/api/Admin/instructors/I98765
+Authorization: Bearer {{authToken}}
+
+###
+
+# Delete Course
+DELETE {{api_HostAddress}}/api/Admin/courses/CS101
+Authorization: Bearer {{authToken}}
+
+###
+
+# Update Student
+PUT {{api_HostAddress}}/api/Admin/students/S12345
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "fName": "UpdatedName",
+  "email": "updated@example.com"
+}
+
+###
+
+# Update Instructor
+PUT {{api_HostAddress}}/api/Admin/instructors/I98765
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "fName": "Dr. Updated",
+  "departmentId": "CS"
+}
+
+###
+
+# Update Course
+PUT {{api_HostAddress}}/api/Admin/courses/CS101
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "courseTitle": "Intro to Advanced AI",
+  "capacity": 60
+}
 
 ###

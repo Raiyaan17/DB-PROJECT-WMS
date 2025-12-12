@@ -14,6 +14,13 @@ namespace api.BusinessLogic
         Task UpdateCourseStatusAsync(string courseCode, bool isActive);
         Task UpdateEnrollmentCompletionAsync(UpdateEnrollmentCompletionRequest request);
 
+        Task DeleteStudentAsync(string studentId);
+        Task DeleteInstructorAsync(string instructorId);
+        Task DeleteCourseAsync(string courseCode);
+        Task UpdateStudentAsync(string studentId, UpdateStudentRequest request);
+        Task UpdateInstructorAsync(string instructorId, UpdateInstructorRequest request);
+        Task UpdateCourseAsync(string courseCode, UpdateCourseRequest request);
+
         Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync();
         Task<StudentSummaryDto?> GetStudentAsync(string studentId);
         Task<IEnumerable<InstructorSummaryDto>> GetInstructorsAsync();
