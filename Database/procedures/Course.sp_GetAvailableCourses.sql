@@ -1,7 +1,7 @@
 -- =============================================
 -- Description: Retrieves available courses, optionally filtered by department.
 -- =============================================
-CREATE PROCEDURE Course.sp_GetAvailableCourses
+CREATE OR ALTER PROCEDURE Course.sp_GetAvailableCourses
     @departmentCode VARCHAR(50) = NULL
 AS
 BEGIN
@@ -18,7 +18,8 @@ BEGIN
         DayOfWeek,
         StartTime,
         EndTime,
-        Venue
+        Venue,
+        InstructorName
     FROM Course.vw_AvailableCourses
     WHERE 
         (@departmentCode IS NULL OR DepartmentName = @departmentCode);

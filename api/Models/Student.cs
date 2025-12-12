@@ -32,4 +32,7 @@ public partial class Student
     public virtual School School { get; set; } = null!;
 
     public virtual ICollection<Waitlist> Waitlists { get; set; } = new List<Waitlist>();
+
+    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+    public string SchoolName { get; set; } = null!;
 }

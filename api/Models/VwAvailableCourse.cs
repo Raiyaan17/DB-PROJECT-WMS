@@ -26,4 +26,6 @@ public partial class VwAvailableCourse
     public int RemainingSeats { get; set; }
 
     public string DepartmentName { get; set; } = null!;
+
+    public string? InstructorName { get; set; }
 }

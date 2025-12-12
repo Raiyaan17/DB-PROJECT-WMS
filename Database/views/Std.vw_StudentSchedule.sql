@@ -14,7 +14,11 @@ SELECT
     c.DayOfWeek,
     c.StartTime,
     c.EndTime,
-    c.Venue
+    c.Venue,
+    d.DepartmentName,
+    CAST(c.TotalCredits AS INT) AS TotalCredits
 FROM Std.Enrollment e
-JOIN Course.Course c ON e.CourseCode = c.CourseCode;
+JOIN Course.Course c ON e.CourseCode = c.CourseCode
+JOIN Dept.Courses dc ON c.CourseCode = dc.CourseCode
+JOIN Dept.Department d ON dc.DepartmentID = d.DepartmentID;
 GO

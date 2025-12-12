@@ -13,8 +13,10 @@ BEGIN
         s.Lname,
         s.Email,
         s.DepartmentId,
-        s.GraduationYear
+        s.GraduationYear,
+        sch.SchoolName
     FROM Std.Student s
+    JOIN School.School sch ON s.SchoolID = sch.SchoolID
     WHERE s.StudentId = @studentId;
 END;
 GO

@@ -63,6 +63,7 @@ const app = {
             if (res && res.ok) {
                 const student = await res.json();
                 document.getElementById('student-name').textContent = `${student.fname} ${student.lname}`;
+                document.getElementById('dash-school-name').textContent = student.schoolName || 'Unknown School';
             } else {
                 document.getElementById('student-name').textContent = "Student";
             }
@@ -144,12 +145,20 @@ const app = {
     loadDashboard: async () => {
         const studentId = app.state.user.id;
 
-        // Fetch Enrolled Count
+        // Fetch Enrolled Count and Chart Data
         const scheduleRes = await app.api(`Students/${studentId}/schedule`, 'GET');
         if (scheduleRes && scheduleRes.ok) {
             const schedule = await scheduleRes.json();
-            const uniqueCourses = new Set(Object.values(schedule).flat().map(c => c.courseCode));
+            const uniqueCourses = new Map();
+            Object.values(schedule).flat().forEach(c => uniqueCourses.set(c.courseCode, c));
+
             document.getElementById('dash-enrolled-count').textContent = uniqueCourses.size;
+
+            // Calculate Total Credits
+            const totalCredits = Array.from(uniqueCourses.values()).reduce((sum, c) => sum + (c.totalCredits || 0), 0);
+            document.getElementById('dash-credits-count').textContent = totalCredits;
+
+            app.renderChart(Array.from(uniqueCourses.values()));
         }
 
         // Fetch Cart Count
@@ -158,6 +167,57 @@ const app = {
             const cart = await cartRes.json();
             document.getElementById('dash-cart-count').textContent = cart.length;
         }
+    },
+
+    renderChart: (courses) => {
+        const ctx = document.getElementById('enrollmentChart');
+        if (!ctx) return;
+
+        // Destroy existing chart if it exists to prevent overlap/memory leaks
+        if (app.enrollmentChartInstance) {
+            app.enrollmentChartInstance.destroy();
+        }
+
+        // Process data: Count courses per department
+        const deptCounts = {};
+        courses.forEach(c => {
+            const dept = c.departmentName || 'Unknown';
+            deptCounts[dept] = (deptCounts[dept] || 0) + 1;
+        });
+
+        const labels = Object.keys(deptCounts);
+        const data = Object.values(deptCounts);
+
+        // Generate colors
+        const colors = [
+            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40',
+            '#C9CBCF', '#FFCD56', '#4D5360', '#F7464A', '#46BFBD', '#FDB45C'
+        ];
+
+        app.enrollmentChartInstance = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: colors.slice(0, labels.length),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Enrolled Courses by Department'
+                    }
+                }
+            }
+        });
     },
 
     // --- Feature: Courses ---
@@ -177,12 +237,16 @@ const app = {
             });
         }
 
-        // Fetch Enrolled Courses for Highlighting
+        // Fetch Enrolled Courses for Highlighting (Always fetch fresh)
         const studentId = app.state.user.id;
-        const enrolledRes = await app.api(`Students/${studentId}/schedule`, 'GET');
-        if (enrolledRes && enrolledRes.ok) {
-            const schedule = await enrolledRes.json();
-            app.state.enrolled = Object.values(schedule).flat().map(c => c.courseCode);
+        try {
+            const enrolledRes = await app.api(`Students/${studentId}/schedule`, 'GET');
+            if (enrolledRes && enrolledRes.ok) {
+                const schedule = await enrolledRes.json();
+                app.state.enrolled = Object.values(schedule).flat().map(c => c.courseCode);
+            }
+        } catch (e) {
+            console.error("Failed to fetch enrolled courses", e);
         }
 
         const res = await app.api('Courses');
@@ -265,6 +329,7 @@ const app = {
                 </div>
                 <h3 class="course-title">${c.courseTitle}</h3>
                 <div class="course-details">
+                    <p>👨‍🏫 ${c.instructorName || 'TBA'}</p>
                     <p>🕒 ${c.dayOfWeek || 'TBA'} ${c.startTime || ''} - ${c.endTime || ''}</p>
                     <p>👥 ${c.enrolledCount} / ${c.capacity}</p>
                     <p>${c.remainingSeats} seats remaining</p>
@@ -363,6 +428,14 @@ const app = {
         if (res && res.ok) {
             const msg = await res.text();
             alert(msg);
+            // Refresh state before navigating
+            await app.loadDashboard();
+            // Also refresh enrolled list in state for highlighting
+            const enrolledRes = await app.api(`Students/${studentId}/schedule`, 'GET');
+            if (enrolledRes && enrolledRes.ok) {
+                const schedule = await enrolledRes.json();
+                app.state.enrolled = Object.values(schedule).flat().map(c => c.courseCode);
+            }
             app.navigateTo('my-courses');
         } else {
             const err = await res.text();
@@ -382,28 +455,87 @@ const app = {
 
     renderSchedule: (scheduleMap) => {
         const container = document.getElementById('schedule-grid');
-        // Simple list render for now, grid is complex to build dynamically in vanilla JS quickly
-        // Replacing grid with list for MVP robustness
         container.innerHTML = '';
-        container.style.display = 'block'; // Reset grid style
 
-        for (const [day, courses] of Object.entries(scheduleMap)) {
-            const dayBlock = document.createElement('div');
-            dayBlock.className = 'day-schedule';
-            dayBlock.innerHTML = `<h3>${day}</h3>`;
+        // 1. Render Headers
+        const days = ['Time', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+        days.forEach(day => {
+            const header = document.createElement('div');
+            header.className = 'cal-header';
+            header.textContent = day;
+            container.appendChild(header);
+        });
 
-            courses.forEach(c => {
-                const item = document.createElement('div');
-                item.className = 'cal-event';
-                item.innerHTML = `
-                    <strong>${c.courseCode}</strong><br>
-                    ${c.courseTitle}<br>
-                    ${c.startTime} - ${c.endTime}
-                `;
-                dayBlock.appendChild(item);
-            });
-            container.appendChild(dayBlock);
+        // 2. Render Time Slots (Background Grid)
+        // 8:00 AM to 9:00 PM (13 hours * 2 slots = 26 slots)
+        const startHour = 8;
+        const endHour = 21;
+
+        for (let h = startHour; h < endHour; h++) {
+            // Time Label
+            const timeLabel = document.createElement('div');
+            timeLabel.className = 'cal-time-col';
+            timeLabel.style.gridRow = `${(h - startHour) * 2 + 2}`; // +2 for header offset
+            const displayTime = h > 12 ? `${h - 12} PM` : (h === 12 ? '12 PM' : `${h} AM`);
+            timeLabel.textContent = displayTime;
+            container.appendChild(timeLabel);
+
+            // Empty Cells for days
+            for (let d = 0; d < 5; d++) {
+                const cell = document.createElement('div');
+                cell.className = 'cal-cell';
+                cell.style.gridRow = `${(h - startHour) * 2 + 2} / span 2`;
+                cell.style.gridColumn = d + 2;
+                container.appendChild(cell);
+            }
         }
+
+        // 3. Render Courses
+        const dayMap = { 'Monday': 2, 'Tuesday': 3, 'Wednesday': 4, 'Thursday': 5, 'Friday': 6 };
+
+        Object.values(scheduleMap).flat().forEach(c => {
+            if (!c.dayOfWeek || !c.startTime || !c.endTime) return;
+
+            // Parse Days (e.g., "MW" -> Monday, Wednesday)
+            const days = [];
+            if (c.dayOfWeek.includes('M')) days.push('Monday');
+            if (c.dayOfWeek.includes('T') && !c.dayOfWeek.includes('Th')) days.push('Tuesday'); // Simple check, might need refinement for 'Tu'
+            if (c.dayOfWeek.includes('W')) days.push('Wednesday');
+            if (c.dayOfWeek.includes('Th')) days.push('Thursday');
+            if (c.dayOfWeek.includes('F')) days.push('Friday');
+
+            // Parse Time
+            const parseTime = (t) => {
+                const [h, m] = t.split(':').map(Number);
+                return h + (m / 60);
+            };
+
+            const start = parseTime(c.startTime);
+            const end = parseTime(c.endTime);
+
+            // Calculate Grid Position (30min slots)
+            // Row 1 is Header
+            // Row 2 starts at 8:00 AM
+            const rowStart = Math.round((start - startHour) * 2) + 2;
+            const durationSlots = Math.round((end - start) * 2);
+
+            days.forEach(dayName => {
+                const col = dayMap[dayName];
+                if (!col) return;
+
+                const event = document.createElement('div');
+                event.className = 'cal-event';
+                event.style.gridColumn = col;
+                event.style.gridRow = `${rowStart} / span ${durationSlots}`;
+                event.innerHTML = `
+                    <strong>${c.courseCode}</strong>
+                    <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${c.courseTitle}</div>
+                    <div>${c.venue || ''}</div>
+                `;
+                event.title = `${c.courseTitle}\n${c.startTime} - ${c.endTime}`;
+                container.appendChild(event);
+            });
+        });
     },
 
     // --- Feature: My Courses ---

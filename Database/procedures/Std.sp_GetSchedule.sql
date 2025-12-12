@@ -22,7 +22,9 @@ BEGIN
         DayOfWeek,
         StartTime,
         EndTime,
-        Venue
+        Venue,
+        DepartmentName,
+        TotalCredits
     FROM Std.vw_StudentSchedule
     WHERE StudentId = @studentId;
 END

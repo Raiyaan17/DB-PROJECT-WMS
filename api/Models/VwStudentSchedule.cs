@@ -18,4 +18,8 @@ public partial class VwStudentSchedule
     public TimeOnly? EndTime { get; set; }
 
     public string? Venue { get; set; }
+
+    public string DepartmentName { get; set; } = null!;
+
+    public int TotalCredits { get; set; }
 }

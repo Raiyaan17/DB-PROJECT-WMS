@@ -260,7 +260,7 @@ input:checked+.slider {
 /* Dashboard Grid */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
 }
 
@@ -430,35 +430,75 @@ input:checked+.slider {
 
 .calendar-grid {
     display: grid;
-    grid-template-columns: 100px repeat(6, 1fr);
-    /* Time + 6 Days */
+    grid-template-columns: 80px repeat(5, 1fr);
+    /* Time + 5 Days (Mon-Fri) */
+    grid-template-rows: 50px repeat(26, 40px);
+    /* Header + 13 hours (8am-9pm) * 2 slots/hr */
     gap: 1px;
     background: #E2E8F0;
     border-radius: var(--radius-md);
     overflow: hidden;
-}
-
-.cal-header,
-.cal-time,
-.cal-cell {
-    background: white;
-    padding: 1rem;
-    min-height: 60px;
+    height: 800px;
+    overflow-y: auto;
 }
 
 .cal-header {
-    font-weight: 600;
-    text-align: center;
     background: #F7FAFC;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #E2E8F0;
 }
 
+.cal-time-col {
+    grid-column: 1;
+    background: white;
+    border-right: 1px solid #E2E8F0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -10px;
+    /* Align time label with grid line */
+}
+
+.cal-cell {
+    background: white;
+    border-right: 1px solid #f7fafc;
+    border-bottom: 1px solid #f7fafc;
+}
+
+/* Event Styling */
 .cal-event {
     background: #EBF4FF;
-    border-left: 3px solid var(--accent-color);
+    border-left: 4px solid var(--accent-color);
     padding: 0.5rem;
     border-radius: 4px;
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    margin: 2px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.cal-event:hover {
+    transform: scale(1.02);
+    z-index: 5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cal-event strong {
+    display: block;
+    color: var(--accent-color);
+    margin-bottom: 2px;
 }
 
 .hidden {

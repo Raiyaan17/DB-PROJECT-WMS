@@ -75,7 +75,7 @@ namespace api.BusinessLogic
             // Get all courses in the student's cart
             var cartCourses = await _context.CourseCarts
                                             .Where(cc => cc.StudentId == studentId)
-                                            .Include(cc => cc.CourseCodeNavigation) // Eager load course details
+                                            .Include(cc => cc.CourseCodeNavigation)
                                             .ToListAsync();
 
             if (!cartCourses.Any())
@@ -205,6 +205,7 @@ namespace api.BusinessLogic
         {
             var student = await _context.Students
                                         .Include(s => s.Department)
+                                        .Include(s => s.School)
                                         .FirstOrDefaultAsync(s => s.StudentId == studentId);
 
             if (student == null) return null;
@@ -216,7 +217,8 @@ namespace api.BusinessLogic
                 Lname = student.Lname,
                 Email = student.Email,
                 DepartmentId = student.DepartmentId,
-                GraduationYear = student.GraduationYear
+                GraduationYear = student.GraduationYear,
+                SchoolName = student.School?.SchoolName ?? "Unknown School"
             };
         }
     }
