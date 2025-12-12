@@ -14,5 +14,3 @@ sqlcmd -S localhost,1433 -U sa -P password_goes_here -d WheresMyScheduleDB -i "0
 ```
 
 Make sure to replace `password_goes_here` with your actual SQL Server password.
-
-DB_CONN_STRING='Server=localhost,1433;Database=WheresMyScheduleDB;User Id=sa;Password=password_goes_here;TrustServerCertificate=True;'

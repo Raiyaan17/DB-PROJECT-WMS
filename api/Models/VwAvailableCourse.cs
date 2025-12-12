@@ -11,6 +11,8 @@ public partial class VwAvailableCourse
 
     public byte TotalCredits { get; set; }
 
+    public string DepartmentId { get; set; } = null!;
+
     public string? Venue { get; set; }
 
     public string? DayOfWeek { get; set; }

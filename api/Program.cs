@@ -35,6 +35,8 @@ builder.Services.AddScoped<CourseLinqBll>();
 builder.Services.AddScoped<CourseSpBll>();
 builder.Services.AddScoped<StudentLinqBll>();
 builder.Services.AddScoped<StudentSpBll>();
+builder.Services.AddScoped<AdminLinqBll>();
+builder.Services.AddScoped<AdminSpBll>();
 
 // Register BLL Factory as a scoped service
 builder.Services.AddScoped<BllFactory>();
@@ -57,6 +59,14 @@ builder.Services.AddScoped<IStudentBll>(serviceProvider =>
 
 // Register AuthService
 builder.Services.AddScoped<AuthService>();
+
+// Register IAdminBll dynamically based on current BLL mode
+builder.Services.AddScoped<IAdminBll>(serviceProvider =>
+{
+    var bllModeManager = serviceProvider.GetRequiredService<BllModeManager>();
+    var bllFactory = serviceProvider.GetRequiredService<BllFactory>();
+    return bllFactory.CreateAdminBll(bllModeManager.CurrentBllMode);
+});
 
 // Configure JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");
