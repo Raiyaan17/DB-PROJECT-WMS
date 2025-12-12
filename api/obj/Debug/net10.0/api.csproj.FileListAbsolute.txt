@@ -352,6 +352,6 @@
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/index.html.gz
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/js/app.js.gz
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/6ht5axebrf-{0}-di6f8e739u-di6f8e739u.gz
-/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/wl1b4i1i46-{0}-2zp58bema2-2zp58bema2.gz
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/ro3ql4fcli-{0}-60wzqmnzx6-60wzqmnzx6.gz
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/frnu5c9igz-{0}-aoskbdemtv-aoskbdemtv.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/wl1b4i1i46-{0}-t866n785gw-t866n785gw.gz
