@@ -343,6 +343,15 @@
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/ref/api.dll
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/api.staticwebassets.runtime.json
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
-/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/6ht5axebrf-{0}-v01mfk2egd-v01mfk2egd.gz
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/login.html
 /Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/login.html.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/css/style.css
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/index.html
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/js/app.js
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/css/style.css.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/index.html.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/bin/Debug/net10.0/wwwroot/js/app.js.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/6ht5axebrf-{0}-di6f8e739u-di6f8e739u.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/ro3ql4fcli-{0}-lpm9n7c8fe-lpm9n7c8fe.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/wl1b4i1i46-{0}-ecdej6t5sw-ecdej6t5sw.gz
+/Users/raiyaanhamid/Desktop/Projects/DB-PROJECT-WMS/api/obj/Debug/net10.0/compressed/frnu5c9igz-{0}-qrnw8gtpyr-qrnw8gtpyr.gz

@@ -42,5 +42,17 @@ namespace api.Controllers
             }
             return Ok(course);
         }
+        [HttpGet("departments")]
+        public async Task<ActionResult<IEnumerable<Department>>> GetDepartments()
+        {
+            var departments = await _courseBll.GetDepartmentsAsync();
+            return Ok(departments);
+        }
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<VwAvailableCourse>>> SearchCourses([FromQuery] string q)
+        {
+            var courses = await _courseBll.SearchCoursesAsync(q);
+            return Ok(courses);
+        }
     }
 }

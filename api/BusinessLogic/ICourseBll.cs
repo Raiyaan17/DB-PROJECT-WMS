@@ -10,5 +10,7 @@ namespace api.BusinessLogic
         Task<IEnumerable<VwAvailableCourse>> GetAvailableCoursesAsync();
         Task<IEnumerable<VwAvailableCourse>> GetAvailableCoursesByDepartmentAsync(string departmentCode);
         Task<CourseDetailDto?> GetCourseDetailsAsync(string courseCode);
+        Task<IEnumerable<Department>> GetDepartmentsAsync();
+        Task<IEnumerable<VwAvailableCourse>> SearchCoursesAsync(string query);
     }
 }

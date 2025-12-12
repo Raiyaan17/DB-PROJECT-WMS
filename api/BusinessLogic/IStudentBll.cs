@@ -1,4 +1,5 @@
 using api.Models;
+using api.Models.DTOs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,5 +14,7 @@ namespace api.BusinessLogic
         Task<IEnumerable<VwStudentSchedule>> GetScheduleAsync(string studentId);
         Task DropCourseAsync(string studentId, string courseCode);
         Task RemoveFromCartAsync(string studentId, string courseCode);
+        Task<IEnumerable<CourseCart>> GetCartAsync(string studentId);
+        Task<StudentDto?> GetStudentAsync(string studentId);
     }
 }

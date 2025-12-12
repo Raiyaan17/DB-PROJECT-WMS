@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Collections.Generic; // Required for IEnumerable
 using api.Models;
+using api.Models.DTOs;
 using System; // Required for Exception
 
 namespace api.Controllers
@@ -25,6 +26,20 @@ namespace api.Controllers
             {
                 await _studentBll.AddToCartAsync(studentId, courseCode);
                 return Ok($"Course {courseCode} added to cart for student {studentId}.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{studentId}/cart")]
+        public async Task<ActionResult<IEnumerable<CourseCart>>> GetCart(string studentId)
+        {
+            try
+            {
+                var cartItems = await _studentBll.GetCartAsync(studentId);
+                return Ok(cartItems);
             }
             catch (Exception ex)
             {
@@ -159,6 +174,23 @@ namespace api.Controllers
             {
                 await _studentBll.DropCourseAsync(studentId, courseCode);
                 return Ok($"Course {courseCode} dropped for student {studentId}.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("{studentId}")]
+        public async Task<ActionResult<StudentDto>> GetStudent(string studentId)
+        {
+            try
+            {
+                var student = await _studentBll.GetStudentAsync(studentId);
+                if (student == null)
+                {
+                    return NotFound($"Student with ID {studentId} not found.");
+                }
+                return Ok(student);
             }
             catch (Exception ex)
             {

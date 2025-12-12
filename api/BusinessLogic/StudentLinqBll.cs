@@ -1,4 +1,5 @@
 using api.Models;
+using api.Models.DTOs;
 using Microsoft.EntityFrameworkCore; // Required for ToListAsync, FirstOrDefaultAsync
 using System.Collections.Generic;
 using System.Linq; // Added for LINQ extension methods like Select, Sum, etc.
@@ -192,6 +193,31 @@ namespace api.BusinessLogic
                 // depending on the desired behavior.
                 throw new Exception("Course not found in the student's cart.");
             }
+        }
+        public async Task<IEnumerable<CourseCart>> GetCartAsync(string studentId)
+        {
+            return await _context.CourseCarts
+                                 .Where(cc => cc.StudentId == studentId)
+                                 .Include(cc => cc.CourseCodeNavigation)
+                                 .ToListAsync();
+        }
+        public async Task<StudentDto?> GetStudentAsync(string studentId)
+        {
+            var student = await _context.Students
+                                        .Include(s => s.Department)
+                                        .FirstOrDefaultAsync(s => s.StudentId == studentId);
+
+            if (student == null) return null;
+
+            return new StudentDto
+            {
+                StudentId = student.StudentId,
+                Fname = student.Fname,
+                Lname = student.Lname,
+                Email = student.Email,
+                DepartmentId = student.DepartmentId,
+                GraduationYear = student.GraduationYear
+            };
         }
     }
 }

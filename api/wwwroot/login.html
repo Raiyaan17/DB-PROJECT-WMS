@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .login-container {
             background-color: white;
             padding: 2rem;
@@ -21,16 +23,19 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 350px;
         }
+
         h2 {
             text-align: center;
             color: #333;
             margin-bottom: 1.5rem;
         }
+
         .tabs {
             display: flex;
             margin-bottom: 1rem;
             border-bottom: 1px solid #ddd;
         }
+
         .tab {
             flex: 1;
             padding: 0.5rem;
@@ -40,20 +45,24 @@
             border: 1px solid #ddd;
             border-bottom: none;
         }
+
         .tab.active {
             background-color: white;
             font-weight: bold;
             border-bottom: 1px solid white;
             margin-bottom: -1px;
         }
+
         .form-group {
             margin-bottom: 1rem;
         }
+
         label {
             display: block;
             margin-bottom: 0.5rem;
             color: #666;
         }
+
         input {
             width: 100%;
             padding: 0.5rem;
@@ -61,6 +70,7 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+
         button {
             width: 100%;
             padding: 0.75rem;
@@ -71,9 +81,11 @@
             cursor: pointer;
             font-size: 1rem;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
         .error {
             color: red;
             text-align: center;
@@ -82,89 +94,90 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="login-container">
-    <h2>Login</h2>
-    <div class="tabs">
-        <div class="tab active" onclick="switchTab('student')">Student</div>
-        <div class="tab" onclick="switchTab('admin')">Admin</div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('student')">Student</div>
+            <div class="tab" onclick="switchTab('admin')">Admin</div>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label id="idLabel" for="idInput">Student ID</label>
+                <input type="text" id="idInput" required>
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input type="password" id="passwordInput" required>
+            </div>
+            <button type="submit">Sign In</button>
+            <div id="errorMessage" class="error"></div>
+        </form>
     </div>
 
-    <form id="loginForm" onsubmit="handleLogin(event)">
-        <div class="form-group">
-            <label id="idLabel" for="idInput">Student ID</label>
-            <input type="text" id="idInput" required>
-        </div>
-        <div class="form-group">
-            <label for="passwordInput">Password</label>
-            <input type="password" id="passwordInput" required>
-        </div>
-        <button type="submit">Sign In</button>
-        <div id="errorMessage" class="error"></div>
-    </form>
-</div>
+    <script>
+        let currentRole = 'student';
 
-<script>
-    let currentRole = 'student';
+        function switchTab(role) {
+            currentRole = role;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
 
-    function switchTab(role) {
-        currentRole = role;
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        event.target.classList.add('active');
+            const idLabel = document.getElementById('idLabel');
+            const idInput = document.getElementById('idInput');
 
-        const idLabel = document.getElementById('idLabel');
-        const idInput = document.getElementById('idInput');
-
-        if (role === 'student') {
-            idLabel.textContent = 'Student ID';
-            idInput.placeholder = 'Enter Student ID';
-        } else {
-            idLabel.textContent = 'Username';
-            idInput.placeholder = 'Enter Username';
-        }
-    }
-
-    async function handleLogin(event) {
-        event.preventDefault();
-        const idOrUsername = document.getElementById('idInput').value;
-        const password = document.getElementById('passwordInput').value;
-        const errorMessage = document.getElementById('errorMessage');
-        
-        errorMessage.style.display = 'none';
-        errorMessage.textContent = '';
-
-        const endpoint = currentRole === 'student' 
-            ? '/api/auth/login/student' 
-            : '/api/auth/login/admin';
-
-        try {
-            const response = await fetch(endpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ idOrUsername, password })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('authToken', data.token);
-                localStorage.setItem('userRole', currentRole);
-                alert('Login Successful! Token stored in localStorage.');
-                // Redirect or update UI here
+            if (role === 'student') {
+                idLabel.textContent = 'Student ID';
+                idInput.placeholder = 'Enter Student ID';
             } else {
-                const errorText = await response.text();
-                errorMessage.textContent = 'Login Failed: ' + errorText;
-                errorMessage.style.display = 'block';
+                idLabel.textContent = 'Username';
+                idInput.placeholder = 'Enter Username';
             }
-        } catch (error) {
-            errorMessage.textContent = 'An error occurred. Please try again.';
-            errorMessage.style.display = 'block';
-            console.error('Login error:', error);
         }
-    }
-</script>
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            const idOrUsername = document.getElementById('idInput').value;
+            const password = document.getElementById('passwordInput').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+
+            const endpoint = currentRole === 'student'
+                ? '/api/auth/login/student'
+                : '/api/auth/login/admin';
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ idOrUsername, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('token', data.token); // Changed from 'authToken' to 'token' as per instruction
+                    localStorage.setItem('userRole', currentRole);
+                    window.location.href = 'index.html'; // Added redirection
+                } else {
+                    const errorText = await response.text();
+                    errorMessage.textContent = 'Login Failed: ' + errorText;
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.style.display = 'block';
+                console.error('Login error:', error);
+            }
+        }
+    </script>
 
 </body>
+
 </html>

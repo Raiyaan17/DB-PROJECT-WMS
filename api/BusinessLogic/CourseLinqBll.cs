@@ -63,5 +63,22 @@ namespace api.BusinessLogic
 
             return courseDetailDto;
         }
+        public async Task<IEnumerable<Department>> GetDepartmentsAsync()
+        {
+            return await _context.Departments.ToListAsync();
+        }
+        public async Task<IEnumerable<VwAvailableCourse>> SearchCoursesAsync(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return await GetAvailableCoursesAsync();
+            }
+
+            query = query.ToLower();
+            return await _context.VwAvailableCourses
+                                 .Where(c => c.CourseCode.ToLower().Contains(query) || 
+                                             c.CourseTitle.ToLower().Contains(query))
+                                 .ToListAsync();
+        }
     }
 }

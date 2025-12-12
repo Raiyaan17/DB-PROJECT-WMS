@@ -43,6 +43,10 @@ DROP PROCEDURE IF EXISTS Std.sp_ValidateCart;
 DROP PROCEDURE IF EXISTS Std.sp_GetSchedule;
 DROP PROCEDURE IF EXISTS Course.sp_GetAvailableCourses;
 DROP PROCEDURE IF EXISTS Course.sp_GetCourseDetails;
+DROP PROCEDURE IF EXISTS Std.sp_GetCart;
+DROP PROCEDURE IF EXISTS Std.sp_GetStudent;
+DROP PROCEDURE IF EXISTS Course.sp_GetDepartments;
+DROP PROCEDURE IF EXISTS Course.sp_SearchCourses;
 GO
 
 PRINT '--- Dropping Functions ---';

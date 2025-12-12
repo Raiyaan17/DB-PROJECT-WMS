@@ -79,6 +79,23 @@ namespace api.BusinessLogic
 
             return courseDetailDto;
         }
+        public async Task<IEnumerable<Department>> GetDepartmentsAsync()
+        {
+            return await _context.Departments
+                                 .FromSqlRaw("EXEC Course.sp_GetDepartments")
+                                 .ToListAsync();
+        }
+        public async Task<IEnumerable<VwAvailableCourse>> SearchCoursesAsync(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return await GetAvailableCoursesAsync();
+            }
+
+            return await _context.VwAvailableCourses
+                                 .FromSqlRaw("EXEC Course.sp_SearchCourses @query = {0}", query)
+                                 .ToListAsync();
+        }
     }
 }
 

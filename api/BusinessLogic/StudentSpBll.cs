@@ -137,5 +137,19 @@ namespace api.BusinessLogic
                 throw new Exception(ex.Message, ex);
             }
         }
+        public async Task<IEnumerable<CourseCart>> GetCartAsync(string studentId)
+        {
+            return await _context.CourseCarts
+                                 .FromSqlRaw("EXEC Std.sp_GetCart @studentId = {0}", studentId)
+                                 .ToListAsync();
+        }
+        public async Task<StudentDto?> GetStudentAsync(string studentId)
+        {
+            var students = await _context.Database
+                                         .SqlQuery<StudentDto>($"EXEC Std.sp_GetStudent @studentId = {studentId}")
+                                         .ToListAsync();
+
+            return students.FirstOrDefault();
+        }
     }
 }

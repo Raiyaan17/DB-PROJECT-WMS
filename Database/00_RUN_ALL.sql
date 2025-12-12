@@ -80,6 +80,10 @@ GO
 :r ./procedures/Std.sp_GetSchedule.sql
 :r ./procedures/Course.sp_GetAvailableCourses.sql
 :r ./procedures/Course.sp_GetCourseDetails.sql
+:r ./procedures/Std.sp_GetCart.sql
+:r ./procedures/Std.sp_GetStudent.sql
+:r ./procedures/Course.sp_GetDepartments.sql
+:r ./procedures/Course.sp_SearchCourses.sql
 GO
 
 PRINT 'Step 7: Creating Triggers...';
