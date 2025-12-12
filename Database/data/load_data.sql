@@ -46,7 +46,7 @@ FROM '/var/opt/mssql/StudentArchiveData.csv'
 WITH (
     FIRSTROW = 2,
     FIELDTERMINATOR = ',',
-    ROWTERMINATOR = '0x0A',
+    ROWTERMINATOR = '\r\n',
     FIELDQUOTE = '"',
     TABLOCK
 );

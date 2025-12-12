@@ -13,6 +13,7 @@ PRINT '--- Dropping Triggers ---';
 DROP TRIGGER IF EXISTS trg_CheckCreditLimit;
 DROP TRIGGER IF EXISTS trg_PreventAlumniEnrollment;
 DROP TRIGGER IF EXISTS Std.trg_UpdateCourseCounts;
+DROP TRIGGER IF EXISTS Inst.trg_GenerateInstructorID;
 GO
 
 PRINT '--- Dropping Views ---';
@@ -54,6 +55,13 @@ DROP PROCEDURE IF EXISTS Course.sp_AdminWaitlistStudent;
 DROP PROCEDURE IF EXISTS Course.sp_SetCourseStatus;
 DROP PROCEDURE IF EXISTS Std.sp_SetEnrollmentCompletion;
 DROP PROCEDURE IF EXISTS Course.sp_UpdateCapacity;
+DROP PROCEDURE IF EXISTS sp_Admin_GetRecentStudents;
+DROP PROCEDURE IF EXISTS sp_Admin_GetTotalStudentCount;
+DROP PROCEDURE IF EXISTS sp_Admin_GetArchivedYears;
+DROP PROCEDURE IF EXISTS sp_Admin_GetArchivedStudentsByYear;
+DROP PROCEDURE IF EXISTS sp_Admin_GetInstructors;
+DROP PROCEDURE IF EXISTS sp_Admin_GetCourses;
+DROP PROCEDURE IF EXISTS sp_Admin_GetDepartments;
 GO
 
 PRINT '--- Dropping Functions ---';

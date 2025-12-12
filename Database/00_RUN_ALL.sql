@@ -91,6 +91,13 @@ GO
 :r ./procedures/Std.sp_GetStudent.sql
 :r ./procedures/Course.sp_GetDepartments.sql
 :r ./procedures/Course.sp_SearchCourses.sql
+:r ./procedures/sp_Admin_GetRecentStudents.sql
+:r ./procedures/sp_Admin_GetTotalStudentCount.sql
+:r ./procedures/sp_Admin_GetArchivedYears.sql
+:r ./procedures/sp_Admin_GetArchivedStudentsByYear.sql
+:r ./procedures/sp_Admin_GetInstructors.sql
+:r ./procedures/sp_Admin_GetCourses.sql
+:r ./procedures/sp_Admin_GetDepartments.sql
 GO
 
 PRINT 'Step 7: Creating Triggers...';
@@ -98,10 +105,15 @@ GO
 :r ./triggers/trg_CheckCreditLimit.sql
 :r ./triggers/trg_PreventAlumniEnrollment.sql
 :r ./triggers/trg_UpdateCourseCounts.sql
+:r ./triggers/trg_GenerateInstructorID.sql
 GO
 
 PRINT 'Step 8: Bulk Inserting Data...';
 :r ./data/load_data.sql
+GO
+
+PRINT 'Step 9: Seeding Sequences...';
+:r ./scripts/seed_instructor_sequence.sql
 GO
 
 PRINT '--- Database Initialization Complete ---';

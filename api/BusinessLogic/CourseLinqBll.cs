@@ -24,7 +24,7 @@ namespace api.BusinessLogic
         public async Task<IEnumerable<VwAvailableCourse>> GetAvailableCoursesByDepartmentAsync(string departmentCode)
         {
             return await _context.VwAvailableCourses
-                                 .Where(c => c.DepartmentName == departmentCode)
+                                 .Where(c => c.DepartmentId == departmentCode)
                                  .ToListAsync();
         }
 

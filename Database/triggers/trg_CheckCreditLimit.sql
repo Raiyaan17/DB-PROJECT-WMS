@@ -13,14 +13,19 @@ BEGIN
 
     -- A CTE's scope is only the single statement that immediately follows it.
     -- Here, we define the CTE to calculate current credits for each student in the transaction...
-    ;WITH StudentCredits AS (
+    -- A CTE's scope is only the single statement that immediately follows it.
+    -- Here, we define the CTE to calculate current credits for each student in the transaction...
+    ;WITH InvolvedStudents AS (
+        SELECT DISTINCT StudentID FROM inserted
+    ),
+    StudentCredits AS (
         SELECT
             s.StudentID,
             SUM(c.TotalCredits) AS CurrentCredits
-        FROM inserted s
+        FROM InvolvedStudents s
         JOIN Std.Enrollment e ON s.StudentID = e.StudentID
         JOIN Course.Course c ON e.CourseCode = c.CourseCode
-        WHERE e.Completed = 0 AND ISNULL(s.IsForced, 0) = 0
+        WHERE e.Completed = 0 AND ISNULL(e.IsForced, 0) = 0
         GROUP BY s.StudentID
     )
     -- ...and this SELECT statement is the required statement that immediately follows and uses the CTE.

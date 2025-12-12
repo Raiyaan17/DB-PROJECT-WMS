@@ -16,9 +16,13 @@ namespace api.BusinessLogic
 
         Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync();
         Task<StudentSummaryDto?> GetStudentAsync(string studentId);
-        Task<IEnumerable<InstructorSummaryDto>> GetInstructorsAsync();
+        Task<int> GetTotalEnrolledStudentCountAsync();
+        Task<IEnumerable<int>> GetArchivedYearsAsync();
+        Task<IEnumerable<StudentSummaryDto>> GetArchivedStudentsByYearAsync(int year);
+        Task<IEnumerable<InstructorSummaryDto>> GetInstructorsAsync(string? departmentId = null);
         Task<InstructorSummaryDto?> GetInstructorAsync(string instructorId);
-        Task<IEnumerable<Course>> GetCoursesAsync();
+        Task<IEnumerable<string>> GetDepartmentsAsync();
+        Task<IEnumerable<Course>> GetCoursesAsync(string? departmentId = null);
         Task<Course?> GetCourseAsync(string courseCode);
     }
 }

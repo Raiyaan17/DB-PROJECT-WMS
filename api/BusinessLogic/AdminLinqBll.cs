@@ -37,12 +37,12 @@ namespace api.BusinessLogic
 
         public async Task AddInstructorAsync(AddInstructorRequest request)
         {
-            if (await _context.Instructors.AnyAsync(i => i.InstructorId == request.InstructorId))
-                throw new InvalidOperationException("Instructor already exists.");
+            if (await _context.Instructors.AnyAsync(i => i.Email == request.Email))
+                throw new InvalidOperationException("Instructor with this email already exists.");
 
             var instructor = new Instructor
             {
-                InstructorId = request.InstructorId,
+                InstructorId = "PENDING", // Placeholder, Trigger will generate actual ID
                 Fname = request.FName,
                 Lname = request.LName,
                 Email = request.Email,
@@ -193,8 +193,20 @@ namespace api.BusinessLogic
 
         public async Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync()
         {
-            var students = await _context.Students.AsNoTracking().ToListAsync();
+            var validYears = new[] { "FRESHMAN", "SOPHOMORE", "JUNIOR", "SENIOR" };
+            var students = await _context.Students.AsNoTracking()
+                .Where(s => validYears.Contains(s.CurrentAcademicYear.ToUpper()))
+                .OrderByDescending(s => s.StudentId)
+                .Take(25)
+                .ToListAsync();
             return students.Select(MapStudent);
+        }
+
+        public async Task<int> GetTotalEnrolledStudentCountAsync()
+        {
+            var validYears = new[] { "FRESHMAN", "SOPHOMORE", "JUNIOR", "SENIOR" };
+            return await _context.Students
+                .CountAsync(s => validYears.Contains(s.CurrentAcademicYear.ToUpper()));
         }
 
         public async Task<StudentSummaryDto?> GetStudentAsync(string studentId)
@@ -204,10 +216,45 @@ namespace api.BusinessLogic
             return student == null ? null : MapStudent(student);
         }
 
-        public async Task<IEnumerable<InstructorSummaryDto>> GetInstructorsAsync()
+        public async Task<IEnumerable<int>> GetArchivedYearsAsync()
         {
-            var instructors = await _context.Instructors.AsNoTracking().ToListAsync();
+            return await _context.Students.AsNoTracking()
+                .Where(s => s.CurrentAcademicYear == "Alumni" && s.GraduationYear <= 2020)
+                .Select(s => (int)s.GraduationYear)
+                .Distinct()
+                .OrderByDescending(y => y)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<StudentSummaryDto>> GetArchivedStudentsByYearAsync(int year)
+        {
+            var students = await _context.Students.AsNoTracking()
+                .Where(s => s.CurrentAcademicYear == "Alumni" && s.GraduationYear == year)
+                .OrderByDescending(s => s.StudentId) // Top 50
+                .Take(50)
+                .ToListAsync();
+            return students.Select(MapStudent);
+        }
+
+        public async Task<IEnumerable<InstructorSummaryDto>> GetInstructorsAsync(string? departmentId = null)
+        {
+            var query = _context.Instructors.AsNoTracking();
+
+            if (!string.IsNullOrEmpty(departmentId))
+            {
+                query = query.Where(i => i.DepartmentId == departmentId);
+            }
+
+            var instructors = await query.ToListAsync();
             return instructors.Select(MapInstructor);
+        }
+
+        public async Task<IEnumerable<string>> GetDepartmentsAsync()
+        {
+            return await _context.Departments.AsNoTracking()
+                .Select(d => d.DepartmentId)
+                .OrderBy(d => d)
+                .ToListAsync();
         }
 
         public async Task<InstructorSummaryDto?> GetInstructorAsync(string instructorId)
@@ -217,9 +264,21 @@ namespace api.BusinessLogic
             return instructor == null ? null : MapInstructor(instructor);
         }
 
-        public async Task<IEnumerable<Course>> GetCoursesAsync()
+        public async Task<IEnumerable<Course>> GetCoursesAsync(string? departmentId = null)
         {
-            return await _context.Courses.AsNoTracking().ToListAsync();
+            var query = _context.Courses.AsNoTracking();
+
+            if (!string.IsNullOrEmpty(departmentId))
+            {
+                // Filter courses that are in the specified department
+                var courseCodes = _context.DepartmentCourses.AsNoTracking()
+                    .Where(dc => dc.DepartmentId == departmentId)
+                    .Select(dc => dc.CourseCode);
+
+                query = query.Where(c => courseCodes.Contains(c.CourseCode));
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<Course?> GetCourseAsync(string courseCode)

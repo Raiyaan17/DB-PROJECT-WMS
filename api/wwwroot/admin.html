@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | WheresMySchedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo-area">
+                <h2>WMS</h2>
+                <span>Admin Portal</span>
+            </div>
+
+            <div class="user-profile">
+                <div class="avatar-circle" style="background-color: var(--error-color);">A</div>
+                <div class="user-info">
+                    <p>Administrator</p>
+                    <small>System Access</small>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li class="active" data-view="dashboard">
+                    <span class="icon">🏠</span> Dashboard
+                </li>
+                <li data-view="students">
+                    <span class="icon">👨‍🎓</span> Manage Students
+                </li>
+                <li data-view="instructors">
+                    <span class="icon">👩‍🏫</span> Manage Instructors
+                </li>
+                <li data-view="courses">
+                    <span class="icon">📚</span> Manage Courses
+                </li>
+                <li data-view="archive">
+                    <span class="icon">🗄️</span> Archived Data
+                </li>
+                <li data-view="operations">
+                    <span class="icon">⚙️</span> Operations
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="bll-toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="bll-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="bll-label">LINQ Mode</span>
+                </div>
+                <button id="logout-btn" class="btn-logout">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view-section active">
+                <header class="view-header">
+                    <h1>Admin Dashboard</h1>
+                    <p class="date-display">Today is <span id="current-date">...</span></p>
+                </header>
+
+                <div class="dashboard-grid">
+                    <div class="card stat-card">
+                        <h3>Total Students</h3>
+                        <p class="stat-number" id="stats-students">-</p>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Total Instructors</h3>
+                        <p class="stat-number" id="stats-instructors">-</p>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Active Courses</h3>
+                        <p class="stat-number" id="stats-courses">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students View -->
+            <section id="view-students" class="view-section">
+                <header class="view-header">
+                    <h1>Manage Students</h1>
+                    <button class="btn-primary" onclick="admin.openModal('modal-add-student')">+ Add Student</button>
+                </header>
+                <div class="card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Grad Year</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Instructors View -->
+            <section id="view-instructors" class="view-section">
+                <header class="view-header">
+                    <h1>Manage Instructors</h1>
+                    <button class="btn-primary" onclick="admin.openModal('modal-add-instructor')">+ Add
+                        Instructor</button>
+                </header>
+                <div class="filter-bar" style="margin-bottom: 1rem;">
+                    <label style="margin-right: 1rem; align-self: center; font-weight: 500;">Filter by
+                        Department:</label>
+                    <select id="instructor-dept-filter" class="dept-select" onchange="admin.loadInstructors()">
+                        <option value="">All Departments</option>
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+                <div class="card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Instructor ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                            </tr>
+                        </thead>
+                        <tbody id="instructors-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Courses View -->
+            <section id="view-courses" class="view-section">
+                <header class="view-header">
+                    <h1>Manage Courses</h1>
+                    <button class="btn-primary" onclick="admin.openModal('modal-add-course')">+ Add Course</button>
+                </header>
+                <div class="filter-bar" style="margin-bottom: 1rem;">
+                    <label style="margin-right: 1rem; align-self: center; font-weight: 500;">Filter by
+                        Department:</label>
+                    <select id="course-dept-filter" class="dept-select" onchange="admin.loadCourses()">
+                        <option value="">All Departments</option>
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+                <div class="card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Title</th>
+                                <th>Credits</th>
+                                <th>Enrolled / Cap</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courses-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Archive View -->
+            <section id="view-archive" class="view-section">
+                <header class="view-header">
+                    <h1>Archived Data</h1>
+                </header>
+                <div class="filter-bar" style="margin-bottom: 1rem;">
+                    <label style="margin-right: 1rem; align-self: center; font-weight: 500;">Filter by Year:</label>
+                    <select id="archive-year-filter" class="dept-select"
+                        onchange="admin.loadArchivedStudents(this.value)">
+                        <option value="">Select Year</option>
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+                <div class="card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Grad Year</th>
+                            </tr>
+                        </thead>
+                        <tbody id="archive-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Operations View -->
+            <section id="view-operations" class="view-section">
+                <header class="view-header">
+                    <h1>Waitlist & Enrollment Operations</h1>
+                </header>
+
+                <div class="dashboard-grid">
+                    <!-- Waitlist Student -->
+                    <div class="card">
+                        <h3>Waitlist Student</h3>
+                        <form onsubmit="admin.handleWaitlist(event)">
+                            <div class="form-group">
+                                <label>Student ID</label>
+                                <input type="text" name="studentId" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Course Code</label>
+                                <input type="text" name="courseCode" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Waitlist</button>
+                        </form>
+                    </div>
+
+                    <!-- Force Enroll -->
+                    <div class="card">
+                        <h3>Force Enroll from Waitlist</h3>
+                        <form onsubmit="admin.handleForceEnroll(event)">
+                            <div class="form-group">
+                                <label>Student ID</label>
+                                <input type="text" name="studentId" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Course Code</label>
+                                <input type="text" name="courseCode" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Force Enroll</button>
+                        </form>
+                    </div>
+
+                    <!-- Update Completion -->
+                    <div class="card">
+                        <h3>Update Enrollment Completion</h3>
+                        <form onsubmit="admin.handleCompletion(event)">
+                            <div class="form-group">
+                                <label>Student ID</label>
+                                <input type="text" name="studentId" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Course Code</label>
+                                <input type="text" name="courseCode" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Completed?</label>
+                                <select name="completed">
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- Add Student Modal -->
+    <div id="modal-add-student" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add New Student</h2>
+                <button class="close-modal" onclick="admin.closeModal('modal-add-student')">&times;</button>
+            </div>
+            <form onsubmit="admin.handleAddStudent(event)">
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input type="text" name="StudentId" required>
+                </div>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" name="FName" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" name="LName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label>School ID</label>
+                    <input type="text" name="SchoolId" required>
+                </div>
+                <div class="form-group">
+                    <label>Department ID</label>
+                    <input type="text" name="DepartmentId" required>
+                </div>
+                <div class="form-group">
+                    <label>Graduation Year</label>
+                    <input type="number" name="GraduationYear" required>
+                </div>
+                <div class="form-group">
+                    <label>Current Academic Year</label>
+                    <input type="text" name="CurrentAcademicYear" required placeholder="e.g. Freshman">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary"
+                        onclick="admin.closeModal('modal-add-student')">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Instructor Modal -->
+    <div id="modal-add-instructor" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add New Instructor</h2>
+                <button class="close-modal" onclick="admin.closeModal('modal-add-instructor')">&times;</button>
+            </div>
+            <form onsubmit="admin.handleAddInstructor(event)">
+
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" name="FName" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" name="LName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label>Department ID</label>
+                    <input type="text" name="DepartmentId" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary"
+                        onclick="admin.closeModal('modal-add-instructor')">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Instructor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Course Modal -->
+    <div id="modal-add-course" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add New Course</h2>
+                <button class="close-modal" onclick="admin.closeModal('modal-add-course')">&times;</button>
+            </div>
+            <form onsubmit="admin.handleAddCourse(event)">
+                <div class="form-group">
+                    <label>Course Code</label>
+                    <input type="text" name="CourseCode" required>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="CourseTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Credits</label>
+                    <input type="number" name="TotalCredits" required min="1" max="10" value="4">
+                </div>
+                <div class="form-group">
+                    <label>Capacity</label>
+                    <input type="number" name="Capacity" required value="50">
+                </div>
+                <div class="form-group">
+                    <label>Department ID</label>
+                    <input type="text" name="DepartmentId" required>
+                </div>
+                <div class="form-group">
+                    <label>Instructor ID (Optional)</label>
+                    <input type="text" name="InstructorId">
+                </div>
+                <div class="form-group">
+                    <label>Venue (Optional)</label>
+                    <input type="text" name="Venue">
+                </div>
+                <div class="form-group">
+                    <label>Day (MW, TTh, etc.)</label>
+                    <input type="text" name="DayOfWeek">
+                </div>
+                <div class="form-group">
+                    <label>Start Time (HH:mm)</label>
+                    <input type="time" name="StartTime">
+                </div>
+                <div class="form-group">
+                    <label>End Time (HH:mm)</label>
+                    <input type="time" name="EndTime">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary"
+                        onclick="admin.closeModal('modal-add-course')">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

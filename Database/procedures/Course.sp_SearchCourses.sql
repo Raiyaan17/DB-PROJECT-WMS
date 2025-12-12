@@ -10,12 +10,25 @@ BEGIN
     
     IF @query IS NULL OR @query = ''
     BEGIN
-        SELECT * FROM Course.VwAvailableCourses;
+        SELECT * FROM Course.vw_AvailableCourses;
         RETURN;
     END
 
-    SELECT * 
-    FROM Course.VwAvailableCourses
+    SELECT 
+        CourseCode,
+        CourseTitle,
+        TotalCredits,
+        DepartmentID,
+        DepartmentName,
+        EnrolledCount,
+        Capacity,
+        RemainingSeats,
+        DayOfWeek,
+        StartTime,
+        EndTime,
+        Venue,
+        InstructorName
+    FROM Course.vw_AvailableCourses
     WHERE LOWER(CourseCode) LIKE '%' + LOWER(@query) + '%' 
        OR LOWER(CourseTitle) LIKE '%' + LOWER(@query) + '%';
 END;

@@ -27,5 +27,29 @@ RETURN
         cc1.StudentId = @studentId
         AND c1.DayOfWeek = c2.DayOfWeek -- Same day of the week
         AND c1.StartTime < c2.EndTime AND c2.StartTime < c1.EndTime -- Check for time overlap
+    
+    UNION ALL
+
+    -- Check for conflicts between cart courses and already enrolled courses
+    SELECT
+        cc.CourseCode AS ConflictingCourse1Code,
+        c1.CourseTitle AS ConflictingCourse1Title,
+        e.CourseCode AS ConflictingCourse2Code,
+        c2.CourseTitle AS ConflictingCourse2Title,
+        c1.DayOfWeek AS ConflictDay,
+        c1.StartTime AS ConflictStartTime,
+        c1.EndTime AS ConflictEndTime
+    FROM
+        Std.CourseCart AS cc
+    INNER JOIN
+        Course.Course AS c1 ON cc.CourseCode = c1.CourseCode
+    INNER JOIN
+        Std.Enrollment AS e ON cc.StudentId = e.StudentId AND e.Completed = 0
+    INNER JOIN
+        Course.Course AS c2 ON e.CourseCode = c2.CourseCode
+    WHERE
+        cc.StudentId = @studentId
+        AND c1.DayOfWeek = c2.DayOfWeek
+        AND c1.StartTime < c2.EndTime AND c2.StartTime < c1.EndTime
 );
 GO

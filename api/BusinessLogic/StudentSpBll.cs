@@ -86,16 +86,8 @@ namespace api.BusinessLogic
                                  .FromSqlRaw("EXEC Std.sp_GetSchedule @studentId = {0}", studentId)
                                  .ToListAsync();
 
-            // The SP already checks for student existence and throws an error,
-            // but if for some reason it returns empty and no error, we can ensure consistency here.
-            // However, since the SP itself validates student existence and RAISERRORs,
-            // we primarily rely on the catch block for actual errors.
-            // If the SP simply returns an empty set for an invalid student (which it shouldn't, due to RAISERROR),
-            // the LINQ BLL would throw "Student not found." - let's keep consistency.
             if (!schedule.Any())
             {
-                // Attempt to confirm student doesn't exist if SP didn't error but returned empty
-                // This check is a fallback if the SP's RAISERROR isn't always caught as expected or is bypassed
                 var studentExists = await _context.Students.AnyAsync(s => s.StudentId == studentId);
                 if (!studentExists)
                 {
@@ -111,7 +103,6 @@ namespace api.BusinessLogic
             try
             {
                 // Call the stored procedure
-                // The stored procedure handles all validation and error throwing
                 await _context.Database.ExecuteSqlRawAsync(
                     "EXEC Std.sp_DropCourse @studentId = {0}, @courseCode = {1}",
                     studentId, courseCode
@@ -137,10 +128,10 @@ namespace api.BusinessLogic
                 throw new Exception(ex.Message, ex);
             }
         }
-        public async Task<IEnumerable<CourseCart>> GetCartAsync(string studentId)
+        public async Task<IEnumerable<CartItemDto>> GetCartAsync(string studentId)
         {
-            return await _context.CourseCarts
-                                 .FromSqlRaw("EXEC Std.sp_GetCart @studentId = {0}", studentId)
+            return await _context.Database
+                                 .SqlQuery<CartItemDto>($"EXEC Std.sp_GetCart @studentId = {studentId}")
                                  .ToListAsync();
         }
         public async Task<StudentDto?> GetStudentAsync(string studentId)

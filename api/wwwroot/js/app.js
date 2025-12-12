@@ -288,7 +288,7 @@ const app = {
 
             depts.forEach(d => {
                 const option = document.createElement('option');
-                option.value = d.departmentName; // Use Name to match VwAvailableCourse
+                option.value = d.departmentId; // Use ID to match SP expectation
                 option.textContent = d.departmentName;
                 select.appendChild(option);
             });
@@ -373,9 +373,9 @@ const app = {
                 cartItems.forEach(item => {
                     const card = document.createElement('div');
                     card.className = 'list-item';
-                    // Note: item.courseCodeNavigation might be null if not eager loaded correctly, but we did Include it.
-                    const title = item.courseCodeNavigation ? item.courseCodeNavigation.courseTitle : 'Unknown Course';
-                    const credits = item.courseCodeNavigation ? item.courseCodeNavigation.totalCredits : '?';
+                    // Update for CartItemDto: flat properties
+                    const title = item.courseTitle || 'Unknown Course';
+                    const credits = item.totalCredits || '?';
 
                     card.innerHTML = `
                         <div class="item-info">

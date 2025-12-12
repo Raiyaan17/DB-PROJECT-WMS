@@ -34,7 +34,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{studentId}/cart")]
-        public async Task<ActionResult<IEnumerable<CourseCart>>> GetCart(string studentId)
+        public async Task<ActionResult<IEnumerable<CartItemDto>>> GetCart(string studentId)
         {
             try
             {

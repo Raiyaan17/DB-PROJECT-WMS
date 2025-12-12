@@ -35,6 +35,7 @@ BEGIN
             -- No need to RAISERROR, just return an empty result set for failures.
             -- The application can interpret an empty cart.
             COMMIT; -- Commit the empty transaction
+            SELECT TOP 0 NULL AS CourseCode, NULL AS ErrorMessage;
             RETURN;
         END;
 

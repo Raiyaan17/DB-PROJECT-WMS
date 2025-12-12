@@ -128,6 +128,26 @@ namespace api.Controllers
             }
         }
 
+        [HttpGet("archive/years")]
+        public async Task<IEnumerable<int>> GetArchivedYears()
+        {
+            return await _adminBll.GetArchivedYearsAsync();
+        }
+
+        [HttpGet("archive/students/{year}")]
+        public async Task<IEnumerable<StudentSummaryDto>> GetArchivedStudents(int year)
+        {
+            return await _adminBll.GetArchivedStudentsByYearAsync(year);
+        }
+
+        [HttpGet("students/count")]
+        public async Task<ActionResult<int>> GetStudentCount()
+        {
+            var count = await _adminBll.GetTotalEnrolledStudentCountAsync();
+            return Ok(count);
+        }
+
+
         [HttpGet("students")]
         public async Task<IEnumerable<StudentSummaryDto>> GetStudents()
         {
@@ -141,10 +161,16 @@ namespace api.Controllers
             return student == null ? NotFound() : Ok(student);
         }
 
-        [HttpGet("instructors")]
-        public async Task<IEnumerable<InstructorSummaryDto>> GetInstructors()
+        [HttpGet("departments")]
+        public async Task<IEnumerable<string>> GetDepartments()
         {
-            return await _adminBll.GetInstructorsAsync();
+            return await _adminBll.GetDepartmentsAsync();
+        }
+
+        [HttpGet("instructors")]
+        public async Task<IEnumerable<InstructorSummaryDto>> GetInstructors([FromQuery] string? departmentId = null)
+        {
+            return await _adminBll.GetInstructorsAsync(departmentId);
         }
 
         [HttpGet("instructors/{instructorId}")]
@@ -155,9 +181,9 @@ namespace api.Controllers
         }
 
         [HttpGet("courses")]
-        public async Task<IEnumerable<Course>> GetCourses()
+        public async Task<IEnumerable<Course>> GetCourses([FromQuery] string? departmentId = null)
         {
-            return await _adminBll.GetCoursesAsync();
+            return await _adminBll.GetCoursesAsync(departmentId);
         }
 
         [HttpGet("courses/{courseCode}")]

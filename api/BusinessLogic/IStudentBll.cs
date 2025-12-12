@@ -14,7 +14,7 @@ namespace api.BusinessLogic
         Task<IEnumerable<VwStudentSchedule>> GetScheduleAsync(string studentId);
         Task DropCourseAsync(string studentId, string courseCode);
         Task RemoveFromCartAsync(string studentId, string courseCode);
-        Task<IEnumerable<CourseCart>> GetCartAsync(string studentId);
+        Task<IEnumerable<CartItemDto>> GetCartAsync(string studentId);
         Task<StudentDto?> GetStudentAsync(string studentId);
     }
 }

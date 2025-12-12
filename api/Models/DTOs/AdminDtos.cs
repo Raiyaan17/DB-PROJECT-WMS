@@ -16,7 +16,7 @@ namespace api.Models.DTOs
 
     public class AddInstructorRequest
     {
-        public string InstructorId { get; set; } = null!;
+        public string? InstructorId { get; set; }
         public string FName { get; set; } = null!;
         public string LName { get; set; } = null!;
         public string Email { get; set; } = null!;
