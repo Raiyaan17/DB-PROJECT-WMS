@@ -91,7 +91,7 @@ GO
 :r ./procedures/Std.sp_GetStudent.sql
 :r ./procedures/Course.sp_GetDepartments.sql
 :r ./procedures/Course.sp_SearchCourses.sql
-:r ./procedures/sp_Admin_GetRecentStudents.sql
+:r ./procedures/sp_Admin_GetStudents.sql
 :r ./procedures/sp_Admin_GetTotalStudentCount.sql
 :r ./procedures/sp_Admin_GetArchivedYears.sql
 :r ./procedures/sp_Admin_GetArchivedStudentsByYear.sql

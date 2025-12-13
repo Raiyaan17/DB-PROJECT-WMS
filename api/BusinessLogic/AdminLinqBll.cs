@@ -27,12 +27,31 @@ namespace api.BusinessLogic
                 Email = request.Email,
                 SchoolId = request.SchoolId,
                 DepartmentId = request.DepartmentId,
-                GraduationYear = request.GraduationYear,
+                GraduationYear = CalculateGraduationYear(request.CurrentAcademicYear),
                 CurrentAcademicYear = request.CurrentAcademicYear
             };
 
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
+        }
+
+        private static short CalculateGraduationYear(string academicYear)
+        {
+            int currentYear = DateTime.Now.Year;
+            // Assuming current year is the START of the academic year (e.g. Fall 2025)
+            // Freshman (enrolled 2025) -> Grad 2029 (+4)
+            // Sophomore (enrolled 2024, now 2nd year) -> Grad 2028 (+3)
+            // Junior (enrolled 2023, now 3rd year) -> Grad 2027 (+2)
+            // Senior (enrolled 2022, now 4th year) -> Grad 2026 (+1)
+
+            return academicYear.ToUpper() switch
+            {
+                "FRESHMAN" => (short)(currentYear + 4),
+                "SOPHOMORE" => (short)(currentYear + 3),
+                "JUNIOR" => (short)(currentYear + 2),
+                "SENIOR" => (short)(currentYear + 1),
+                _ => (short)(currentYear + 4) // Default to Freshman logic if unknown
+            };
         }
 
         public async Task AddInstructorAsync(AddInstructorRequest request)
@@ -133,6 +152,28 @@ namespace api.BusinessLogic
             if (await _context.Enrollments.AnyAsync(e => e.StudentId == request.StudentId && e.CourseCode == request.CourseCode))
                 throw new InvalidOperationException("Student already enrolled in this course.");
 
+            // Check for time conflicts
+            var targetCourse = await _context.Courses
+                .Select(c => new { c.CourseCode, c.DayOfWeek, c.StartTime, c.EndTime })
+                .FirstAsync(c => c.CourseCode == request.CourseCode);
+
+            if (targetCourse.DayOfWeek != null && targetCourse.StartTime != null && targetCourse.EndTime != null)
+            {
+                var conflictingCourse = await _context.Enrollments
+                    .Where(e => e.StudentId == request.StudentId && !e.Completed)
+                    .Select(e => e.CourseCodeNavigation)
+                    .Where(c => c.DayOfWeek == targetCourse.DayOfWeek &&
+                                c.StartTime < targetCourse.EndTime &&
+                                targetCourse.StartTime < c.EndTime)
+                    .Select(c => c.CourseCode)
+                    .FirstOrDefaultAsync();
+
+                if (conflictingCourse != null)
+                {
+                    throw new InvalidOperationException($"Time conflict detected with existing course: {conflictingCourse}");
+                }
+            }
+
             await using var transaction = await _context.Database.BeginTransactionAsync();
 
             _context.Enrollments.Add(new Enrollment
@@ -183,22 +224,38 @@ namespace api.BusinessLogic
 
         public async Task UpdateEnrollmentCompletionAsync(UpdateEnrollmentCompletionRequest request)
         {
+            var studentId = request.StudentId.Trim();
+            var courseCode = request.CourseCode.Trim();
+
             var enrollment = await _context.Enrollments.FirstOrDefaultAsync(e =>
-                e.StudentId == request.StudentId && e.CourseCode == request.CourseCode)
+                e.StudentId == studentId && e.CourseCode == courseCode)
                 ?? throw new InvalidOperationException("Enrollment does not exist for the given student and course.");
 
             enrollment.Completed = request.Completed;
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync()
+        public async Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync(string? departmentId = null, bool sortByGradYear = false)
         {
             var validYears = new[] { "FRESHMAN", "SOPHOMORE", "JUNIOR", "SENIOR" };
-            var students = await _context.Students.AsNoTracking()
-                .Where(s => validYears.Contains(s.CurrentAcademicYear.ToUpper()))
-                .OrderByDescending(s => s.StudentId)
-                .Take(25)
-                .ToListAsync();
+            var query = _context.Students.AsNoTracking()
+                .Where(s => validYears.Contains(s.CurrentAcademicYear.ToUpper()));
+
+            if (!string.IsNullOrEmpty(departmentId))
+            {
+                query = query.Where(s => s.DepartmentId == departmentId);
+            }
+
+            if (sortByGradYear)
+            {
+                query = query.OrderBy(s => s.GraduationYear);
+            }
+            else
+            {
+                query = query.OrderByDescending(s => s.StudentId);
+            }
+
+            var students = await query.Take(50).ToListAsync();
             return students.Select(MapStudent);
         }
 
@@ -245,7 +302,10 @@ namespace api.BusinessLogic
                 query = query.Where(i => i.DepartmentId == departmentId);
             }
 
-            var instructors = await query.ToListAsync();
+            var instructors = await query
+                .OrderBy(i => i.InstructorId.Length)
+                .ThenBy(i => i.InstructorId)
+                .ToListAsync();
             return instructors.Select(MapInstructor);
         }
 

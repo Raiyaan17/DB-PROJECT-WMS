@@ -14,7 +14,7 @@ namespace api.BusinessLogic
         Task UpdateCourseStatusAsync(string courseCode, bool isActive);
         Task UpdateEnrollmentCompletionAsync(UpdateEnrollmentCompletionRequest request);
 
-        Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync();
+        Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync(string? departmentId = null, bool sortByGradYear = false);
         Task<StudentSummaryDto?> GetStudentAsync(string studentId);
         Task<int> GetTotalEnrolledStudentCountAsync();
         Task<IEnumerable<int>> GetArchivedYearsAsync();

@@ -55,7 +55,7 @@ DROP PROCEDURE IF EXISTS Course.sp_AdminWaitlistStudent;
 DROP PROCEDURE IF EXISTS Course.sp_SetCourseStatus;
 DROP PROCEDURE IF EXISTS Std.sp_SetEnrollmentCompletion;
 DROP PROCEDURE IF EXISTS Course.sp_UpdateCapacity;
-DROP PROCEDURE IF EXISTS sp_Admin_GetRecentStudents;
+DROP PROCEDURE IF EXISTS sp_Admin_GetStudents;
 DROP PROCEDURE IF EXISTS sp_Admin_GetTotalStudentCount;
 DROP PROCEDURE IF EXISTS sp_Admin_GetArchivedYears;
 DROP PROCEDURE IF EXISTS sp_Admin_GetArchivedStudentsByYear;

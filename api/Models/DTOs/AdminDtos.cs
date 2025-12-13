@@ -10,7 +10,7 @@ namespace api.Models.DTOs
         public string Email { get; set; } = null!;
         public string SchoolId { get; set; } = null!;
         public string DepartmentId { get; set; } = null!;
-        public short GraduationYear { get; set; }
+
         public string CurrentAcademicYear { get; set; } = null!;
     }
 

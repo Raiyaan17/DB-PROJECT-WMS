@@ -16,9 +16,23 @@ namespace api.BusinessLogic
 
         public async Task AddStudentAsync(AddStudentRequest request)
         {
+            var graduationYear = CalculateGraduationYear(request.CurrentAcademicYear);
             await _context.Database.ExecuteSqlRawAsync(
                 "EXEC Std.sp_AddStudent @StudentID={0}, @FName={1}, @LName={2}, @Email={3}, @SchoolID={4}, @DepartmentID={5}, @GraduationYear={6}, @CurrentAcademicYear={7}",
-                request.StudentId, request.FName, request.LName, request.Email, request.SchoolId, request.DepartmentId, request.GraduationYear, request.CurrentAcademicYear);
+                request.StudentId, request.FName, request.LName, request.Email, request.SchoolId, request.DepartmentId, graduationYear, request.CurrentAcademicYear);
+        }
+
+        private static short CalculateGraduationYear(string academicYear)
+        {
+            int currentYear = DateTime.Now.Year;
+            return academicYear.ToUpper() switch
+            {
+                "FRESHMAN" => (short)(currentYear + 4),
+                "SOPHOMORE" => (short)(currentYear + 3),
+                "JUNIOR" => (short)(currentYear + 2),
+                "SENIOR" => (short)(currentYear + 1),
+                _ => (short)(currentYear + 4)
+            };
         }
 
         public async Task AddInstructorAsync(AddInstructorRequest request)
@@ -67,12 +81,14 @@ namespace api.BusinessLogic
         {
             await _context.Database.ExecuteSqlRawAsync(
                 "EXEC Std.sp_SetEnrollmentCompletion @StudentID={0}, @CourseCode={1}, @Completed={2}",
-                request.StudentId, request.CourseCode, request.Completed);
+                request.StudentId.Trim(), request.CourseCode.Trim(), request.Completed);
         }
 
-        public async Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync()
+        public async Task<IEnumerable<StudentSummaryDto>> GetStudentsAsync(string? departmentId = null, bool sortByGradYear = false)
         {
-            var students = await _context.Students.FromSqlRaw("EXEC sp_Admin_GetRecentStudents").ToListAsync();
+            var students = await _context.Students
+                .FromSqlRaw("EXEC sp_Admin_GetStudents @DepartmentID={0}, @SortByGradYear={1}", departmentId, sortByGradYear)
+                .ToListAsync();
             return students.Select(MapStudent);
         }
 

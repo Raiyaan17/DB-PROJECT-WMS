@@ -149,9 +149,9 @@ namespace api.Controllers
 
 
         [HttpGet("students")]
-        public async Task<IEnumerable<StudentSummaryDto>> GetStudents()
+        public async Task<IEnumerable<StudentSummaryDto>> GetStudents([FromQuery] string? departmentId = null, [FromQuery] bool sortByGradYear = false)
         {
-            return await _adminBll.GetStudentsAsync();
+            return await _adminBll.GetStudentsAsync(departmentId, sortByGradYear);
         }
 
         [HttpGet("students/{studentId}")]
@@ -179,6 +179,8 @@ namespace api.Controllers
             var instructor = await _adminBll.GetInstructorAsync(instructorId);
             return instructor == null ? NotFound() : Ok(instructor);
         }
+
+
 
         [HttpGet("courses")]
         public async Task<IEnumerable<Course>> GetCourses([FromQuery] string? departmentId = null)

@@ -38,6 +38,10 @@ BEGIN
         )
             RAISERROR('Student already enrolled in this course.', 16, 1);
 
+        -- Check for time conflicts with existing enrolled courses
+        IF Course.fn_CheckEnrollmentTimeConflict(@StudentID, @CourseCode) = 1
+            RAISERROR('Time conflict detected with existing courses.', 16, 1);
+
         INSERT INTO Std.Enrollment (StudentID, GraduationYear, CourseCode, Completed, IsForced)
         VALUES (@StudentID, @GraduationYear, @CourseCode, 0, 1);
 

@@ -196,24 +196,66 @@ const admin = {
 
     // --- Students ---
     loadStudents: async () => {
-        const res = await admin.api('Admin/students');
         const tbody = document.getElementById('students-table-body');
-        tbody.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
+        if (tbody) tbody.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
 
-        if (res && res.ok) {
-            const students = await res.json();
-            tbody.innerHTML = '';
-            students.forEach(s => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${s.studentId}</td>
-                    <td>${s.fName} ${s.lName}</td>
-                    <td>${s.email}</td>
-                    <td>${s.departmentId}</td>
-                    <td>${s.graduationYear}</td>
-                `;
-                tbody.appendChild(tr);
-            });
+        // Populate filter if empty
+        const filterSelect = document.getElementById('student-dept-filter');
+        if (filterSelect && filterSelect.options.length <= 1) {
+            try {
+                const deptRes = await admin.api('Admin/departments');
+                if (deptRes && deptRes.ok) {
+                    const depts = await deptRes.json();
+                    depts.forEach(d => {
+                        const opt = document.createElement('option');
+                        opt.value = d;
+                        opt.textContent = d;
+                        filterSelect.appendChild(opt);
+                    });
+                }
+            } catch (e) {
+                console.error("Failed to load departments", e);
+            }
+        }
+
+        const deptId = filterSelect ? filterSelect.value : '';
+        const sortByGrad = document.getElementById('student-sort-grad') ? document.getElementById('student-sort-grad').checked : false;
+
+        let url = 'Admin/students';
+        const params = new URLSearchParams();
+        if (deptId) params.append('departmentId', deptId);
+        if (sortByGrad) params.append('sortByGradYear', 'true');
+
+        if (Array.from(params).length > 0) {
+            url += `?${params.toString()}`;
+        }
+
+        try {
+            const res = await admin.api(url);
+
+            if (res && res.ok) {
+                const students = await res.json();
+                tbody.innerHTML = '';
+                if (students.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5">No students found.</td></tr>';
+                }
+                students.forEach(s => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${s.studentId}</td>
+                        <td>${s.fName} ${s.lName}</td>
+                        <td>${s.email}</td>
+                        <td>${s.departmentId}</td>
+                        <td>${s.graduationYear}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } else {
+                tbody.innerHTML = '<tr><td colspan="5">Error loading students.</td></tr>';
+            }
+        } catch (e) {
+            tbody.innerHTML = '<tr><td colspan="5">Error loading students.</td></tr>';
+            console.error(e);
         }
     },
 
@@ -223,7 +265,7 @@ const admin = {
         const data = Object.fromEntries(formData.entries());
 
         // Convert year to int
-        data.GraduationYear = parseInt(data.GraduationYear);
+        // Graduation Year is now calculated on backend
 
         const res = await admin.api('Admin/students', 'POST', data);
         if (res && res.ok) {
@@ -243,37 +285,52 @@ const admin = {
         const filterSelect = document.getElementById('instructor-dept-filter');
         if (filterSelect && filterSelect.options.length <= 1) {
             const deptRes = await admin.api('Admin/departments');
-            if (deptRes && deptRes.ok) {
-                const depts = await deptRes.json();
-                depts.forEach(d => {
-                    const opt = document.createElement('option');
-                    opt.value = d;
-                    opt.textContent = d;
-                    filterSelect.appendChild(opt);
-                });
+            try {
+                const deptRes = await admin.api('Admin/departments');
+                if (deptRes && deptRes.ok) {
+                    const depts = await deptRes.json();
+                    depts.forEach(d => {
+                        const opt = document.createElement('option');
+                        opt.value = d;
+                        opt.textContent = d;
+                        filterSelect.appendChild(opt);
+                    });
+                }
+            } catch (e) {
+                console.error("Failed to load departments", e);
             }
         }
 
         const deptId = filterSelect ? filterSelect.value : '';
         const url = deptId ? `Admin/instructors?departmentId=${deptId}` : 'Admin/instructors';
 
-        const res = await admin.api(url);
         const tbody = document.getElementById('instructors-table-body');
         tbody.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
 
-        if (res && res.ok) {
-            const instructors = await res.json();
-            tbody.innerHTML = '';
-            instructors.forEach(i => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${i.instructorId}</td>
-                    <td>${i.fName} ${i.lName}</td>
-                    <td>${i.email}</td>
-                    <td>${i.departmentId}</td>
-                `;
-                tbody.appendChild(tr);
-            });
+        try {
+            const res = await admin.api(url);
+            if (res && res.ok) {
+                const instructors = await res.json();
+                tbody.innerHTML = '';
+                if (instructors.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4">No instructors found.</td></tr>';
+                }
+                instructors.forEach(i => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${i.instructorId}</td>
+                        <td>${i.fName} ${i.lName}</td>
+                        <td>${i.email}</td>
+                        <td>${i.departmentId}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } else {
+                tbody.innerHTML = '<tr><td colspan="4">Error loading instructors.</td></tr>';
+            }
+        } catch (e) {
+            tbody.innerHTML = '<tr><td colspan="4">Error loading instructors.</td></tr>';
+            console.error(e);
         }
     },
 
@@ -331,7 +388,7 @@ const admin = {
                     <td>${c.isActive ? 'Active' : 'Inactive'}</td>
                     <td>
                         <button onclick="admin.updateCapacity('${c.courseCode}', ${c.capacity})">Cap</button>
-                        <button onclick="admin.toggleStatus('${c.courseCode}', ${!c.isActive})">
+                        <button onclick="admin.toggleStatus('${c.courseCode}', ${c.isActive})">
                             ${c.isActive ? 'Deactivate' : 'Activate'}
                         </button>
                     </td>
@@ -384,11 +441,12 @@ const admin = {
 
     toggleStatus: async (courseCode, currentStatus) => {
         const newStatus = !currentStatus;
-        if (confirm(`Are you sure you want to ${newStatus ? 'enable' : 'disable'} ${courseCode}?`)) {
+        const action = newStatus ? 'enable' : 'disable';
+        if (confirm(`Are you sure you want to ${action} ${courseCode}?`)) {
             const res = await admin.api(`Admin/courses/${courseCode}/status`, 'PATCH', { IsActive: newStatus });
             if (res && res.ok) {
-                alert('Status updated');
-                admin.loadCourses();
+                alert(`Course ${action}d successfully`); // simple past tense
+                admin.loadCourses(); // Refresh list to update UI
             } else {
                 alert('Failed to update status');
             }
@@ -430,7 +488,11 @@ const admin = {
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-        data.Completed = data.completed === 'true'; // Convert string to bool
+        // Fix boolean conversion: remove original string property and set PascalCase bool
+        const completedStr = data.completed;
+        delete data.completed;
+        data.Completed = completedStr === 'true';
+
 
         const res = await admin.api('Admin/enrollments/completion', 'POST', data);
         if (res && res.ok) {

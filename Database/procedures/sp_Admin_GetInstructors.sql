@@ -15,6 +15,6 @@ BEGIN
         DepartmentID
     FROM Inst.Instructor
     WHERE (@DepartmentID IS NULL OR DepartmentID = @DepartmentID)
-    ORDER BY InstructorID;
+    ORDER BY LEN(InstructorID), InstructorID;
 END;
 GO

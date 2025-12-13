@@ -94,6 +94,20 @@
                     <h1>Manage Students</h1>
                     <button class="btn-primary" onclick="admin.openModal('modal-add-student')">+ Add Student</button>
                 </header>
+                <div class="filter-bar" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                    <div>
+                        <label style="margin-right: 0.5rem; font-weight: 500;">Filter by Department:</label>
+                        <select id="student-dept-filter" class="dept-select" onchange="admin.loadStudents()">
+                            <option value="">All Departments</option>
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" id="student-sort-grad" onchange="admin.loadStudents()"
+                            style="margin-right: 0.5rem;">
+                        <label for="student-sort-grad">Sort by Graduation Year</label>
+                    </div>
+                </div>
                 <div class="card">
                     <table class="data-table">
                         <thead>
@@ -309,13 +323,15 @@
                     <label>Department ID</label>
                     <input type="text" name="DepartmentId" required>
                 </div>
-                <div class="form-group">
-                    <label>Graduation Year</label>
-                    <input type="number" name="GraduationYear" required>
-                </div>
+                <!-- Graduation Year auto-calculated -->
                 <div class="form-group">
                     <label>Current Academic Year</label>
-                    <input type="text" name="CurrentAcademicYear" required placeholder="e.g. Freshman">
+                    <select name="CurrentAcademicYear" required>
+                        <option value="Freshman">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                    </select>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn-secondary"
